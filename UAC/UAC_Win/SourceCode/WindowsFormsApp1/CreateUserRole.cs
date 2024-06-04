@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
         Helper hp = new Helper();
 
         CFL_CV_PracticeEntities1 context = new CFL_CV_PracticeEntities1();
-        SqlConnection con = new SqlConnection("Data Source=HU\\MSSQLSERVER2019;Initial Catalog=CFL_CV_Practice;User ID=sa;Password=123;Encrypt=False");
+        SqlConnection con = new SqlConnection("Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
         public int RollsId;
 
         public CreateUserRole()

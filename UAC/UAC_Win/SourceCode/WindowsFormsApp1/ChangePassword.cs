@@ -56,7 +56,7 @@ namespace WindowsFormsApp1
 
             
         {
-            string connectionString = "Data Source=HU\\MSSQLSERVER2019;Initial Catalog=CFL_CV_Practice;User ID=sa;Password=123;Encrypt=False";
+            string connectionString = "Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {

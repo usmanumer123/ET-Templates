@@ -9,7 +9,7 @@ namespace WindowsFormsApp1
     public partial class SetUserPermission : Form
     {
         Helper hp = new Helper();
-        SqlConnection con = new SqlConnection("Data Source=HU\\MSSQLSERVER2019;Initial Catalog=CFL_CV_Practice;User ID=sa;Password=123;Encrypt=False");
+        SqlConnection con = new SqlConnection("Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
         DataTable permissionsTable; // DataTable to hold the permissions data
 
         public SetUserPermission()
