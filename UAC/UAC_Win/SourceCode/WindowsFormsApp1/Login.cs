@@ -17,13 +17,13 @@ namespace WindowsFormsApp1
     {
         public static string Username;
         public static string OldPassword;
+        Helper hp=new Helper();
         public Login()
         {
             InitializeComponent();
         }
 
-        CFL_CV_PracticeEntities1 context = new CFL_CV_PracticeEntities1();
-
+        UACEntities context = new UACEntities();
 
         private void closebtn_Click(object sender, EventArgs e)
         {
@@ -32,75 +32,60 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            usernameText.Text = "";
-            passwordText.Text = "";
-            errormsg.Text = "Please Fill Your Details";
+            txtUserName.Text = "";
+            txtPassword.Text = "";
+            hp.ErrorMessage("Please fill your credentials");
         }
 
         private void usernameText_TextChanged(object sender, EventArgs e)
         {
-            if (usernameText.Text == "")
+            if (txtUserName.Text == "")
             {
                 usererror.Visible = true;
-                errormsg.Text = "Please Fill Your Username";
+                hp.ErrorMessage("Please enter user name");
             }
             else
             {
                 usererror.Visible = false;
             }
         }
-
         private void usernameText_Leave(object sender, EventArgs e)
         {
 
-            if (usernameText.Text == "")
+            if (txtUserName.Text == "")
             {
-                usernameText.Text = "Enter Your Username ...";
-                usernameText.ForeColor = Color.Silver;
-             
+                txtUserName.Text = "Enter Your Username ...";
+                txtUserName.ForeColor = Color.Silver;
             }
-
         }
 
         private void usernameText_Enter(object sender, EventArgs e)
         {
-
-            if (usernameText.Text == "Enter Your Username ...")
+            if (txtUserName.Text == "Enter Your Username ...")
             {
-                usernameText.Text = "";
-                usernameText.ForeColor = Color.Blue;
-
+                txtUserName.Text = "";
+                txtUserName.ForeColor = Color.Blue;
             }
-
         }
 
         private void passwordText_Enter(object sender, EventArgs e)
         {
-            if (passwordText.Text == "Enter Your Password ...")
+            if (txtPassword.Text == "Enter Your Password ...")
             {
-                passwordText.Text = "";
-                passwordText.ForeColor = Color.Blue;
-
+                txtPassword.Text = "";
+                txtPassword.ForeColor = Color.Blue;
             }
         }
 
         private void passwordText_Leave(object sender, EventArgs e)
         {
-            if (passwordText.Text == "")
+            if (txtPassword.Text == "")
             {
-                passwordText.Text = "Enter Your Password ...";
-                passwordText.ForeColor = Color.Silver;
-               
-
-
+                txtPassword.Text = "Enter Your Password ...";
+                txtPassword.ForeColor = Color.Silver;
             }
-
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
         //Autheticate Method
         private bool AuthenticateUser()
         {
@@ -118,10 +103,10 @@ namespace WindowsFormsApp1
         private void passwordText_TextChanged(object sender, EventArgs e)
         {
 
-            if (passwordText.Text == "")
+            if (txtPassword.Text == "")
             {
                 passerror.Visible = true;
-                errormsg.Text = "Please Fill Your Password";
+                hp.ErrorMessage("Please Fill Your Password");
             }
             else
             {
@@ -131,54 +116,39 @@ namespace WindowsFormsApp1
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
-            //Username = usernameText.Text;
-            //OldPassword = passwordText.Text;
-
-
-            if (usernameText.Text != "" && passwordText.Text != "")
+            if (txtUserName.Text.ToString() != "" || txtPassword.Text.ToString() != "")
             {
                 usererror.Visible = true;
                 passerror.Visible= true;
-                errormsg.Text = "Please Fill Your Details";
-                var user = context.UserProfiles.Where(a => a.UserName == usernameText.Text.ToString()).FirstOrDefault();
+                hp.ErrorMessage("Please fill your credentials");
+                var user = context.UserProfiles.Where(a => a.UserName == txtUserName.Text.ToString()).FirstOrDefault();
                 if (user!=null && user.IsEnabled)
                 {
-                    if (user.Password.Equals(passwordText.Text)) {
-
+                    if (user.Password.Equals(txtPassword.Text))
+                    {
                         this.Hide();
-                       
+
                         var form = new Menu(user.RollsID);
                         Shared.Username = user.UserName.ToString();
-                        Shared.UserId=user.UserId;
+                        Shared.UserId = user.UserId;
                         Shared.RollsId = user.RollsID;
                         Shared.RoleDesc = user.CreatedBy;
-                       // Shared.CreatedBy= user.CreatedBy;   
-                        
-                        
-                         form.Show();
-
+                        form.Show();
                     }
                     else
                     {
-                        MessageBox.Show("Password Not Correct...");
-
+                        hp.ErrorMessage("Password Not Correct...");
                     }
                 }
-
                 else
                 {
-                    MessageBox.Show("You are unable to login...", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                   //  MessageBox.Show("Your Credentials Not Matched...");
+                  hp.ErrorMessage("Credentials mismatched");
                 }
             }
 
             else
             {
-                MessageBox.Show("Not Found user");
-                //errormsg.Text = "Please Fill Your Details !";
-                //usererror.Visible = true;
-                //passerror.Visible = true;
-               
+             hp.ErrorMessage("User not found");
             }
         }
 
@@ -186,16 +156,17 @@ namespace WindowsFormsApp1
         {
             usererror.Visible = false;
             passerror.Visible = true;
-            //errormsg.Visible = false;
         }
 
         private void passwordText_Click(object sender, EventArgs e)
         {
             passerror.Visible = false;
             usererror.Visible = true;
-            //errormsg.Visible = false;
         }
 
-
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtUserName.Select();
+        }
     }
 }

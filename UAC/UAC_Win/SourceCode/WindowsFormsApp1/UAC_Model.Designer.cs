@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Visual Studio\Practice\WindowsFormsApp1\WindowsFormsApp1\CFL_CV_Practice.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\ETClients\ET-Templates\UAC\UAC_Win\SourceCode\WindowsFormsApp1\UAC_Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

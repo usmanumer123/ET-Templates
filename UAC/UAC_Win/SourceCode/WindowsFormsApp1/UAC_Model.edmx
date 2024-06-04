@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CFL_CV_PracticeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="UACModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="UserProfile">
           <Key>
             <PropertyRef Name="UserId" />
@@ -22,7 +22,6 @@
           </Key>
           <Property Name="RollsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RollsDesc" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="IsEnabled" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRollsPermission">
@@ -60,7 +59,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CFL_CV_PracticeModelStoreContainer">
+        <Function Name="DeleteUserAndPermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RollsId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="UACModelStoreContainer">
           <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRolls" EntityType="Self.UserRolls" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRollsPermission" EntityType="Self.UserRollsPermission" Schema="dbo" store:Type="Tables" />
@@ -77,7 +79,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CFL_CV_PracticeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="UACModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="UserProfile">
           <Key>
             <PropertyRef Name="UserId" />
@@ -96,7 +98,6 @@
           </Key>
           <Property Name="RollsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RollsDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_UserProfile" FromRole="UserRolls" ToRole="UserProfile" />
           <NavigationProperty Name="UserRollsPermissions" Relationship="Self.FK_UserRollsPermission_UserRolls" FromRole="UserRolls" ToRole="UserRollsPermission" />
@@ -137,7 +138,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CFL_CV_PracticeEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="UACEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
           <EntitySet Name="UserRolls" EntityType="Self.UserRoll" />
           <EntitySet Name="UserRollsPermissions" EntityType="Self.UserRollsPermission" />
@@ -149,15 +150,18 @@
             <End Role="UserRolls" EntitySet="UserRolls" />
             <End Role="UserRollsPermission" EntitySet="UserRollsPermissions" />
           </AssociationSet>
+          <FunctionImport Name="DeleteUserAndPermissions">
+            <Parameter Name="RollsId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CFL_CV_PracticeModelStoreContainer" CdmEntityContainer="CFL_CV_PracticeEntities1">
+        <EntityContainerMapping StorageEntityContainer="UACModelStoreContainer" CdmEntityContainer="UACEntities">
           <EntitySetMapping Name="UserProfiles">
-            <EntityTypeMapping TypeName="CFL_CV_PracticeModel.UserProfile">
+            <EntityTypeMapping TypeName="UACModel.UserProfile">
               <MappingFragment StoreEntitySet="UserProfile">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -169,17 +173,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserRolls">
-            <EntityTypeMapping TypeName="CFL_CV_PracticeModel.UserRoll">
+            <EntityTypeMapping TypeName="UACModel.UserRoll">
               <MappingFragment StoreEntitySet="UserRolls">
                 <ScalarProperty Name="RollsId" ColumnName="RollsId" />
                 <ScalarProperty Name="RollsDesc" ColumnName="RollsDesc" />
-                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserRollsPermissions">
-            <EntityTypeMapping TypeName="CFL_CV_PracticeModel.UserRollsPermission">
+            <EntityTypeMapping TypeName="UACModel.UserRollsPermission">
               <MappingFragment StoreEntitySet="UserRollsPermission">
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
                 <ScalarProperty Name="Module" ColumnName="Module" />
@@ -190,6 +193,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteUserAndPermissions" FunctionName="UACModel.Store.DeleteUserAndPermissions" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

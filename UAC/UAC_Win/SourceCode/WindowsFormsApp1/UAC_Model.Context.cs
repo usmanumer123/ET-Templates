@@ -12,11 +12,13 @@ namespace WindowsFormsApp1
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class CFL_CV_PracticeEntities1 : DbContext
+    public partial class UACEntities : DbContext
     {
-        public CFL_CV_PracticeEntities1()
-            : base("name=CFL_CV_PracticeEntities1")
+        public UACEntities()
+            : base("name=UACEntities")
         {
         }
     
@@ -28,5 +30,14 @@ namespace WindowsFormsApp1
         public virtual DbSet<UserProfile> UserProfiles { get; set; }
         public virtual DbSet<UserRoll> UserRolls { get; set; }
         public virtual DbSet<UserRollsPermission> UserRollsPermissions { get; set; }
+    
+        public virtual int DeleteUserAndPermissions(Nullable<int> rollsId)
+        {
+            var rollsIdParameter = rollsId.HasValue ?
+                new ObjectParameter("RollsId", rollsId) :
+                new ObjectParameter("RollsId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUserAndPermissions", rollsIdParameter);
+        }
     }
 }

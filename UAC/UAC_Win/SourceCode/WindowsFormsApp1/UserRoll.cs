@@ -23,7 +23,6 @@ namespace WindowsFormsApp1
     
         public int RollsId { get; set; }
         public string RollsDesc { get; set; }
-        public bool IsEnabled { get; set; }
         public int CreatedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

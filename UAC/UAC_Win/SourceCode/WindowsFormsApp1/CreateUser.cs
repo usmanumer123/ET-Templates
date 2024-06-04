@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
 {
     public partial class CreateUser : Form
     {
-        CFL_CV_PracticeEntities1 context = new CFL_CV_PracticeEntities1();
+        UACEntities context = new UACEntities();
         Helper hp = new Helper();
         string connectionString = "Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
 

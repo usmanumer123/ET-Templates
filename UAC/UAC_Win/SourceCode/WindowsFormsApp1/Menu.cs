@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
     public partial class Menu : Form
     {
 
-        CFL_CV_PracticeEntities1 context = new CFL_CV_PracticeEntities1();
+        UACEntities context = new UACEntities();
 
         
 
