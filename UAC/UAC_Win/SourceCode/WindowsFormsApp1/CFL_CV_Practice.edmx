@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CFL_CV_PracticeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="RollsID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRolls">
+          <Key>
+            <PropertyRef Name="RollsId" />
+          </Key>
+          <Property Name="RollsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RollsDesc" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRollsPermission">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Module" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Permission" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RollsId" Type="int" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserProfile_UserProfile">
+          <End Role="UserRolls" Type="Self.UserRolls" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRolls">
+              <PropertyRef Name="RollsId" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="RollsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRollsPermission_UserRolls">
+          <End Role="UserRolls" Type="Self.UserRolls" Multiplicity="1" />
+          <End Role="UserRollsPermission" Type="Self.UserRollsPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRolls">
+              <PropertyRef Name="RollsId" />
+            </Principal>
+            <Dependent Role="UserRollsPermission">
+              <PropertyRef Name="RollsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CFL_CV_PracticeModelStoreContainer">
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRolls" EntityType="Self.UserRolls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRollsPermission" EntityType="Self.UserRollsPermission" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UserProfile_UserProfile" Association="Self.FK_UserProfile_UserProfile">
+            <End Role="UserRolls" EntitySet="UserRolls" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRollsPermission_UserRolls" Association="Self.FK_UserRollsPermission_UserRolls">
+            <End Role="UserRolls" EntitySet="UserRolls" />
+            <End Role="UserRollsPermission" EntitySet="UserRollsPermission" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CFL_CV_PracticeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="RollsID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserRoll" Relationship="Self.FK_UserProfile_UserProfile" FromRole="UserProfile" ToRole="UserRolls" />
+        </EntityType>
+        <EntityType Name="UserRoll">
+          <Key>
+            <PropertyRef Name="RollsId" />
+          </Key>
+          <Property Name="RollsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RollsDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_UserProfile" FromRole="UserRolls" ToRole="UserProfile" />
+          <NavigationProperty Name="UserRollsPermissions" Relationship="Self.FK_UserRollsPermission_UserRolls" FromRole="UserRolls" ToRole="UserRollsPermission" />
+        </EntityType>
+        <EntityType Name="UserRollsPermission">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RollsId" Type="Int32" Nullable="false" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserRoll" Relationship="Self.FK_UserRollsPermission_UserRolls" FromRole="UserRollsPermission" ToRole="UserRolls" />
+        </EntityType>
+        <Association Name="FK_UserProfile_UserProfile">
+          <End Role="UserRolls" Type="Self.UserRoll" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRolls">
+              <PropertyRef Name="RollsId" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="RollsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRollsPermission_UserRolls">
+          <End Role="UserRolls" Type="Self.UserRoll" Multiplicity="1" />
+          <End Role="UserRollsPermission" Type="Self.UserRollsPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRolls">
+              <PropertyRef Name="RollsId" />
+            </Principal>
+            <Dependent Role="UserRollsPermission">
+              <PropertyRef Name="RollsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CFL_CV_PracticeEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+          <EntitySet Name="UserRolls" EntityType="Self.UserRoll" />
+          <EntitySet Name="UserRollsPermissions" EntityType="Self.UserRollsPermission" />
+          <AssociationSet Name="FK_UserProfile_UserProfile" Association="Self.FK_UserProfile_UserProfile">
+            <End Role="UserRolls" EntitySet="UserRolls" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRollsPermission_UserRolls" Association="Self.FK_UserRollsPermission_UserRolls">
+            <End Role="UserRolls" EntitySet="UserRolls" />
+            <End Role="UserRollsPermission" EntitySet="UserRollsPermissions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CFL_CV_PracticeModelStoreContainer" CdmEntityContainer="CFL_CV_PracticeEntities1">
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="CFL_CV_PracticeModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RollsID" ColumnName="RollsID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRolls">
+            <EntityTypeMapping TypeName="CFL_CV_PracticeModel.UserRoll">
+              <MappingFragment StoreEntitySet="UserRolls">
+                <ScalarProperty Name="RollsId" ColumnName="RollsId" />
+                <ScalarProperty Name="RollsDesc" ColumnName="RollsDesc" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRollsPermissions">
+            <EntityTypeMapping TypeName="CFL_CV_PracticeModel.UserRollsPermission">
+              <MappingFragment StoreEntitySet="UserRollsPermission">
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="RollsId" ColumnName="RollsId" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
