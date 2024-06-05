@@ -77,21 +77,6 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="CFL_CV_Practice.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CFL_CV_Practice.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CFL_CV_Practice.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CFL_CV_Practice.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CFL_CV_Practice.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CFL_CV_Practice.edmx</DependentUpon>
-    </Compile>
     <Compile Include="ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,14 +135,29 @@
     <Compile Include="Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
+    <Compile Include="UAC.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UAC.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UAC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UAC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UAC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UAC.edmx</DependentUpon>
+    </Compile>
     <Compile Include="UserProfile.cs">
-      <DependentUpon>CFL_CV_Practice.tt</DependentUpon>
+      <DependentUpon>UAC.tt</DependentUpon>
     </Compile>
     <Compile Include="UserRoll.cs">
-      <DependentUpon>CFL_CV_Practice.tt</DependentUpon>
+      <DependentUpon>UAC.tt</DependentUpon>
     </Compile>
     <Compile Include="UserRollsPermission.cs">
-      <DependentUpon>CFL_CV_Practice.tt</DependentUpon>
+      <DependentUpon>UAC.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
@@ -199,13 +199,6 @@
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="CFL_CV_Practice.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CFL_CV_Practice.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="CFL_CV_Practice.edmx.diagram">
-      <DependentUpon>CFL_CV_Practice.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -216,6 +209,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="UAC.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UAC.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="UAC.edmx.diagram">
+      <DependentUpon>UAC.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -230,15 +230,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CFL_CV_Practice.Context.tt">
+    <Content Include="UAC.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CFL_CV_Practice.edmx</DependentUpon>
-      <LastGenOutput>CFL_CV_Practice.Context.cs</LastGenOutput>
+      <DependentUpon>UAC.edmx</DependentUpon>
+      <LastGenOutput>UAC.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="CFL_CV_Practice.tt">
+    <Content Include="UAC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CFL_CV_Practice.edmx</DependentUpon>
-      <LastGenOutput>CFL_CV_Practice.cs</LastGenOutput>
+      <DependentUpon>UAC.edmx</DependentUpon>
+      <LastGenOutput>UAC.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

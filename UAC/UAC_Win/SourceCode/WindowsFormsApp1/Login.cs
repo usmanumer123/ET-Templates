@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
         {
             txtUserName.Text = "";
             txtPassword.Text = "";
-            hp.ErrorMessage("Please fill your credentials");
+           
         }
 
         private void usernameText_TextChanged(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace WindowsFormsApp1
             {
                 usererror.Visible = true;
                 passerror.Visible= true;
-                hp.ErrorMessage("Please fill your credentials");
+               
                 var user = context.UserProfiles.Where(a => a.UserName == txtUserName.Text.ToString()).FirstOrDefault();
                 if (user!=null && user.IsEnabled)
                 {
@@ -142,7 +142,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                  hp.ErrorMessage("Credentials mismatched");
+                  hp.ErrorMessage("Please fill your credentials");
                 }
             }
 
