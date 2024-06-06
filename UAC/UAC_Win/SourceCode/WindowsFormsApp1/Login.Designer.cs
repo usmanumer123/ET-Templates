@@ -180,9 +180,9 @@
             this.label7.ForeColor = System.Drawing.Color.Gray;
             this.label7.Location = new System.Drawing.Point(138, 487);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(179, 16);
+            this.label7.Size = new System.Drawing.Size(168, 16);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Released : 07.March 2024 (0.0.1)";
+            this.label7.Text = "Released : 30 May 2024 (0.0.1)";
             // 
             // btnLogin
             // 
