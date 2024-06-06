@@ -30,6 +30,11 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show(Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
         }
+        public void WarningMessage(String Message)
+        {
+            MessageBox.Show(Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3);
+            
+        }
         public DataSet GetDataset(String Query)
         {
             DataSet ds = new DataSet();
