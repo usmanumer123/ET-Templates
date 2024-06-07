@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
             //Permissions getting in the basis of roleid
             var isAdmin = IsAdmin(Shared.RollsId);
             SetButtonState(btnDone, isAdmin && CheckUserPermission(Shared.RollsId, "Create User Role", "create"));
-            SetButtonState(btnDone, isAdmin && CheckUserPermission(Shared.RollsId, "Create User Role", "edit"));
+            SetButtonState(btnUpdate, isAdmin && CheckUserPermission(Shared.RollsId, "Create User Role", "edit"));
             SetButtonState(btnDeleteUser, isAdmin && CheckUserPermission(Shared.RollsId, "Create User Role", "delete"));
 
         }

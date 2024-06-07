@@ -49,15 +49,7 @@ namespace WindowsFormsApp1
                 usererror.Visible = false;
             }
         }
-        //private void usernameText_Leave(object sender, EventArgs e)
-        //{
-
-        //    if (txtUserName.Text == "")
-        //    {
-        //        txtUserName.Text = "Enter Your Username ...";
-        //        txtUserName.ForeColor = Color.Silver;
-        //    }
-        //}
+      
 
         private void usernameText_Enter(object sender, EventArgs e)
         {
@@ -77,14 +69,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        //private void passwordText_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtPassword.Text == "")
-        //    {
-        //        txtPassword.Text = "Enter Your Password ...";
-        //        txtPassword.ForeColor = Color.Silver;
-        //    }
-        //}
 
         //Autheticate Method
         private bool AuthenticateUser()
@@ -114,43 +98,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        //private void loginbtn_Click(object sender, EventArgs e)
-        //{
-        //    if (txtUserName.Text.ToString() != "" || txtPassword.Text.ToString() != "")
-        //    {
-        //        usererror.Visible = true;
-        //        passerror.Visible= true;
-
-        //        var user = context.UserProfiles.Where(a => a.UserName == txtUserName.Text.ToString()).FirstOrDefault();
-        //        if (user!=null && user.IsEnabled)
-        //        {
-        //            if (user.Password.Equals(txtPassword.Text))
-        //            {
-        //                this.Hide();
-
-        //                var form = new Menu(user.RollsID);
-        //                Shared.Username = user.UserName.ToString();
-        //                Shared.UserId = user.UserId;
-        //                Shared.RollsId = user.RollsID;
-        //                Shared.RoleDesc = user.CreatedBy;
-        //                form.Show();
-        //            }
-        //            else
-        //            {
-        //                hp.ErrorMessage("Password Not Correct...");
-        //            }
-        //        }
-        //        else
-        //        {
-        //          hp.ErrorMessage("Your Password is not correct");
-        //        }
-        //    }
-
-        //    else
-        //    {
-        //     hp.ErrorMessage("User not found");
-        //    }
-        //}
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
@@ -170,12 +117,15 @@ namespace WindowsFormsApp1
             if (string.IsNullOrWhiteSpace(txtUserName.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 usererror.Visible = true;
-                passerror.Visible= true;
+                passerror.Visible = true;
                 hp.ErrorMessage("Please enter both username and password.");
                 return;
             }
 
-            var user = context.UserProfiles.Where(a => a.UserName == txtUserName.Text).FirstOrDefault();
+            //var user = context.UserProfiles.Where(a => a.UserName == txtUserName.Text).FirstOrDefault();
+            var user = context.UserProfiles.FirstOrDefault(a => a.UserName == txtUserName.Text);
+
+
             if (user == null)
             {
                 hp.ErrorMessage("User not found.");
@@ -221,6 +171,8 @@ namespace WindowsFormsApp1
         private void Login_Load(object sender, EventArgs e)
         {
             txtUserName.Select();
+            usererror.Visible = true;
+            passerror.Visible = true;
         }
     }
 }

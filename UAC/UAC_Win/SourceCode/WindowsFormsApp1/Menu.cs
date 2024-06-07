@@ -94,25 +94,13 @@ namespace WindowsFormsApp1
         }
 
         //changing of colors for disable 
-        //private void SetButtonState(Button button, bool isEnabled)
-        //{
-        //    button.Enabled = isEnabled;
-        //    button.BackColor = isEnabled ? SystemColors.Control : Color.LightGray;
-        //    button.ForeColor = isEnabled ? SystemColors.ControlText : Color.LightGray;
-        //}
-
-
-
-
-        private void AdjustTabsEnabled()
+        private void SetButtonState(Button button, bool isEnabled)
         {
-            // Enable/disable tab icon buttons based on the user's role
-
-           
-            //iconButton4.Enabled = false;
-            //iconButton5.Enabled = isAdmin;
-            //iconButton6.Enabled = isAdmin;
+            button.Enabled = isEnabled;
+            button.BackColor = isEnabled ? SystemColors.Control : Color.LightGray;
+            button.ForeColor = isEnabled ? SystemColors.ControlText : Color.LightGray;
         }
+
         //Fields
         private int borderSize = 2;
         private Size formSize; //Keep form size when it is minimized and restored.

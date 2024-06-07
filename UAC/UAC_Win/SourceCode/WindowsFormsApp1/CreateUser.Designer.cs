@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateUser));
             this.btnInsertUser = new System.Windows.Forms.Button();
             this.btnUpdateUser = new System.Windows.Forms.Button();
@@ -72,7 +72,7 @@
             this.btnInsertUser.Location = new System.Drawing.Point(302, 778);
             this.btnInsertUser.Name = "btnInsertUser";
             this.btnInsertUser.Size = new System.Drawing.Size(127, 46);
-            this.btnInsertUser.TabIndex = 4;
+            this.btnInsertUser.TabIndex = 5;
             this.btnInsertUser.Text = "Save";
             this.btnInsertUser.UseVisualStyleBackColor = false;
             this.btnInsertUser.Click += new System.EventHandler(this.btnInsertUser_Click);
@@ -87,7 +87,7 @@
             this.btnUpdateUser.Location = new System.Drawing.Point(486, 778);
             this.btnUpdateUser.Name = "btnUpdateUser";
             this.btnUpdateUser.Size = new System.Drawing.Size(127, 46);
-            this.btnUpdateUser.TabIndex = 5;
+            this.btnUpdateUser.TabIndex = 6;
             this.btnUpdateUser.Text = "Update";
             this.btnUpdateUser.UseVisualStyleBackColor = false;
             this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
@@ -102,7 +102,7 @@
             this.btnDeleteUser.Location = new System.Drawing.Point(670, 778);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(127, 46);
-            this.btnDeleteUser.TabIndex = 6;
+            this.btnDeleteUser.TabIndex = 7;
             this.btnDeleteUser.Text = "Delete";
             this.btnDeleteUser.UseVisualStyleBackColor = false;
             this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
@@ -117,7 +117,7 @@
             this.btnResetUser.Location = new System.Drawing.Point(854, 778);
             this.btnResetUser.Name = "btnResetUser";
             this.btnResetUser.Size = new System.Drawing.Size(127, 46);
-            this.btnResetUser.TabIndex = 7;
+            this.btnResetUser.TabIndex = 8;
             this.btnResetUser.Text = "Reset";
             this.btnResetUser.UseVisualStyleBackColor = false;
             this.btnResetUser.Click += new System.EventHandler(this.btnResetUser_Click);
@@ -128,30 +128,30 @@
             this.createUserDataGridView1.AllowUserToDeleteRows = false;
             this.createUserDataGridView1.AllowUserToResizeColumns = false;
             this.createUserDataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.createUserDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.createUserDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.createUserDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.createUserDataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.createUserDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.createUserDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.createUserDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.createUserDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.createUserDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.createUserDataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.createUserDataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
             this.createUserDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.createUserDataGridView1.DoubleBuffered = true;
             this.createUserDataGridView1.EnableHeadersVisualStyles = false;
@@ -255,7 +255,7 @@
             this.txtPassword.Location = new System.Drawing.Point(740, 174);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(194, 27);
-            this.txtPassword.TabIndex = 18;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtCreatedBy
@@ -280,7 +280,7 @@
             this.txtUserName.Location = new System.Drawing.Point(342, 174);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(194, 27);
-            this.txtUserName.TabIndex = 15;
+            this.txtUserName.TabIndex = 1;
             this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
             // 
             // panel1
@@ -347,7 +347,7 @@
             this.enableCheckbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.enableCheckbox.Name = "enableCheckbox";
             this.enableCheckbox.Size = new System.Drawing.Size(20, 20);
-            this.enableCheckbox.TabIndex = 24;
+            this.enableCheckbox.TabIndex = 3;
             // 
             // panel5
             // 
@@ -366,7 +366,7 @@
             this.comboBox1.Location = new System.Drawing.Point(740, 280);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(185, 29);
-            this.comboBox1.TabIndex = 51;
+            this.comboBox1.TabIndex = 4;
             this.comboBox1.Text = "Select Rolls";
             // 
             // CreateUser
