@@ -36,8 +36,6 @@ namespace WindowsFormsApp1
             return true;
         }
 
-
-
         private bool CheckUserPermission(int roleId, string module, string permission)
         {
             var permissionRecord = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module && p.Permission == permission);
@@ -117,7 +115,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                hp.ErrorMessage(ex.Message.ToString());
+                hp.ErrorMessage("On Create User Role save button"+ex.Message.ToString());
             }
         }
 
@@ -131,8 +129,6 @@ namespace WindowsFormsApp1
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 if (IsValid())
@@ -164,17 +160,11 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                hp.ErrorMessage(ex.Message.ToString());
+                hp.ErrorMessage("On Create User Role update button"+ex.Message.ToString());
             }
-
-
         }
 
-
-
-
-
-        private void createUserDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+  private void createUserDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (userRollsDataGridView1.SelectedRows.Count > 0)
             {
@@ -187,32 +177,36 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void userRollsDataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-           
-        }
-
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
-            if (RollsId > 0)
+            try
             {
-                using (SqlCommand cmd = new SqlCommand("DeleteUserAndPermissions", con))
+                if (RollsId > 0)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@RollsId", this.RollsId);
+                    using (SqlCommand cmd = new SqlCommand("DeleteUserAndPermissions", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@RollsId", this.RollsId);
 
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+
+                    MessageBox.Show("User Information Successfully Deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetUserRecord();
+                }
+                else
+                {
+                    MessageBox.Show("Please Select User to Delete his Information", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                MessageBox.Show("User Information Successfully Deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                GetUserRecord();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please Select User to Delete his Information", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                hp.ErrorMessage("On Create User Role delete button: "+ex.Message.ToString());
             }
+            
         }
 
 

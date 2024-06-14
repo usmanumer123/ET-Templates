@@ -71,19 +71,19 @@ namespace WindowsFormsApp1
 
 
         //Autheticate Method
-        private bool AuthenticateUser()
-        {
-            var ListOfUser = context.UserProfiles.ToList();//.Where(e => e.UserName == txtUser.Text.ToString() && e.Password == txtPassword.Text.ToString());
-            if (ListOfUser.Count() > 0)
-            {
-                var v = ListOfUser.ElementAt(0).UserId;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //private bool AuthenticateUser()
+        //{
+        //    var ListOfUser = context.UserProfiles.ToList();//.Where(e => e.UserName == txtUser.Text.ToString() && e.Password == txtPassword.Text.ToString());
+        //    if (ListOfUser.Count() > 0)
+        //    {
+        //        var v = ListOfUser.ElementAt(0).UserId;
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
         private void passwordText_TextChanged(object sender, EventArgs e)
         {
 

@@ -182,7 +182,7 @@
             this.userRollsDataGridView1.Size = new System.Drawing.Size(1389, 345);
             this.userRollsDataGridView1.TabIndex = 21;
             this.userRollsDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.createUserDataGridView1_CellClick);
-            this.userRollsDataGridView1.SelectionChanged += new System.EventHandler(this.userRollsDataGridView1_SelectionChanged);
+            
             // 
             // txtCreated
             // 

@@ -12,14 +12,14 @@ namespace WindowsFormsApp1
     public partial class CreateUser : Form
     {
         UACEntities context = new UACEntities();
+        SqlConnection con = new SqlConnection("Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
+        public int UserId;
         Helper hp = new Helper();
-        string connectionString = "Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
+      //  string connectionString = "Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
 
         
         public CreateUser()
         {
-
-            
             InitializeComponent();
             //Permissions getting in the basis of roleid
             var isAdmin = IsAdmin(Shared.RollsId);
@@ -39,14 +39,11 @@ namespace WindowsFormsApp1
             return true;
         }
         
-           
-
     private bool CheckUserPermission(int roleId, string module, string permission)
     {
         var permissionRecord = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module && p.Permission == permission);
         return permissionRecord != null && permissionRecord.IsEnable;
     }
-
 
         private void SetButtonState(Button button, bool isEnabled)
         {
@@ -54,11 +51,6 @@ namespace WindowsFormsApp1
             button.BackColor = isEnabled ? SystemColors.Control : Color.LightGray;
             button.ForeColor = isEnabled ? SystemColors.ControlText : Color.LightGray;
         }
-
-
-        SqlConnection con = new SqlConnection("Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
-        public int UserId;
-
 
         private void CreateUser_Load(object sender, EventArgs e)
         {
@@ -69,8 +61,32 @@ namespace WindowsFormsApp1
 
         private void GetUserRecord()
         {
-           
-            SqlCommand cmd = new SqlCommand("select * from UserProfile ", con);
+            //    string query = @" SELECT 
+            //    u.UserId, 
+            //    u.UserName, 
+            //    u.CreatedBy, 
+            //    r.RollsDesc AS Rolls, 
+            //    u.Password, 
+            //    u.IsEnabled AS Activation
+            //FROM 
+            //    UserProfile u
+            //JOIN 
+            //    UserRolls r ON u.RollsID = r.RollsId";
+
+            string query = @" SELECT 
+        u.UserId, 
+        u.UserName, 
+        u.CreatedBy, 
+        r.RollsId,  -- Changed from RollsDesc to RollsId to ensure we get the correct value
+        r.RollsDesc AS Rolls,  -- Keep the alias for display purposes
+        u.Password, 
+        u.IsEnabled AS Activation
+    FROM 
+        UserProfile u
+    JOIN 
+        UserRolls r ON u.RollsID = r.RollsId";
+
+            SqlCommand cmd = new SqlCommand(query, con);
             DataTable dt = new DataTable();
                 con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -83,39 +99,43 @@ namespace WindowsFormsApp1
       
         private void btnInsertUser_Click(object sender, EventArgs e)
         {
-            if (IsValid())
+            try
             {
-                int selectedRollsId = Convert.ToInt32(comboBox1.SelectedValue);
-                if (UserId == 0) // Ensure UserId is 0, which means it's a new user
+                if (IsValid())
                 {
-                    SqlCommand cmd = new SqlCommand("Insert into UserProfile (UserName, CreatedBy, RollsID, Password, IsEnabled) Values (@name, @created, @rolls, @password, @isenable)", con);
+                    int selectedRollsId = Convert.ToInt32(comboBox1.SelectedValue);
+                    if (UserId == 0) // Ensure UserId is 0, which means it's a new user
+                    {
+                        SqlCommand cmd = new SqlCommand("Insert into UserProfile (UserName, CreatedBy, RollsID, Password, IsEnabled) Values (@name, @created, @rolls, @password, @isenable)", con);
 
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@name", txtUserName.Text);
-                    cmd.Parameters.AddWithValue("@created", Shared.UserId);
-                    cmd.Parameters.AddWithValue("@rolls", selectedRollsId);
-                    cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-                    cmd.Parameters.AddWithValue("@isenable", enableCheckbox.Checked);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@name", txtUserName.Text);
+                        cmd.Parameters.AddWithValue("@created", Shared.UserId);
+                        cmd.Parameters.AddWithValue("@rolls", selectedRollsId);
+                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                        cmd.Parameters.AddWithValue("@isenable", enableCheckbox.Checked);
 
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
-                    MessageBox.Show("New User is Successfully Added", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("New User is Successfully Added", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    GetUserRecord();
-                    ResetUserControls();
-                }
-                else
-                {
-                    MessageBox.Show("Please use the Update button to modify existing users.", "Operation not allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        GetUserRecord();
+                        ResetUserControls();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please use the Update button to modify existing users.", "Operation not allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
+            catch(Exception ex) 
+            {
+                hp.ErrorMessage("On Create User save button" + ex.Message.ToString());
+            }
+           
         }
-
-
-
-       
 
         private bool IsValid()
         {
@@ -171,124 +191,118 @@ namespace WindowsFormsApp1
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
-            if (IsValid())
+            try
             {
-                int selectedRollsId = Convert.ToInt32(comboBox1.SelectedValue);
+                if (IsValid())
+                {
+                    int selectedRollsId = Convert.ToInt32(comboBox1.SelectedValue);
+                    if (UserId > 0)
+                    {
+                        SqlCommand cmd = new SqlCommand("UPDATE UserProfile SET UserName=@name, CreatedBy=@created, RollsID=@rolls, Password=@password, IsEnabled=@isenable WHERE UserId=@Id", con);
+
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@name", txtUserName.Text);
+                        cmd.Parameters.AddWithValue("@created", txtCreatedBy.Text);
+                        cmd.Parameters.AddWithValue("@rolls", selectedRollsId);
+                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                        cmd.Parameters.AddWithValue("@isenable", enableCheckbox.Checked);
+                        cmd.Parameters.AddWithValue("@Id", this.UserId);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        MessageBox.Show("User Information Successfully Updated", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        GetUserRecord();
+                        ResetUserControls();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select a user to update their information.", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                hp.ErrorMessage("On Create User update button" + ex.Message.ToString());
+            }
+           
+        }
+
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 if (UserId > 0)
                 {
-                    SqlCommand cmd = new SqlCommand("UPDATE UserProfile SET UserName=@name, CreatedBy=@created, RollsID=@rolls, Password=@password, IsEnabled=@isenable WHERE UserId=@Id", con);
 
+                    SqlCommand cmd = new SqlCommand("DELETE FROM UserProfile WHERE UserId=@Id", con);
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@name", txtUserName.Text);
-                    cmd.Parameters.AddWithValue("@created", txtCreatedBy.Text);
-                    cmd.Parameters.AddWithValue("@rolls", selectedRollsId);
-                    cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-                    cmd.Parameters.AddWithValue("@isenable", enableCheckbox.Checked);
+
                     cmd.Parameters.AddWithValue("@Id", this.UserId);
 
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
 
-                    MessageBox.Show("User Information Successfully Updated", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User Information Successfully Deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     GetUserRecord();
                     ResetUserControls();
+
                 }
+
                 else
                 {
-                    MessageBox.Show("Please select a user to update their information.", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please Select User to Delete his Information", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
-        }
-
-
-        private void btnDeleteUser_Click(object sender, EventArgs e)
-        {
-            if (UserId > 0)
+            catch(Exception ex)
             {
-
-                SqlCommand cmd = new SqlCommand("DELETE FROM UserProfile WHERE UserId=@Id", con);
-                cmd.CommandType = CommandType.Text;
-               
-                cmd.Parameters.AddWithValue("@Id", this.UserId);
-
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-
-                MessageBox.Show("User Information Successfully Deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                GetUserRecord();
-                ResetUserControls();
-
+                hp.ErrorMessage("On Create User delete button" + ex.Message.ToString());
             }
-
-            else
-            {
-                MessageBox.Show("Please Select User to Delete his Information", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtRollsId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCreatedBy_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtIsEnable_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUserName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void createUserDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //    UserId = Convert.ToInt32(createUserDataGridView.SelectedRows[0].Cells[0].Value);
-            //    txtUserName.Text = createUserDataGridView.SelectedRows[0].Cells[1].Value.ToString();
-            //    txtCreatedBy.Text = createUserDataGridView.SelectedRows[0].Cells[2].Value.ToString();
-            //    txtRollsId.Text = createUserDataGridView.SelectedRows[0].Cells[3].Value.ToString();
-            //    txtPassword.Text = createUserDataGridView.SelectedRows[0].Cells[4].Value.ToString();
-            //    txtIsEnable.Text = createUserDataGridView.SelectedRows[0].Cells[5].Value.ToString();
-            
+         
         }
 
         private void createUserDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (createUserDataGridView1.SelectedRows.Count > 0)
             {
-                UserId = Convert.ToInt32(createUserDataGridView1.SelectedRows[0].Cells[0].Value);
-                txtUserName.Text = createUserDataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                txtCreatedBy.Text = createUserDataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-               // txtRollsId.Text = createUserDataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-                   comboBox1.SelectedValue= createUserDataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-                txtPassword.Text = createUserDataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-                enableCheckbox.Checked = bool.Parse(createUserDataGridView1.SelectedRows[0].Cells[5].Value.ToString());
+                //UserId = Convert.ToInt32(createUserDataGridView1.SelectedRows[0].Cells["UserId"].Value);
+                //txtUserName.Text = createUserDataGridView1.SelectedRows[0].Cells["UserName"].Value.ToString();
+                //txtCreatedBy.Text = createUserDataGridView1.SelectedRows[0].Cells["CreatedBy"].Value.ToString();
+                //comboBox1.SelectedValue = Convert.ToString(createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString());
+                //txtPassword.Text = createUserDataGridView1.SelectedRows[0].Cells["Password"].Value.ToString();
+                //enableCheckbox.Checked = bool.Parse(createUserDataGridView1.SelectedRows[0].Cells["Activation"].Value.ToString());
+                try
+                {
+                    // Parse UserId
+                    UserId = Convert.ToInt32(createUserDataGridView1.SelectedRows[0].Cells["UserId"].Value);
+                    txtUserName.Text = createUserDataGridView1.SelectedRows[0].Cells["UserName"].Value.ToString();
+                    txtCreatedBy.Text = createUserDataGridView1.SelectedRows[0].Cells["CreatedBy"].Value.ToString();
+
+                    // Parse and validate Rolls
+                    string rollsStr = createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString();
+                    if (int.TryParse(rollsStr, out int rollsId))
+                    {
+                        comboBox1.SelectedValue = rollsId;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Invalid Rolls format: '{rollsStr}'. Unable to parse Rolls.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    txtPassword.Text = createUserDataGridView1.SelectedRows[0].Cells["Password"].Value.ToString();
+                    enableCheckbox.Checked = bool.Parse(createUserDataGridView1.SelectedRows[0].Cells["Activation"].Value.ToString());
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Error parsing data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -296,28 +310,6 @@ namespace WindowsFormsApp1
            // PopulateComboBox(); 
            
         }
-
-        //private void PopulateComboBox()
-        //{
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        string query = "SELECT RollsId, RollsDesc FROM UserRolls";
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            connection.Open();
-        //            using (SqlDataReader reader = command.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    int rollsId = reader.GetInt32(0);
-        //                    string rollsDesc = reader.GetString(1);
-        //                    comboBox1.Items.Add(new ComboboxItem { Text = rollsDesc, Value = rollsId });
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
         private void PopulateComboBox()
         {
             comboBox1.DisplayMember = "RollsDesc"; // Set the display member to RollsDesc
@@ -333,8 +325,6 @@ namespace WindowsFormsApp1
             reader.Close();
             con.Close();
         }
-
-
         public class ComboboxItem
         {
             public string Text { get; set; }

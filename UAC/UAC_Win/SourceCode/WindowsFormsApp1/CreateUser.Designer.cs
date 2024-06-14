@@ -170,8 +170,7 @@
             this.createUserDataGridView1.Size = new System.Drawing.Size(1297, 344);
             this.createUserDataGridView1.TabIndex = 20;
             this.createUserDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.createUserDataGridView1_CellClick);
-            this.createUserDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.createUserDataGridView1_CellContentClick);
-            // 
+             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.createUserDataGridView1);
@@ -209,7 +208,6 @@
             this.label4.Size = new System.Drawing.Size(73, 23);
             this.label4.TabIndex = 10;
             this.label4.Text = "Rolls :";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -231,7 +229,7 @@
             this.label6.Size = new System.Drawing.Size(189, 23);
             this.label6.TabIndex = 14;
             this.label6.Text = "Active / Deactive :";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+           
             // 
             // txtRollsId
             // 
@@ -244,7 +242,7 @@
             this.txtRollsId.Size = new System.Drawing.Size(194, 27);
             this.txtRollsId.TabIndex = 19;
             this.txtRollsId.Visible = false;
-            this.txtRollsId.TextChanged += new System.EventHandler(this.txtRollsId_TextChanged);
+      
             // 
             // txtPassword
             // 
@@ -256,7 +254,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(194, 27);
             this.txtPassword.TabIndex = 2;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+           
             // 
             // txtCreatedBy
             // 
@@ -269,7 +267,7 @@
             this.txtCreatedBy.Size = new System.Drawing.Size(194, 27);
             this.txtCreatedBy.TabIndex = 16;
             this.txtCreatedBy.Visible = false;
-            this.txtCreatedBy.TextChanged += new System.EventHandler(this.txtCreatedBy_TextChanged);
+           
             // 
             // txtUserName
             // 
@@ -281,7 +279,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(194, 27);
             this.txtUserName.TabIndex = 1;
-            this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
+            
             // 
             // panel1
             // 
