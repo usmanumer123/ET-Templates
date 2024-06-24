@@ -12,10 +12,10 @@ namespace WindowsFormsApp1
     public partial class CreateUser : Form
     {
         UACEntities context = new UACEntities();
-        SqlConnection con = new SqlConnection("Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
+        SqlConnection con = new SqlConnection("Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
         public int UserId;
         Helper hp = new Helper();
-      //  string connectionString = "Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
+        string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
 
         
         public CreateUser()
@@ -51,6 +51,11 @@ namespace WindowsFormsApp1
             button.BackColor = isEnabled ? SystemColors.Control : Color.LightGray;
             button.ForeColor = isEnabled ? SystemColors.ControlText : Color.LightGray;
         }
+
+
+        //SqlConnection con = new SqlConnection("Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
+        //public int UserId;
+
 
         private void CreateUser_Load(object sender, EventArgs e)
         {
@@ -284,16 +289,42 @@ namespace WindowsFormsApp1
                     txtUserName.Text = createUserDataGridView1.SelectedRows[0].Cells["UserName"].Value.ToString();
                     txtCreatedBy.Text = createUserDataGridView1.SelectedRows[0].Cells["CreatedBy"].Value.ToString();
 
-                    // Parse and validate Rolls
-                    string rollsStr = createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString();
-                    if (int.TryParse(rollsStr, out int rollsId))
+                    //// Parse and validate Rolls
+                    //string rollsStr = createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString();
+                    //if (int.TryParse(rollsStr, out int rollsId))
+                    //{
+                    //    comboBox1.SelectedValue = rollsId;
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show($"Invalid Rolls format: '{rollsStr}'. Unable to parse Rolls.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+                    // Retrieve and validate RollsDesc
+                    string rollsDesc = createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString();
+                    int rollsId = (int)createUserDataGridView1.SelectedRows[0].Cells["RollsId"].Value;
+                    if (!string.IsNullOrEmpty(rollsDesc))
                     {
-                        comboBox1.SelectedValue = rollsId;
+                        bool found = false;
+                        foreach (DataRowView item in comboBox1.Items)
+                        {
+                            if (item["RollsDesc"].ToString() == rollsDesc && (int)item["RollsId"] == rollsId)
+                            {
+                                comboBox1.SelectedItem = item;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found)
+                        {
+                            MessageBox.Show($"No matching RollsDesc found for: '{rollsDesc}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show($"Invalid Rolls format: '{rollsStr}'. Unable to parse Rolls.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Invalid Rolls format: '{rollsDesc}'. Unable to set Rolls.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
+
 
                     txtPassword.Text = createUserDataGridView1.SelectedRows[0].Cells["Password"].Value.ToString();
                     enableCheckbox.Checked = bool.Parse(createUserDataGridView1.SelectedRows[0].Cells["Activation"].Value.ToString());

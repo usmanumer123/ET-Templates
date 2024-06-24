@@ -68,29 +68,37 @@ namespace WindowsFormsApp1
 
 
        
-        private bool IsAdmin(int roleId)
-        {
-            return true;
-        }
+        //private bool IsAdmin(int roleId)
+        //{
+        //    return true;// Db Authentication
+        //}
         public Menu(int roleId)
         {
             InitializeComponent();
 
 
-            var isAdmin = IsAdmin(roleId);
+            //var isAdmin = IsAdmin(roleId);
 
-            btnCreateUser.Enabled = isAdmin && CheckUserPermission(roleId, "Create User");
-            btnChangePassword.Enabled = isAdmin && CheckUserPermission(roleId, "Change Password");
-            btnCreateUserRoles.Enabled = isAdmin && CheckUserPermission(roleId, "Create User Role");
-            btnUserPermission.Enabled = isAdmin && CheckUserPermission(roleId, "Set User Permission");
+            btnCreateUser.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Create User");
+            btnChangePassword.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Change Password");
+            btnCreateUserRoles.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Create User Role");
+            btnUserPermission.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Set User Permission");
 
             // Similar lines for other modules and permissions
         }
 
-        private bool CheckUserPermission(int roleId, string module)
+        private bool CheckUserPermission(int roleId, string module)//This function is not correct, It is only checking the first row of the query and thus returning invalid result and this eventually disables the Create User button.
         {
-            var permissions = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module );
-            return permissions != null && permissions.IsEnable;
+            //var permissions = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module );
+            //return permissions != null && permissions.IsEnable;
+            var permissions = context.UserRollsPermissions
+                         .Where(p => p.RollsId == roleId && p.Module == module)
+                         .ToList();
+
+            bool anyPermissionEnabled = permissions.Any(p => p.IsEnable);
+
+            return anyPermissionEnabled;
+
         }
 
         //changing of colors for disable 
