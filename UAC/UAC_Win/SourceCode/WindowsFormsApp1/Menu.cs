@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
 {
     public partial class Menu : Form
     {
-
+        private int RoleId = -1;
         UACEntities context = new UACEntities();
 
         
@@ -74,16 +74,14 @@ namespace WindowsFormsApp1
         //}
         public Menu(int roleId)
         {
+            RoleId = roleId;
             InitializeComponent();
-
-
-            //var isAdmin = IsAdmin(roleId);
-
+            
             btnCreateUser.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Create User");
             btnChangePassword.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Change Password");
             btnCreateUserRoles.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Create User Role");
             btnUserPermission.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Set User Permission");
-
+          
             // Similar lines for other modules and permissions
         }
 
@@ -491,7 +489,7 @@ namespace WindowsFormsApp1
 
         private void btnUserPermission_Click(object sender, EventArgs e)
         {
-            openChildForm(new SetUserPermission());
+            openChildForm(new SetUserPermission(RoleId));
             ResetUACSubMenuTabColors();
             btnUserPermission.BackColor = Color.SkyBlue;
             btnUserPermission.ForeColor = Color.White;

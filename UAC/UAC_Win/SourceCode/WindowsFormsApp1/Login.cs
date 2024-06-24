@@ -174,5 +174,14 @@ namespace WindowsFormsApp1
             usererror.Visible = true;
             passerror.Visible = true;
         }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Simulate button click
+                loginbtn_Click(sender, e);
+            }
+        }
     }
 }

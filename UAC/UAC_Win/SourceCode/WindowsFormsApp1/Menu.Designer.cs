@@ -64,8 +64,9 @@
             this.panelMenu.Controls.Add(this.panel1);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(230, 556);
+            this.panelMenu.Size = new System.Drawing.Size(427, 684);
             this.panelMenu.TabIndex = 0;
             // 
             // iconBtnAbout
@@ -80,10 +81,11 @@
             this.iconBtnAbout.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnAbout.IconSize = 30;
             this.iconBtnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconBtnAbout.Location = new System.Drawing.Point(0, 348);
+            this.iconBtnAbout.Location = new System.Drawing.Point(0, 427);
+            this.iconBtnAbout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconBtnAbout.Name = "iconBtnAbout";
-            this.iconBtnAbout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.iconBtnAbout.Size = new System.Drawing.Size(230, 41);
+            this.iconBtnAbout.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.iconBtnAbout.Size = new System.Drawing.Size(427, 50);
             this.iconBtnAbout.TabIndex = 8;
             this.iconBtnAbout.Tag = "About";
             this.iconBtnAbout.Text = "   About";
@@ -102,9 +104,10 @@
             this.panelUACSubMenu.Controls.Add(this.btnChangePassword);
             this.panelUACSubMenu.Controls.Add(this.btnCreateUser);
             this.panelUACSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUACSubMenu.Location = new System.Drawing.Point(0, 182);
+            this.panelUACSubMenu.Location = new System.Drawing.Point(0, 223);
+            this.panelUACSubMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelUACSubMenu.Name = "panelUACSubMenu";
-            this.panelUACSubMenu.Size = new System.Drawing.Size(230, 166);
+            this.panelUACSubMenu.Size = new System.Drawing.Size(427, 204);
             this.panelUACSubMenu.TabIndex = 7;
             // 
             // btnUserPermission
@@ -116,10 +119,11 @@
             this.btnUserPermission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserPermission.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserPermission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnUserPermission.Location = new System.Drawing.Point(0, 120);
+            this.btnUserPermission.Location = new System.Drawing.Point(0, 147);
+            this.btnUserPermission.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUserPermission.Name = "btnUserPermission";
-            this.btnUserPermission.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnUserPermission.Size = new System.Drawing.Size(230, 40);
+            this.btnUserPermission.Padding = new System.Windows.Forms.Padding(80, 0, 0, 0);
+            this.btnUserPermission.Size = new System.Drawing.Size(427, 49);
             this.btnUserPermission.TabIndex = 4;
             this.btnUserPermission.Text = "User Role Permission";
             this.btnUserPermission.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -135,10 +139,11 @@
             this.btnCreateUserRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateUserRoles.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateUserRoles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnCreateUserRoles.Location = new System.Drawing.Point(0, 80);
+            this.btnCreateUserRoles.Location = new System.Drawing.Point(0, 98);
+            this.btnCreateUserRoles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreateUserRoles.Name = "btnCreateUserRoles";
-            this.btnCreateUserRoles.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnCreateUserRoles.Size = new System.Drawing.Size(230, 40);
+            this.btnCreateUserRoles.Padding = new System.Windows.Forms.Padding(80, 0, 0, 0);
+            this.btnCreateUserRoles.Size = new System.Drawing.Size(427, 49);
             this.btnCreateUserRoles.TabIndex = 3;
             this.btnCreateUserRoles.Text = "Create User Role";
             this.btnCreateUserRoles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -154,10 +159,11 @@
             this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePassword.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangePassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnChangePassword.Location = new System.Drawing.Point(0, 40);
+            this.btnChangePassword.Location = new System.Drawing.Point(0, 49);
+            this.btnChangePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnChangePassword.Size = new System.Drawing.Size(230, 40);
+            this.btnChangePassword.Padding = new System.Windows.Forms.Padding(80, 0, 0, 0);
+            this.btnChangePassword.Size = new System.Drawing.Size(427, 49);
             this.btnChangePassword.TabIndex = 2;
             this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -174,9 +180,10 @@
             this.btnCreateUser.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnCreateUser.Location = new System.Drawing.Point(0, 0);
+            this.btnCreateUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnCreateUser.Size = new System.Drawing.Size(230, 40);
+            this.btnCreateUser.Padding = new System.Windows.Forms.Padding(80, 0, 0, 0);
+            this.btnCreateUser.Size = new System.Drawing.Size(427, 49);
             this.btnCreateUser.TabIndex = 1;
             this.btnCreateUser.Text = "Create User";
             this.btnCreateUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -196,11 +203,11 @@
             this.btnexit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnexit.IconSize = 30;
             this.btnexit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnexit.Location = new System.Drawing.Point(0, 456);
-            this.btnexit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnexit.Location = new System.Drawing.Point(0, 561);
+            this.btnexit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
             this.btnexit.Name = "btnexit";
-            this.btnexit.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnexit.Size = new System.Drawing.Size(230, 100);
+            this.btnexit.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnexit.Size = new System.Drawing.Size(427, 123);
             this.btnexit.TabIndex = 6;
             this.btnexit.Tag = "Logout";
             this.btnexit.Text = "   Logout";
@@ -223,10 +230,11 @@
             this.iconBtnUAC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnUAC.IconSize = 30;
             this.iconBtnUAC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconBtnUAC.Location = new System.Drawing.Point(0, 141);
+            this.iconBtnUAC.Location = new System.Drawing.Point(0, 173);
+            this.iconBtnUAC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconBtnUAC.Name = "iconBtnUAC";
-            this.iconBtnUAC.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.iconBtnUAC.Size = new System.Drawing.Size(230, 41);
+            this.iconBtnUAC.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.iconBtnUAC.Size = new System.Drawing.Size(427, 50);
             this.iconBtnUAC.TabIndex = 2;
             this.iconBtnUAC.Tag = "UAC";
             this.iconBtnUAC.Text = "   UAC";
@@ -249,10 +257,11 @@
             this.iconBtnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnHome.IconSize = 30;
             this.iconBtnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconBtnHome.Location = new System.Drawing.Point(0, 100);
+            this.iconBtnHome.Location = new System.Drawing.Point(0, 123);
+            this.iconBtnHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.iconBtnHome.Name = "iconBtnHome";
-            this.iconBtnHome.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.iconBtnHome.Size = new System.Drawing.Size(230, 41);
+            this.iconBtnHome.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.iconBtnHome.Size = new System.Drawing.Size(427, 50);
             this.iconBtnHome.TabIndex = 1;
             this.iconBtnHome.Tag = "Home";
             this.iconBtnHome.Text = "   Home";
@@ -271,8 +280,9 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 100);
+            this.panel1.Size = new System.Drawing.Size(427, 123);
             this.panel1.TabIndex = 0;
             // 
             // btnMenu
@@ -283,9 +293,10 @@
             this.btnMenu.IconColor = System.Drawing.Color.White;
             this.btnMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMenu.IconSize = 30;
-            this.btnMenu.Location = new System.Drawing.Point(170, 12);
+            this.btnMenu.Location = new System.Drawing.Point(227, 15);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(54, 40);
+            this.btnMenu.Size = new System.Drawing.Size(72, 49);
             this.btnMenu.TabIndex = 1;
             this.btnMenu.UseVisualStyleBackColor = true;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
@@ -293,9 +304,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(48, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(64, 15);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 69);
+            this.pictureBox1.Size = new System.Drawing.Size(155, 85);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -305,9 +317,10 @@
             this.panelDesktop.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelDesktop.Controls.Add(this.pictureBox2);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(230, 0);
+            this.panelDesktop.Location = new System.Drawing.Point(427, 0);
+            this.panelDesktop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(731, 556);
+            this.panelDesktop.Size = new System.Drawing.Size(854, 684);
             this.panelDesktop.TabIndex = 2;
             // 
             // pictureBox2
@@ -316,8 +329,9 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(731, 556);
+            this.pictureBox2.Size = new System.Drawing.Size(854, 684);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -326,19 +340,21 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(230, 0);
+            this.panel2.Location = new System.Drawing.Point(427, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(5, 556);
+            this.panel2.Size = new System.Drawing.Size(7, 684);
             this.panel2.TabIndex = 3;
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 556);
+            this.ClientSize = new System.Drawing.Size(1281, 684);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelMenu);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
