@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
                         cmd.ExecuteNonQuery();
                         con.Close();
 
-                        MessageBox.Show("New User is Successfully Added", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("New user is successfully added", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         GetUserRecord();
                         ResetUserControls();
@@ -186,7 +186,7 @@ namespace WindowsFormsApp1
                         cmd.ExecuteNonQuery();
                         con.Close();
 
-                        MessageBox.Show("User Information Successfully Updated", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("User information successfully updated", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         GetUserRecord();
                         ResetUserControls();
@@ -217,7 +217,7 @@ namespace WindowsFormsApp1
                     cmd.ExecuteNonQuery();
                     con.Close();
 
-                    MessageBox.Show("User Information Successfully Deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User information successfully deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     GetUserRecord();
                     ResetUserControls();
@@ -225,7 +225,7 @@ namespace WindowsFormsApp1
 
                 else
                 {
-                    MessageBox.Show("Please Select User to Delete his Information", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select user to delete his information", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch(Exception ex)
@@ -292,6 +292,16 @@ namespace WindowsFormsApp1
             comboBox1.DataSource = dataTable; // Bind the DataTable to the ComboBox
             reader.Close();
             con.Close();
+        }
+
+        private void btnShowPass_MouseHover(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
+        }
+
+        private void btnShowPass_MouseLeave(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
         }
     }
 }

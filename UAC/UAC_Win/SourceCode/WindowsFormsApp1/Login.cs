@@ -119,6 +119,7 @@ namespace WindowsFormsApp1
             this.Hide();
             var form = new Menu(user.RollsID);
             Shared.Username = user.UserName;
+            Shared.Password = user.Password;
             Shared.UserId = user.UserId;
             Shared.RollsId = user.RollsID;
             Shared.RoleDesc = user.CreatedBy;

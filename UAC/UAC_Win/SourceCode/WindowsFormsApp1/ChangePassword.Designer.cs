@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.labelUserId = new System.Windows.Forms.Label();
+            this.btnShowPass = new FontAwesome.Sharp.IconButton();
             this.userLabel = new System.Windows.Forms.Label();
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,6 +71,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.labelUserId);
+            this.panel6.Controls.Add(this.btnShowPass);
             this.panel6.Controls.Add(this.userLabel);
             this.panel6.Controls.Add(this.txtUserId);
             this.panel6.Controls.Add(this.label2);
@@ -90,6 +92,22 @@
             this.labelUserId.Size = new System.Drawing.Size(89, 23);
             this.labelUserId.TabIndex = 38;
             this.labelUserId.Text = "User Id:";
+            // 
+            // btnShowPass
+            // 
+            this.btnShowPass.FlatAppearance.BorderSize = 0;
+            this.btnShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowPass.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.btnShowPass.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(180)))), ((int)(((byte)(230)))));
+            this.btnShowPass.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnShowPass.IconSize = 30;
+            this.btnShowPass.Location = new System.Drawing.Point(285, 241);
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.Size = new System.Drawing.Size(32, 23);
+            this.btnShowPass.TabIndex = 41;
+            this.btnShowPass.UseVisualStyleBackColor = true;
+            this.btnShowPass.MouseLeave += new System.EventHandler(this.btnShowPass_MouseLeave);
+            this.btnShowPass.MouseHover += new System.EventHandler(this.btnShowPass_MouseHover);
             // 
             // userLabel
             // 
@@ -135,6 +153,7 @@
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.Size = new System.Drawing.Size(222, 31);
             this.txtNewPass.TabIndex = 35;
+            this.txtNewPass.UseSystemPasswordChar = true;
             // 
             // txtUserName
             // 
@@ -288,5 +307,6 @@
         private System.Windows.Forms.TextBox txtUserId;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
+        private FontAwesome.Sharp.IconButton btnShowPass;
     }
 }

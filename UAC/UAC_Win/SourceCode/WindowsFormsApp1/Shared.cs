@@ -8,6 +8,7 @@ namespace WindowsFormsApp1
     {
         public static int UserId;
         public static string Username;
+        public static string Password;
         public static int RoleDesc;
         public static int RollsId;
         public static int CreatedBy;

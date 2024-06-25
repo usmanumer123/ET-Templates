@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
                 //btnNext.Visible = false;
                 txtUserName.Text = Shared.Username.ToString();
                 txtUserId.Text = Shared.UserId.ToString();
+                txtNewPass.Text = Shared.Password.ToString();
             }
             catch (Exception ex)
             {
@@ -79,6 +80,15 @@ namespace WindowsFormsApp1
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
             resetForm();
+        }
+        private void btnShowPass_MouseHover(object sender, EventArgs e)
+        {
+            txtNewPass.UseSystemPasswordChar = false;
+        }
+
+        private void btnShowPass_MouseLeave(object sender, EventArgs e)
+        {
+            txtNewPass.UseSystemPasswordChar = true;
         }
     }
 }
