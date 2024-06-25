@@ -10,20 +10,19 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 
-
 namespace WindowsFormsApp1
 {
     public partial class Login : Form
     {
         public static string Username;
         public static string OldPassword;
+        UACEntities context = new UACEntities();
         Helper hp=new Helper();
+
         public Login()
         {
             InitializeComponent();
         }
-
-        UACEntities context = new UACEntities();
 
         private void closebtn_Click(object sender, EventArgs e)
         {
@@ -49,7 +48,6 @@ namespace WindowsFormsApp1
                 usererror.Visible = false;
             }
         }
-      
 
         private void usernameText_Enter(object sender, EventArgs e)
         {
@@ -69,21 +67,6 @@ namespace WindowsFormsApp1
             }
         }
 
-
-        //Autheticate Method
-        //private bool AuthenticateUser()
-        //{
-        //    var ListOfUser = context.UserProfiles.ToList();//.Where(e => e.UserName == txtUser.Text.ToString() && e.Password == txtPassword.Text.ToString());
-        //    if (ListOfUser.Count() > 0)
-        //    {
-        //        var v = ListOfUser.ElementAt(0).UserId;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
         private void passwordText_TextChanged(object sender, EventArgs e)
         {
 
@@ -97,7 +80,6 @@ namespace WindowsFormsApp1
                 passerror.Visible = false;
             }
         }
-
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
@@ -139,7 +121,7 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            if (!user.Password.Equals(txtPassword.Text))
+            if (!Shared.DecryptPassword(user.Password).Equals(txtPassword.Text))
             {
                 hp.ErrorMessage("Incorrect password.");
                 return;
@@ -154,7 +136,6 @@ namespace WindowsFormsApp1
             Shared.RoleDesc = user.CreatedBy;
             form.Show();
         }
-
 
         private void usernameText_Click(object sender, EventArgs e)
         {

@@ -4,8 +4,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-
-
+using System.Text;
 
 namespace WindowsFormsApp1
 {
@@ -17,21 +16,17 @@ namespace WindowsFormsApp1
         Helper hp = new Helper();
         string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
 
-        
         public CreateUser()
         {
             InitializeComponent();
             //Permissions getting in the basis of roleid
             var isAdmin = IsAdmin(Shared.RollsId);
             SetButtonState(btnInsertUser, isAdmin && CheckUserPermission(Shared.RollsId, "Create User", "create"));
-
             SetButtonState(btnUpdateUser, isAdmin && CheckUserPermission(Shared.RollsId, "Create User", "edit"));
             SetButtonState(btnDeleteUser, isAdmin && CheckUserPermission(Shared.RollsId, "Create User", "delete"));
             
-           // SetButtonState(createUserDataGridView1, isAdmin && CheckUserPermission(rol, "CreateUser", "view"));
+            // SetButtonState(createUserDataGridView1, isAdmin && CheckUserPermission(rol, "CreateUser", "view"));
             // btnUserPermission.Enabled = isAdmin && CheckUserPermission(Shared.RollsId, "CreateUser", "view");
-
-
         }
 
         private bool IsAdmin(int roleId)
@@ -39,7 +34,7 @@ namespace WindowsFormsApp1
             return true;
         }
         
-    private bool CheckUserPermission(int roleId, string module, string permission)
+        private bool CheckUserPermission(int roleId, string module, string permission)
     {
         var permissionRecord = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module && p.Permission == permission);
         return permissionRecord != null && permissionRecord.IsEnable;
@@ -52,11 +47,6 @@ namespace WindowsFormsApp1
             button.ForeColor = isEnabled ? SystemColors.ControlText : Color.LightGray;
         }
 
-
-        //SqlConnection con = new SqlConnection("Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
-        //public int UserId;
-
-
         private void CreateUser_Load(object sender, EventArgs e)
         {
             txtCreatedBy.Text = Shared.RoleDesc.ToString();
@@ -66,37 +56,32 @@ namespace WindowsFormsApp1
 
         private void GetUserRecord()
         {
-            //    string query = @" SELECT 
-            //    u.UserId, 
-            //    u.UserName, 
-            //    u.CreatedBy, 
-            //    r.RollsDesc AS Rolls, 
-            //    u.Password, 
-            //    u.IsEnabled AS Activation
-            //FROM 
-            //    UserProfile u
-            //JOIN 
-            //    UserRolls r ON u.RollsID = r.RollsId";
-
-            string query = @" SELECT 
-        u.UserId, 
-        u.UserName, 
-        u.CreatedBy, 
-        r.RollsId,  -- Changed from RollsDesc to RollsId to ensure we get the correct value
-        r.RollsDesc AS Rolls,  -- Keep the alias for display purposes
-        u.Password, 
-        u.IsEnabled AS Activation
-    FROM 
-        UserProfile u
-    JOIN 
-        UserRolls r ON u.RollsID = r.RollsId";
+            string query = @" 
+                            SELECT 
+                                u.UserId, 
+                                u.UserName, 
+                                u.CreatedBy, 
+                                r.RollsId,  -- Changed from RollsDesc to RollsId to ensure we get the correct value
+                                r.RollsDesc AS Rolls,  -- Keep the alias for display purposes
+                                u.Password, 
+                                u.IsEnabled AS Activation
+                            FROM 
+                                UserProfile u
+                            JOIN 
+                                UserRolls r ON u.RollsID = r.RollsId";
 
             SqlCommand cmd = new SqlCommand(query, con);
             DataTable dt = new DataTable();
-                con.Open();
+            con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
             con.Close();
+
+            // Decrypt passwords
+            foreach (DataRow row in dt.Rows)
+            {
+                row["Password"] = Shared.DecryptPassword(row["Password"].ToString());
+            }
 
             createUserDataGridView1.DataSource = dt;
 
@@ -117,7 +102,7 @@ namespace WindowsFormsApp1
                         cmd.Parameters.AddWithValue("@name", txtUserName.Text);
                         cmd.Parameters.AddWithValue("@created", Shared.UserId);
                         cmd.Parameters.AddWithValue("@rolls", selectedRollsId);
-                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                        cmd.Parameters.AddWithValue("@password", Shared.EncryptPassword(txtPassword.Text));
                         cmd.Parameters.AddWithValue("@isenable", enableCheckbox.Checked);
 
                         con.Open();
@@ -173,7 +158,6 @@ namespace WindowsFormsApp1
             return true;
         }
 
-
         private void btnResetUser_Click(object sender, EventArgs e)
         {
             ResetUserControls();
@@ -191,8 +175,6 @@ namespace WindowsFormsApp1
 
             txtUserName.Focus();
         }
-
-        
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
@@ -234,7 +216,6 @@ namespace WindowsFormsApp1
             }
            
         }
-
 
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
@@ -341,6 +322,7 @@ namespace WindowsFormsApp1
            // PopulateComboBox(); 
            
         }
+
         private void PopulateComboBox()
         {
             comboBox1.DisplayMember = "RollsDesc"; // Set the display member to RollsDesc
@@ -355,16 +337,6 @@ namespace WindowsFormsApp1
             comboBox1.DataSource = dataTable; // Bind the DataTable to the ComboBox
             reader.Close();
             con.Close();
-        }
-        public class ComboboxItem
-        {
-            public string Text { get; set; }
-            public int Value { get; set; }
-
-            public override string ToString()
-            {
-                return Text;
-            }
         }
     }
 }

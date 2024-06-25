@@ -56,13 +56,13 @@ namespace WindowsFormsApp1
 
             
         {
-            string connectionString = "Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
+            string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = "UPDATE UserProfile SET Password = @NewPassword WHERE UserName = @UserName";
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@NewPassword", txtNewPass.Text);
+                cmd.Parameters.AddWithValue("@NewPassword", Shared.EncryptPassword(txtNewPass.Text));
                 cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
 
                 try
