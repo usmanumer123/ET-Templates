@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -8,17 +8,15 @@ namespace WindowsFormsApp1
 {
     public partial class SetUserPermission : Form
     {
-        private int RollId = -1;
         Helper hp = new Helper();
-        SqlConnection con = new SqlConnection("Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
-        DataTable permissionsTable; // DataTable to hold the permissions data
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString);
+        DataTable permissionsTable;
         private string activation_module = null;
         private string activation_permission = null;
         private bool activation_isEnable = false;
 
-        public SetUserPermission(int rollId)
+        public SetUserPermission()
         {
-            RollId = rollId;
             InitializeComponent();
         }
 
@@ -140,49 +138,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        //private void LoadDataWithUncheckedPermissions()
-        //{
-        //    try
-        //    {
-        //        // Fetching only data for RollsId = 1
-        //        SqlCommand cmd = new SqlCommand("SELECT Module, Permission, IsEnable FROM UserRollsPermission WHERE RollsId = @RollId", con);
-        //        cmd.Parameters.AddWithValue("@RollId", RollId);
-
-        //        permissionsTable = new DataTable();
-        //        con.Open();
-        //        SqlDataReader sdr = cmd.ExecuteReader();
-        //        permissionsTable.Load(sdr);
-        //        con.Close();
-
-        //        // Creating a new DataTable with only the required columns
-        //        DataTable newDt = new DataTable();
-        //        newDt.Columns.Add("Module");
-        //        newDt.Columns.Add("Permission");
-        //        newDt.Columns.Add("Activation", typeof(bool));
-
-        //        // Populating the new DataTable with data from the fetched DataTable
-        //        foreach (DataRow row in permissionsTable.Rows)
-        //        {
-        //            newDt.Rows.Add(row["Module"], row["Permission"], false); // Set Activation to false
-        //        }
-
-        //        // Setting the DataGridView's DataSource to the new DataTable
-        //        createUserDataGridView1.DataSource = newDt;
-
-        //        // Convert the IsEnable column to DataGridViewCheckBoxColumn
-        //        DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
-        //        checkBoxColumn.HeaderText = "Activation";
-        //        checkBoxColumn.Name = "Activation";
-        //        checkBoxColumn.DataPropertyName = "Activation";
-        //        createUserDataGridView1.Columns.Remove("Activation");
-        //        createUserDataGridView1.Columns.Insert(2, checkBoxColumn);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        hp.ErrorMessage(ex.Message);
-        //    }
-        //}
-
         private void btnDone_Click(object sender, EventArgs e)
         {
             try
@@ -219,7 +174,6 @@ namespace WindowsFormsApp1
             }
         }
 
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cmbRolls.Text = "Select User Roll";//string.Empty;
@@ -237,4 +191,3 @@ namespace WindowsFormsApp1
         }
     }
 }
-

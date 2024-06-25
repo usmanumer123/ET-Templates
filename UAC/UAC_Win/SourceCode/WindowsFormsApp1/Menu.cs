@@ -1,21 +1,13 @@
-﻿using FontAwesome.Sharp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace WindowsFormsApp1
 {
     public partial class Menu : Form
     {
-        private int RoleId = -1;
         private Form activeForm = null;
         private int borderSize = 2; //Since the form is resized because it takes into account the
         private Size formSize; //size of the title bar and borders.
@@ -35,9 +27,7 @@ namespace WindowsFormsApp1
 
         public Menu(int roleId)
         {
-            RoleId = roleId;
             InitializeComponent();
-
             btnCreateUser.Enabled = CheckUserPermission(roleId, "Create User");
             btnChangePassword.Enabled = CheckUserPermission(roleId, "Change Password");
             btnCreateUserRoles.Enabled = CheckUserPermission(roleId, "Create User Role");
@@ -252,7 +242,7 @@ namespace WindowsFormsApp1
 
         private void btnUserPermission_Click(object sender, EventArgs e)
         {
-            openChildForm(new SetUserPermission(RoleId));
+            openChildForm(new SetUserPermission());
             ResetUACSubMenuTabColors();
             btnUserPermission.BackColor = Color.SkyBlue;
             btnUserPermission.ForeColor = Color.White;

@@ -1,27 +1,18 @@
 ﻿ using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Data;
-using System.Drawing.Drawing2D;
-using System.Drawing;
 using System.Configuration;
-
 
 namespace WindowsFormsApp1
 {
     public partial class ChangePassword : Form
     {
-    Helper hp = new Helper();
-      
-
+        Helper hp = new Helper();
 
         public ChangePassword()
         {
             InitializeComponent();
-            
-
         }
-      
 
         private void ChangePassword_Load(object sender, EventArgs e)
         {
@@ -36,13 +27,11 @@ namespace WindowsFormsApp1
                 hp.ErrorMessage(ex.Message.ToString());
             }
         }
-      
 
         private void btnDone_Click(object sender, EventArgs e)
         {
             try
             {
-
                 changePassword();
             }
             catch (Exception ex)
@@ -51,14 +40,8 @@ namespace WindowsFormsApp1
             }
         }
 
-     
-
         private void changePassword()
-
-            
         {
-            //string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
-
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString))
             {
                 string query = "UPDATE UserProfile SET Password = @NewPassword WHERE UserName = @UserName";
@@ -87,27 +70,15 @@ namespace WindowsFormsApp1
             }
         }
 
-
         private void resetForm()
         {
-          
-           
             txtNewPass.Text = "";
-            
             txtNewPass.Focus();
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
             resetForm();
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
-
-

@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Sql;
-using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
@@ -33,7 +26,6 @@ namespace WindowsFormsApp1
         {
             txtUserName.Text = "";
             txtPassword.Text = "";
-           
         }
 
         private void usernameText_TextChanged(object sender, EventArgs e)
@@ -41,7 +33,6 @@ namespace WindowsFormsApp1
             if (txtUserName.Text == "")
             {
                 usererror.Visible = true;
-                
             }
             else
             {
@@ -69,7 +60,6 @@ namespace WindowsFormsApp1
 
         private void passwordText_TextChanged(object sender, EventArgs e)
         {
-
             if (txtPassword.Text == "")
             {
                 passerror.Visible = true;
@@ -107,7 +97,6 @@ namespace WindowsFormsApp1
             //var user = context.UserProfiles.Where(a => a.UserName == txtUserName.Text).FirstOrDefault();
             var user = context.UserProfiles.FirstOrDefault(a => a.UserName == txtUserName.Text);
 
-
             if (user == null)
             {
                 hp.ErrorMessage("User not found.");
@@ -128,7 +117,6 @@ namespace WindowsFormsApp1
             }
 
             this.Hide();
-
             var form = new Menu(user.RollsID);
             Shared.Username = user.UserName;
             Shared.UserId = user.UserId;

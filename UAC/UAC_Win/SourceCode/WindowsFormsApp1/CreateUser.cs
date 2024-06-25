@@ -4,42 +4,32 @@ using System.Windows.Forms;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Configuration;
 
 namespace WindowsFormsApp1
 {
     public partial class CreateUser : Form
     {
-        UACEntities context = new UACEntities();
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString);
         public int UserId;
         Helper hp = new Helper();
-        //string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
+        UACEntities context = new UACEntities();
 
         public CreateUser()
         {
             InitializeComponent();
-            //Permissions getting in the basis of roleid
-            var isAdmin = IsAdmin(Shared.RollsId);
-            SetButtonState(btnInsertUser, isAdmin && CheckUserPermission(Shared.RollsId, "Create User", "create"));
-            SetButtonState(btnUpdateUser, isAdmin && CheckUserPermission(Shared.RollsId, "Create User", "edit"));
-            SetButtonState(btnDeleteUser, isAdmin && CheckUserPermission(Shared.RollsId, "Create User", "delete"));
-            
+            SetButtonState(btnInsertUser, CheckUserPermission(Shared.RollsId, "Create User", "create"));
+            SetButtonState(btnUpdateUser, CheckUserPermission(Shared.RollsId, "Create User", "edit"));
+            SetButtonState(btnDeleteUser, CheckUserPermission(Shared.RollsId, "Create User", "delete"));
             // SetButtonState(createUserDataGridView1, isAdmin && CheckUserPermission(rol, "CreateUser", "view"));
             // btnUserPermission.Enabled = isAdmin && CheckUserPermission(Shared.RollsId, "CreateUser", "view");
         }
-
-        private bool IsAdmin(int roleId)
-        {
-            return true;
-        }
         
         private bool CheckUserPermission(int roleId, string module, string permission)
-    {
-        var permissionRecord = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module && p.Permission == permission);
-        return permissionRecord != null && permissionRecord.IsEnable;
-    }
+        {
+            var permissionRecord = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module && p.Permission == permission);
+            return permissionRecord != null && permissionRecord.IsEnable;
+        }
 
         private void SetButtonState(Button button, bool isEnabled)
         {
@@ -85,7 +75,6 @@ namespace WindowsFormsApp1
             }
 
             createUserDataGridView1.DataSource = dt;
-
         }
       
         private void btnInsertUser_Click(object sender, EventArgs e)
@@ -124,8 +113,7 @@ namespace WindowsFormsApp1
             catch(Exception ex) 
             {
                 hp.ErrorMessage("On Create User save button" + ex.Message.ToString());
-            }
-           
+            }    
         }
 
         private bool IsValid()
@@ -168,12 +156,10 @@ namespace WindowsFormsApp1
         {
             UserId = 0;
             txtUserName.Text = "";
-           // txtCreatedBy.Text = "";
+            //txtCreatedBy.Text = "";
             txtRollsId.Text = "";
             txtPassword.Text = "";
             enableCheckbox.Checked = false;
-       
-
             txtUserName.Focus();
         }
 
@@ -215,7 +201,6 @@ namespace WindowsFormsApp1
             {
                 hp.ErrorMessage("On Create User update button" + ex.Message.ToString());
             }
-           
         }
 
         private void btnDeleteUser_Click(object sender, EventArgs e)
@@ -227,9 +212,7 @@ namespace WindowsFormsApp1
 
                     SqlCommand cmd = new SqlCommand("DELETE FROM UserProfile WHERE UserId=@Id", con);
                     cmd.CommandType = CommandType.Text;
-
                     cmd.Parameters.AddWithValue("@Id", this.UserId);
-
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -238,49 +221,29 @@ namespace WindowsFormsApp1
 
                     GetUserRecord();
                     ResetUserControls();
-
                 }
 
                 else
                 {
                     MessageBox.Show("Please Select User to Delete his Information", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
             catch(Exception ex)
             {
                 hp.ErrorMessage("On Create User delete button" + ex.Message.ToString());
             }
-         
         }
 
         private void createUserDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (createUserDataGridView1.SelectedRows.Count > 0)
             {
-                //UserId = Convert.ToInt32(createUserDataGridView1.SelectedRows[0].Cells["UserId"].Value);
-                //txtUserName.Text = createUserDataGridView1.SelectedRows[0].Cells["UserName"].Value.ToString();
-                //txtCreatedBy.Text = createUserDataGridView1.SelectedRows[0].Cells["CreatedBy"].Value.ToString();
-                //comboBox1.SelectedValue = Convert.ToString(createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString());
-                //txtPassword.Text = createUserDataGridView1.SelectedRows[0].Cells["Password"].Value.ToString();
-                //enableCheckbox.Checked = bool.Parse(createUserDataGridView1.SelectedRows[0].Cells["Activation"].Value.ToString());
                 try
                 {
-                    // Parse UserId
                     UserId = Convert.ToInt32(createUserDataGridView1.SelectedRows[0].Cells["UserId"].Value);
                     txtUserName.Text = createUserDataGridView1.SelectedRows[0].Cells["UserName"].Value.ToString();
                     txtCreatedBy.Text = createUserDataGridView1.SelectedRows[0].Cells["CreatedBy"].Value.ToString();
-
-                    //// Parse and validate Rolls
-                    //string rollsStr = createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString();
-                    //if (int.TryParse(rollsStr, out int rollsId))
-                    //{
-                    //    comboBox1.SelectedValue = rollsId;
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show($"Invalid Rolls format: '{rollsStr}'. Unable to parse Rolls.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                    
                     // Retrieve and validate RollsDesc
                     string rollsDesc = createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString();
                     int rollsId = (int)createUserDataGridView1.SelectedRows[0].Cells["RollsId"].Value;
@@ -305,9 +268,6 @@ namespace WindowsFormsApp1
                     {
                         MessageBox.Show($"Invalid Rolls format: '{rollsDesc}'. Unable to set Rolls.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-
-
                     txtPassword.Text = createUserDataGridView1.SelectedRows[0].Cells["Password"].Value.ToString();
                     enableCheckbox.Checked = bool.Parse(createUserDataGridView1.SelectedRows[0].Cells["Activation"].Value.ToString());
                 }
@@ -316,12 +276,6 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Error parsing data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           // PopulateComboBox(); 
-           
         }
 
         private void PopulateComboBox()

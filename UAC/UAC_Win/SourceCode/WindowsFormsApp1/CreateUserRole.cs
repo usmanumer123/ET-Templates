@@ -1,40 +1,27 @@
-﻿
-
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Configuration;
-
 
 namespace WindowsFormsApp1
 {
     public partial class CreateUserRole : Form
     {
-        Helper hp = new Helper();
-
-        UACEntities context = new UACEntities();
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString);
         public int RollsId;
+        Helper hp = new Helper();
+        UACEntities context = new UACEntities();
 
         public CreateUserRole()
         {
             InitializeComponent();
-
             //Permissions getting in the basis of roleid
-            var isAdmin = IsAdmin(Shared.RollsId);
-            SetButtonState(btnDone, isAdmin && CheckUserPermission(Shared.RollsId, "Create User Role", "create"));
-            SetButtonState(btnUpdate, isAdmin && CheckUserPermission(Shared.RollsId, "Create User Role", "edit"));
-            SetButtonState(btnDeleteUser, isAdmin && CheckUserPermission(Shared.RollsId, "Create User Role", "delete"));
-
-        }
-
-        private bool IsAdmin(int roleId)
-        {
-            return true;
+            SetButtonState(btnDone, CheckUserPermission(Shared.RollsId, "Create User Role", "create"));
+            SetButtonState(btnUpdate, CheckUserPermission(Shared.RollsId, "Create User Role", "edit"));
+            SetButtonState(btnDeleteUser, CheckUserPermission(Shared.RollsId, "Create User Role", "delete"));
         }
 
         private bool CheckUserPermission(int roleId, string module, string permission)
@@ -42,7 +29,6 @@ namespace WindowsFormsApp1
             var permissionRecord = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module && p.Permission == permission);
             return permissionRecord != null && permissionRecord.IsEnable;
         }
-
 
         private void SetButtonState(Button button, bool isEnabled)
         {
@@ -56,7 +42,6 @@ namespace WindowsFormsApp1
             txtCreated.Text = Shared.RoleDesc.ToString();
             GetUserRecord();
         }
-
         
         private bool IsValid()
         {
@@ -68,7 +53,6 @@ namespace WindowsFormsApp1
 
             SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM UserRolls WHERE RollsDesc = @RollsDesc", con);
             cmd.Parameters.AddWithValue("@RollsDesc", txtRolesDesc.Text);
-
             con.Open();
             int count = (int)cmd.ExecuteScalar();
             con.Close();
@@ -82,7 +66,6 @@ namespace WindowsFormsApp1
             return true;
         }
 
-
         private void GetUserRecord()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM UserRolls", con);
@@ -91,7 +74,6 @@ namespace WindowsFormsApp1
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
             con.Close();
-
             userRollsDataGridView1.DataSource = dt;
         }
 
@@ -105,7 +87,6 @@ namespace WindowsFormsApp1
                     {
                         cmd.Parameters.AddWithValue("@RollsDesc", txtRolesDesc.Text);
                         cmd.Parameters.AddWithValue("@CreatedBy", Shared.UserId);
-
                         con.Open();
                         cmd.ExecuteNonQuery();
                         con.Close();
@@ -126,7 +107,6 @@ namespace WindowsFormsApp1
         {
             txtRolesDesc.Text = "";
             enableCheckbox.Checked = false;
-
             txtRolesDesc.Focus();
         }
 
@@ -139,7 +119,7 @@ namespace WindowsFormsApp1
                     con.Open();
                     foreach (DataGridViewRow row in userRollsDataGridView1.Rows)
                     {
-                        if (row.Cells["RollsId"].Value != null /*&& row.Cells["IsEnabled"].Value != null*/)
+                        if (row.Cells["RollsId"].Value != null)/*&& row.Cells["IsEnabled"].Value != null*/
                         {
                             int rollsId = Convert.ToInt32(row.Cells["RollsId"].Value);
                             // bool isEnabled = Convert.ToBoolean(row.Cells["IsEnabled"].Value);
@@ -155,10 +135,8 @@ namespace WindowsFormsApp1
                     }
                     con.Close();
                     GetUserRecord();
-
                     MessageBox.Show("User role successfully updated", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetUserRecord(); // Refresh the DataGridView
-
                 }
             }
             catch (Exception ex)
@@ -167,16 +145,14 @@ namespace WindowsFormsApp1
             }
         }
 
-  private void createUserDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void createUserDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (userRollsDataGridView1.SelectedRows.Count > 0)
             {
                 RollsId = Convert.ToInt32(userRollsDataGridView1.SelectedRows[0].Cells[0].Value);
                 txtRolesDesc.Text = userRollsDataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                 txtCreated.Text = userRollsDataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-
                // enableCheckbox.Checked = bool.Parse(userRollsDataGridView1.SelectedRows[0].Cells[2].Value.ToString());
-
             }
         }
 
@@ -190,7 +166,6 @@ namespace WindowsFormsApp1
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@RollsId", this.RollsId);
-
                         con.Open();
                         cmd.ExecuteNonQuery();
                         con.Close();
@@ -209,13 +184,6 @@ namespace WindowsFormsApp1
             {
                 hp.ErrorMessage("On Create User Role delete button: "+ex.Message.ToString());
             }
-            
         }
-
-
     }
 }
-
-
-
-
