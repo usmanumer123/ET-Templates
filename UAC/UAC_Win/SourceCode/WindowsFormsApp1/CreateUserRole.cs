@@ -61,7 +61,7 @@ namespace WindowsFormsApp1
         {
             if (txtRolesDesc.Text == string.Empty)
             {
-                MessageBox.Show("Fill All Your Fields", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fill your field", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -109,8 +109,10 @@ namespace WindowsFormsApp1
                         cmd.ExecuteNonQuery();
                         con.Close();
                     }
-                    MessageBox.Show("New User is Successfully Added", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("New user role is successfully added", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetUserRecord();
+                    txtRolesDesc.Text = "";
+                    txtRolesDesc.Focus();
                 }
             }
             catch (Exception ex)
@@ -153,7 +155,7 @@ namespace WindowsFormsApp1
                     con.Close();
                     GetUserRecord();
 
-                    MessageBox.Show("User Information Successfully Updated", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User role successfully updated", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetUserRecord(); // Refresh the DataGridView
 
                 }
@@ -193,12 +195,12 @@ namespace WindowsFormsApp1
                         con.Close();
                     }
 
-                    MessageBox.Show("User Information Successfully Deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User role deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetUserRecord();
                 }
                 else
                 {
-                    MessageBox.Show("Please Select User to Delete his Information", "Select?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select user role to delete", "Select", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
