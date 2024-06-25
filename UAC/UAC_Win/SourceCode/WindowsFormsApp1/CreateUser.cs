@@ -5,16 +5,17 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Configuration;
 
 namespace WindowsFormsApp1
 {
     public partial class CreateUser : Form
     {
         UACEntities context = new UACEntities();
-        SqlConnection con = new SqlConnection("Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString);
         public int UserId;
         Helper hp = new Helper();
-        string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
+        //string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
 
         public CreateUser()
         {
@@ -191,7 +192,7 @@ namespace WindowsFormsApp1
                         cmd.Parameters.AddWithValue("@name", txtUserName.Text);
                         cmd.Parameters.AddWithValue("@created", txtCreatedBy.Text);
                         cmd.Parameters.AddWithValue("@rolls", selectedRollsId);
-                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                        cmd.Parameters.AddWithValue("@password", Shared.EncryptPassword(txtPassword.Text));
                         cmd.Parameters.AddWithValue("@isenable", enableCheckbox.Checked);
                         cmd.Parameters.AddWithValue("@Id", this.UserId);
 

@@ -16,21 +16,38 @@ namespace WindowsFormsApp1
     public partial class Menu : Form
     {
         private int RoleId = -1;
+        private Form activeForm = null;
+        private int borderSize = 2; //Since the form is resized because it takes into account the
+        private Size formSize; //size of the title bar and borders.
+        private Color defaultTabColor = Color.FromArgb(41, 128, 185);
+        private Color TabColorOnClick = Color.FromArgb(73, 180, 230);
+        
         UACEntities context = new UACEntities();
 
-        
+        public Menu()
+        {
+            InitializeComponent();
+            customizeDesign();
+            //CollapseMenu();
+            this.Padding = new Padding(borderSize);//Border size
+            this.BackColor = Color.FromArgb(98, 102, 244);//Border color
+        }
 
+        public Menu(int roleId)
+        {
+            RoleId = roleId;
+            InitializeComponent();
 
-        
+            btnCreateUser.Enabled = CheckUserPermission(roleId, "Create User");
+            btnChangePassword.Enabled = CheckUserPermission(roleId, "Change Password");
+            btnCreateUserRoles.Enabled = CheckUserPermission(roleId, "Create User Role");
+            btnUserPermission.Enabled = CheckUserPermission(roleId, "Set User Permission");
+        }
 
-        private Color defaultTabColor = Color.FromArgb(41, 128, 185);
-        // private Color defaultTabColor = Color.White;
-
-
-
-
-        //Here is the code of Tab changing colors 
-
+        private void customizeDesign()
+        {
+            panelUACSubMenu.Visible = false;
+        }
 
         private void ResetTabColors()
         {
@@ -53,6 +70,7 @@ namespace WindowsFormsApp1
             iconBtnAbout.ForeColor = defaultTabColor;
             iconBtnAbout.IconColor = defaultTabColor;
         }
+
         private void ResetUACSubMenuTabColors()
         {
             // Reset the background color and foreground color of all tab buttons to default
@@ -66,83 +84,26 @@ namespace WindowsFormsApp1
             }
         }
 
-
-       
-        //private bool IsAdmin(int roleId)
-        //{
-        //    return true;// Db Authentication
-        //}
-        public Menu(int roleId)
-        {
-            RoleId = roleId;
-            InitializeComponent();
-            
-            btnCreateUser.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Create User");
-            btnChangePassword.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Change Password");
-            btnCreateUserRoles.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Create User Role");
-            btnUserPermission.Enabled = /*isAdmin && */CheckUserPermission(roleId, "Set User Permission");
-          
-            // Similar lines for other modules and permissions
-        }
-
-        private bool CheckUserPermission(int roleId, string module)//This function is not correct, It is only checking the first row of the query and thus returning invalid result and this eventually disables the Create User button.
+        private bool CheckUserPermission(int roleId, string module)
         {
             //var permissions = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module );
             //return permissions != null && permissions.IsEnable;
             var permissions = context.UserRollsPermissions
-                         .Where(p => p.RollsId == roleId && p.Module == module)
-                         .ToList();
-
+                .Where(p => p.RollsId == roleId && p.Module == module)
+                .ToList();
             bool anyPermissionEnabled = permissions.Any(p => p.IsEnable);
-
             return anyPermissionEnabled;
-
-        }
-
-        //changing of colors for disable 
-        private void SetButtonState(Button button, bool isEnabled)
-        {
-            button.Enabled = isEnabled;
-            button.BackColor = isEnabled ? SystemColors.Control : Color.LightGray;
-            button.ForeColor = isEnabled ? SystemColors.ControlText : Color.LightGray;
-        }
-
-        //Fields
-        private int borderSize = 2;
-        private Size formSize; //Keep form size when it is minimized and restored.
-                               //Since the form is resized because it takes into account the
-                               //size of the title bar and borders.
-
-        //Constructor
-        public Menu()
-        {
-            InitializeComponent();
-            customizeDesign();
-
-           
-
-            //CollapseMenu();
-            this.Padding = new Padding(borderSize);//Border size
-            this.BackColor = Color.FromArgb(98, 102, 244);//Border color
-
-        }
-
-        private void customizeDesign()
-        {
-            panelUACSubMenu.Visible = false;
-        }
+        }   
 
         private void hideSubMenu()
         {
             if(panelUACSubMenu.Visible == true) 
-            { 
-            
-            panelUACSubMenu.Visible = false;
-            
+            {  
+                panelUACSubMenu.Visible = false;
             }
         }
 
-        private void showSubMenu( Panel submenu) 
+        private void showSubMenu(Panel submenu) 
         {
             if(submenu.Visible == false)
             {
@@ -155,36 +116,226 @@ namespace WindowsFormsApp1
             }
         }
 
-        //Drag Form
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        private void Menu_Resize(object sender, EventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            AdjustForm();
         }
 
-        private void panelTitleBar_MouseDown_1(object sender, MouseEventArgs e)
+        private void AdjustForm()
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            switch (this.WindowState)
+            {
+                case FormWindowState.Maximized:
+                    this.Padding = new Padding(8, 8, 8, 0); 
+                    break;
+                case FormWindowState.Normal:
+                    //if (this.Padding.Top != borderSize)
+                    //    this.Padding = new Padding(borderSize);
+                    this.Padding = new Padding(borderSize); 
+                    break;
+            }
         }
 
-        //protected override void WndProc(ref Message m)
-        //{
-        //    const int WM_NCCALCSIZE = 0x0083;
-        //    if(m.Msg == WM_NCCALCSIZE && m.WParam.ToInt32() == 1)
-        //    {
-        //        return;
-        //    }
-        //    base.WndProc(ref m);
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            CollapseMenu();
+        }
 
-        //}
-        //Overridden methods
+        private void CollapseMenu()
+        {
+            if (this.panelMenu.Width > 200) //Collapse menu
+            {
+                panelMenu.Width = 75;
+                pictureBox1.Visible = false;
+                panelUACSubMenu.Visible = false;
+                btnMenu.Dock = DockStyle.Top;
+                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
+                {
+                    menuButton.Text = "";
+                    menuButton.ImageAlign = ContentAlignment.MiddleCenter;
+                    menuButton.Padding = new Padding(0);
+                }
+            }
+            else
+            {   //Expand menu
+                panelMenu.Width = 230;
+                pictureBox1.Visible = true;
+                btnMenu.Dock = DockStyle.None;
+                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
+                {
+                    menuButton.Text = "   " + menuButton.Tag.ToString();
+                    menuButton.ImageAlign = ContentAlignment.MiddleLeft;
+                    menuButton.Padding = new Padding(10, 0, 0, 0);
+                }
+            }
+        }
+
+        private void  openChildForm (Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelDesktop.Controls.Add(childForm);
+            panelDesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();   
+        }
+
+        private void iconBtnUAC_Click(object sender, EventArgs e)
+        {
+            ResetTabColors();
+            ResetUACSubMenuTabColors();
+            iconBtnUAC.BackColor = TabColorOnClick;
+            iconBtnUAC.ForeColor = Color.White;
+            showSubMenu(panelUACSubMenu);
+
+            if (this.panelMenu.Width == 75)
+            {
+                panelUACSubMenu.Visible = false;
+                
+            }
+            //CollapseMenu();
+            //SubmenuCollapse();
+            //openChildForm(new About());
+        }
+
+        private void btnexit_Click(object sender, EventArgs e)
+        {
+            //Application.Exit();
+            Login form = new Login();
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnCreateUser_Click(object sender, EventArgs e)
+        {
+            openChildForm(new CreateUser());
+            ResetUACSubMenuTabColors();
+            btnCreateUser.BackColor = Color.SkyBlue;
+            btnCreateUser.ForeColor = Color.White;
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ChangePassword());
+            ResetUACSubMenuTabColors();
+            btnChangePassword.BackColor = Color.SkyBlue;
+            btnChangePassword.ForeColor = Color.White;
+        }
+
+        private void iconBtnAbout_Click(object sender, EventArgs e)
+        {
+            ResetTabColors();
+            ResetUACSubMenuTabColors();
+            iconBtnAbout.BackColor = TabColorOnClick;
+            iconBtnAbout.ForeColor = Color.White;
+            openChildForm(new About());
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            panelUACSubMenu.Visible = false;
+            //iconBtnHome.BackColor = Color.SkyBlue;
+        }
+
+        private void btnCreateUserRoles_Click(object sender, EventArgs e)
+        {
+            openChildForm(new CreateUserRole());
+            ResetUACSubMenuTabColors();
+            btnCreateUserRoles.BackColor = Color.SkyBlue;
+            btnCreateUserRoles.ForeColor = Color.White;
+        }
+
+        private void btnUserPermission_Click(object sender, EventArgs e)
+        {
+            openChildForm(new SetUserPermission(RoleId));
+            ResetUACSubMenuTabColors();
+            btnUserPermission.BackColor = Color.SkyBlue;
+            btnUserPermission.ForeColor = Color.White;
+        }
+
+        private void iconBtnHome_Click(object sender, EventArgs e)
+        {
+            panelDesktop.Visible = true;
+            ResetTabColors();
+            ResetUACSubMenuTabColors();
+            iconBtnHome.BackColor = TabColorOnClick;
+            iconBtnHome.ForeColor = Color.White;
+            openChildForm(new Home());
+        }
+
+        private void iconBtnHome_MouseEnter(object sender, EventArgs e)
+        {
+            if (!iconBtnHome.Focused)
+            {
+                iconBtnHome.BackColor = Color.DarkBlue;
+                iconBtnHome.ForeColor = Color.White;
+                iconBtnHome.IconColor = Color.White;
+            }
+        }
+
+        private void iconBtnHome_MouseLeave(object sender, EventArgs e)
+        {
+            if (!iconBtnHome.Focused)
+            {
+                iconBtnHome.ForeColor = defaultTabColor;
+                iconBtnHome.BackColor = Color.White;
+                iconBtnHome.IconColor = defaultTabColor;
+            }
+        }
+
+        private void iconBtnUAC_MouseEnter(object sender, EventArgs e)
+        {
+            if (!iconBtnUAC.Focused)
+            {
+                iconBtnUAC.BackColor = Color.DarkBlue;
+                iconBtnUAC.ForeColor = Color.White;
+                iconBtnUAC.IconColor = Color.White;
+            }
+        }
+
+        private void iconBtnUAC_MouseLeave(object sender, EventArgs e)
+        {
+            if (!iconBtnUAC.Focused)
+            {
+                iconBtnUAC.ForeColor = defaultTabColor;
+                iconBtnUAC.BackColor = Color.White;
+                iconBtnUAC.IconColor = defaultTabColor;
+            }
+        }
+
+        private void iconBtnHome_MouseHover(object sender, EventArgs e)
+        {
+
+            //iconBtnHome.BackColor = Color.DarkBlue;
+            //iconBtnHome.ForeColor = Color.White;
+            
+        }
+
+        private void iconBtnAbout_MouseLeave(object sender, EventArgs e)
+        {
+            if (!iconBtnAbout.Focused)
+            {
+                iconBtnAbout.ForeColor = defaultTabColor;
+                iconBtnAbout.BackColor = Color.White;
+                iconBtnAbout.IconColor = defaultTabColor;
+            }
+        }
+
+        private void iconBtnAbout_MouseEnter(object sender, EventArgs e)
+        {
+            if (!iconBtnAbout.Focused)
+            {
+                iconBtnAbout.BackColor = Color.DarkBlue;
+                iconBtnAbout.ForeColor = Color.White;
+                iconBtnAbout.IconColor = Color.White;
+            }
+        }
+
         protected override void WndProc(ref Message m)
         {
             const int WM_NCCALCSIZE = 0x0083;//Standar Title Bar - Snap Window
@@ -273,328 +424,5 @@ namespace WindowsFormsApp1
             }
             base.WndProc(ref m);
         }
-
-        //Event Ethod
-        private void Menu_Resize(object sender, EventArgs e)
-        {
-            AdjustForm();
-        }
-
-        //private method
-
-            private void AdjustForm()
-        {
-            switch (this.WindowState)
-            {
-                case FormWindowState.Maximized:
-                    this.Padding = new Padding(8, 8, 8, 0); break;
-                case FormWindowState.Normal:
-                    if (this.Padding.Top != borderSize)
-                        this.Padding = new Padding(borderSize);
-                    this.Padding = new Padding(borderSize); break;
-
-
-
-            }
-
-        }
-
-        private void btnMinimizeClick_Click(object sender, EventArgs e)
-        {
-
-            formSize = this.ClientSize;
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void btnMaximize_Click_Click(object sender, EventArgs e)
-        {
-
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                formSize = this.ClientSize;
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-                this.Size = formSize;
-            }
-        }
-
-        private void btnClose_Click_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            CollapseMenu();
-        }
-
-        private void CollapseMenu()
-        {
-            if (this.panelMenu.Width > 200) //Collapse menu
-            {
-                panelMenu.Width = 75;
-                pictureBox1.Visible = false;
-                panelUACSubMenu.Visible = false;
-                btnMenu.Dock = DockStyle.Top;
-                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
-                {
-                    menuButton.Text = "";
-                    menuButton.ImageAlign = ContentAlignment.MiddleCenter;
-                    menuButton.Padding = new Padding(0);
-                }
-            }
-            else
-            { //Expand menu
-                panelMenu.Width = 230;
-                pictureBox1.Visible = true;
-                btnMenu.Dock = DockStyle.None;
-                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
-                {
-                    menuButton.Text = "   " + menuButton.Tag.ToString();
-                    menuButton.ImageAlign = ContentAlignment.MiddleLeft;
-                    menuButton.Padding = new Padding(10, 0, 0, 0);
-                }
-            }
-        }
-
-        private void SubmenuCollapse()
-        {
-
-            if (this.panelMenu.Width > 200) //Collapse menu
-                                            //{
-                                            //    panelMenu.Width = 75;
-                                            //    pictureBox1.Visible = false;
-                                            //    panelUACSubMenu.Visible = true;
-                                            //    btnMenu.Dock = DockStyle.Top;
-                                            //    foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
-                                            //    {
-                                            //        menuButton.Text = "";
-                                            //        menuButton.ImageAlign = ContentAlignment.MiddleCenter;
-                                            //        menuButton.Padding = new Padding(0);
-                                            //    }
-                                            //}
-                                            //    else
-            { //Expand menu
-                panelMenu.Width = 230;
-                pictureBox1.Visible = true;
-                btnMenu.Dock = DockStyle.None;
-                foreach (Button menuButton in panelMenu.Controls.OfType<Button>())
-                {
-                    menuButton.Text = "   " + menuButton.Tag.ToString();
-                    menuButton.ImageAlign = ContentAlignment.MiddleLeft;
-                    menuButton.Padding = new Padding(10, 0, 0, 0);
-                }
-            }
-
-        }
-        private Form activeForm = null;
-        private void  openChildForm (Form childForm)
-        {
-            if (activeForm != null)
-            
-                activeForm.Close();
-            activeForm = childForm;
-            childForm.TopLevel = false;
-
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            panelDesktop.Controls.Add(childForm);
-            panelDesktop.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
-
-            
-        }
-
-        private void iconBtnUAC_Click(object sender, EventArgs e)
-        {
-            ResetTabColors();
-            ResetUACSubMenuTabColors();
-            iconBtnUAC.BackColor = defaultTabColor;
-            iconBtnUAC.ForeColor = Color.White;
-
-            showSubMenu(panelUACSubMenu);
-            if (this.panelMenu.Width == 75)
-            {
-                panelUACSubMenu.Visible = false;
-                
-            }
-            //CollapseMenu();
-            //SubmenuCollapse();
-            //openChildForm(new About());
-        }
-
-        private void iconButton4_Click(object sender, EventArgs e)
-        {
-            openChildForm(new CreateUser());
-        }
-
-        private void btnexit_Click(object sender, EventArgs e)
-        {
-            //Application.Exit();
-            Login form = new Login();
-            form.Show();
-            this.Hide();
-        }
-
-        private void btnCreateUser_Click(object sender, EventArgs e)
-        {
-            openChildForm(new CreateUser());
-            ResetUACSubMenuTabColors();
-            btnCreateUser.BackColor = Color.SkyBlue;
-            btnCreateUser.ForeColor = Color.White;
-
-        }
-
-        private void btnChangePassword_Click(object sender, EventArgs e)
-        {
-            openChildForm(new ChangePassword());
-            ResetUACSubMenuTabColors();
-            btnChangePassword.BackColor = Color.SkyBlue;
-            btnChangePassword.ForeColor = Color.White;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconBtnAbout_Click(object sender, EventArgs e)
-        {
-            ResetTabColors();
-            ResetUACSubMenuTabColors();
-            iconBtnAbout.BackColor = defaultTabColor;
-            iconBtnAbout.ForeColor = Color.White;
-            openChildForm(new About());
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            panelUACSubMenu.Visible = false;
-            //iconBtnHome.BackColor = Color.SkyBlue;
-
-
-        }
-
-        private void btnCreateUserRoles_Click(object sender, EventArgs e)
-        {
-            openChildForm(new CreateUserRole());
-            ResetUACSubMenuTabColors();
-            btnCreateUserRoles.BackColor = Color.SkyBlue;
-            btnCreateUserRoles.ForeColor = Color.White;
-        }
-
-        private void btnUserPermission_Click(object sender, EventArgs e)
-        {
-            openChildForm(new SetUserPermission(RoleId));
-            ResetUACSubMenuTabColors();
-            btnUserPermission.BackColor = Color.SkyBlue;
-            btnUserPermission.ForeColor = Color.White;
-        }
-
-        private void iconBtnHome_Click(object sender, EventArgs e)
-        {
-            panelDesktop.Visible = true;
-            ResetTabColors();
-            ResetUACSubMenuTabColors();
-            iconBtnHome.BackColor = defaultTabColor;
-            iconBtnHome.ForeColor = Color.White;
-            openChildForm(new Home());
-
-        }
-
-        private void iconBtnHome_MouseEnter(object sender, EventArgs e)
-        {
-            if (!iconBtnHome.Focused)
-            {
-                iconBtnHome.BackColor = Color.DarkBlue;
-                iconBtnHome.ForeColor = Color.White;
-                iconBtnHome.IconColor = Color.White;
-            }
-        }
-
-        private void iconBtnHome_MouseLeave(object sender, EventArgs e)
-        {
-            if (!iconBtnHome.Focused)
-            {
-                iconBtnHome.ForeColor = defaultTabColor;
-                iconBtnHome.BackColor = Color.White;
-                iconBtnHome.IconColor = defaultTabColor;
-            }
-        }
-
-        private void iconBtnUAC_MouseEnter(object sender, EventArgs e)
-        {
-            if (!iconBtnUAC.Focused)
-            {
-                iconBtnUAC.BackColor = Color.DarkBlue;
-                iconBtnUAC.ForeColor = Color.White;
-                iconBtnUAC.IconColor = Color.White;
-            }
-        }
-
-        private void iconBtnUAC_MouseLeave(object sender, EventArgs e)
-        {
-            if (!iconBtnUAC.Focused)
-            {
-                iconBtnUAC.ForeColor = defaultTabColor;
-                iconBtnUAC.BackColor = Color.White;
-                iconBtnUAC.IconColor = defaultTabColor;
-            }
-        }
-
-        private void iconBtnHome_MouseHover(object sender, EventArgs e)
-        {
-
-            //iconBtnHome.BackColor = Color.DarkBlue;
-            //iconBtnHome.ForeColor = Color.White;
-            
-        }
-
-        private void iconBtnAbout_MouseLeave(object sender, EventArgs e)
-        {
-            if (!iconBtnAbout.Focused)
-            {
-                iconBtnAbout.ForeColor = defaultTabColor;
-                iconBtnAbout.BackColor = Color.White;
-                iconBtnAbout.IconColor = defaultTabColor;
-            }
-        }
-
-        private void iconBtnAbout_MouseEnter(object sender, EventArgs e)
-        {
-            if (!iconBtnAbout.Focused)
-            {
-                iconBtnAbout.BackColor = Color.DarkBlue;
-                iconBtnAbout.ForeColor = Color.White;
-                iconBtnAbout.IconColor = Color.White;
-            }
-        }
-
-        private void btnexit_MouseEnter(object sender, EventArgs e)
-        {
-            //if (!btnexit.Focused)
-            //{
-            //    btnexit.BackColor = Color.DarkBlue;
-            //    btnexit.ForeColor = Color.White;
-            //    btnexit.IconColor = Color.White;
-            //}
-
-        }
-
-        private void btnexit_MouseLeave(object sender, EventArgs e)
-        {
-            //if (!iconBtnAbout.Focused)
-            //{
-            //   btnexit.ForeColor = defaultTabColor;
-            //   btnexit.BackColor = Color.White;
-            //    btnexit.IconColor = defaultTabColor;
-            //}
-
-        }
     }
-    
 }

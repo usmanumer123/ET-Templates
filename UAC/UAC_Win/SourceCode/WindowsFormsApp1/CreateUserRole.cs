@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Configuration;
 
 
 namespace WindowsFormsApp1
@@ -16,7 +17,7 @@ namespace WindowsFormsApp1
         Helper hp = new Helper();
 
         UACEntities context = new UACEntities();
-        SqlConnection con = new SqlConnection("Data Source=HU\\MSSQLSERVER2019;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False");
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString);
         public int RollsId;
 
         public CreateUserRole()

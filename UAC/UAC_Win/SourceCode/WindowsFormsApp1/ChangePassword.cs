@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Drawing.Drawing2D;
 using System.Drawing;
+using System.Configuration;
 
 
 namespace WindowsFormsApp1
@@ -56,9 +57,9 @@ namespace WindowsFormsApp1
 
             
         {
-            string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
+            //string connectionString = "Data Source=HP\\HASSAN;Initial Catalog=UAC;User ID=sa;Password=123;Encrypt=False";
 
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString))
             {
                 string query = "UPDATE UserProfile SET Password = @NewPassword WHERE UserName = @UserName";
                 SqlCommand cmd = new SqlCommand(query, con);

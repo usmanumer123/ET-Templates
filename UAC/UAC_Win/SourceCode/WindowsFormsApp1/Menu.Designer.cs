@@ -64,7 +64,7 @@
             this.panelMenu.Controls.Add(this.panel1);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(427, 684);
             this.panelMenu.TabIndex = 0;
@@ -82,7 +82,7 @@
             this.iconBtnAbout.IconSize = 30;
             this.iconBtnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconBtnAbout.Location = new System.Drawing.Point(0, 427);
-            this.iconBtnAbout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconBtnAbout.Margin = new System.Windows.Forms.Padding(4);
             this.iconBtnAbout.Name = "iconBtnAbout";
             this.iconBtnAbout.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.iconBtnAbout.Size = new System.Drawing.Size(427, 50);
@@ -105,7 +105,7 @@
             this.panelUACSubMenu.Controls.Add(this.btnCreateUser);
             this.panelUACSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelUACSubMenu.Location = new System.Drawing.Point(0, 223);
-            this.panelUACSubMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelUACSubMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelUACSubMenu.Name = "panelUACSubMenu";
             this.panelUACSubMenu.Size = new System.Drawing.Size(427, 204);
             this.panelUACSubMenu.TabIndex = 7;
@@ -120,7 +120,7 @@
             this.btnUserPermission.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUserPermission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnUserPermission.Location = new System.Drawing.Point(0, 147);
-            this.btnUserPermission.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUserPermission.Margin = new System.Windows.Forms.Padding(4);
             this.btnUserPermission.Name = "btnUserPermission";
             this.btnUserPermission.Padding = new System.Windows.Forms.Padding(80, 0, 0, 0);
             this.btnUserPermission.Size = new System.Drawing.Size(427, 49);
@@ -140,7 +140,7 @@
             this.btnCreateUserRoles.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateUserRoles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnCreateUserRoles.Location = new System.Drawing.Point(0, 98);
-            this.btnCreateUserRoles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateUserRoles.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateUserRoles.Name = "btnCreateUserRoles";
             this.btnCreateUserRoles.Padding = new System.Windows.Forms.Padding(80, 0, 0, 0);
             this.btnCreateUserRoles.Size = new System.Drawing.Size(427, 49);
@@ -160,7 +160,7 @@
             this.btnChangePassword.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangePassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnChangePassword.Location = new System.Drawing.Point(0, 49);
-            this.btnChangePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChangePassword.Margin = new System.Windows.Forms.Padding(4);
             this.btnChangePassword.Name = "btnChangePassword";
             this.btnChangePassword.Padding = new System.Windows.Forms.Padding(80, 0, 0, 0);
             this.btnChangePassword.Size = new System.Drawing.Size(427, 49);
@@ -180,7 +180,7 @@
             this.btnCreateUser.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnCreateUser.Location = new System.Drawing.Point(0, 0);
-            this.btnCreateUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Padding = new System.Windows.Forms.Padding(80, 0, 0, 0);
             this.btnCreateUser.Size = new System.Drawing.Size(427, 49);
@@ -215,8 +215,6 @@
             this.btnexit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnexit.UseVisualStyleBackColor = false;
             this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
-            this.btnexit.MouseEnter += new System.EventHandler(this.btnexit_MouseEnter);
-            this.btnexit.MouseLeave += new System.EventHandler(this.btnexit_MouseLeave);
             // 
             // iconBtnUAC
             // 
@@ -231,7 +229,7 @@
             this.iconBtnUAC.IconSize = 30;
             this.iconBtnUAC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconBtnUAC.Location = new System.Drawing.Point(0, 173);
-            this.iconBtnUAC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconBtnUAC.Margin = new System.Windows.Forms.Padding(4);
             this.iconBtnUAC.Name = "iconBtnUAC";
             this.iconBtnUAC.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.iconBtnUAC.Size = new System.Drawing.Size(427, 50);
@@ -258,7 +256,7 @@
             this.iconBtnHome.IconSize = 30;
             this.iconBtnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconBtnHome.Location = new System.Drawing.Point(0, 123);
-            this.iconBtnHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconBtnHome.Margin = new System.Windows.Forms.Padding(4);
             this.iconBtnHome.Name = "iconBtnHome";
             this.iconBtnHome.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.iconBtnHome.Size = new System.Drawing.Size(427, 50);
@@ -280,7 +278,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(427, 123);
             this.panel1.TabIndex = 0;
@@ -294,7 +292,7 @@
             this.btnMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMenu.IconSize = 30;
             this.btnMenu.Location = new System.Drawing.Point(227, 15);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(72, 49);
             this.btnMenu.TabIndex = 1;
@@ -305,7 +303,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(64, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(155, 85);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -318,7 +316,7 @@
             this.panelDesktop.Controls.Add(this.pictureBox2);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(427, 0);
-            this.panelDesktop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelDesktop.Margin = new System.Windows.Forms.Padding(4);
             this.panelDesktop.Name = "panelDesktop";
             this.panelDesktop.Size = new System.Drawing.Size(854, 684);
             this.panelDesktop.TabIndex = 2;
@@ -329,7 +327,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(854, 684);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -341,7 +339,7 @@
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(427, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(7, 684);
             this.panel2.TabIndex = 3;
@@ -354,7 +352,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelMenu);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
