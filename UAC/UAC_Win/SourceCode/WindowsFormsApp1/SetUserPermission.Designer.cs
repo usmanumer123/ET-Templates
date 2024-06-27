@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetUserPermission));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,7 +37,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.cmbRolls = new System.Windows.Forms.ComboBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.createUserDataGridView1 = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDone = new System.Windows.Forms.Button();
@@ -50,8 +46,6 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.createUserDataGridView1)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,61 +137,11 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.createUserDataGridView1);
-            this.panel6.Location = new System.Drawing.Point(0, 231);
+            this.panel6.Location = new System.Drawing.Point(0, 127);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1831, 369);
+            this.panel6.Size = new System.Drawing.Size(1831, 580);
             this.panel6.TabIndex = 48;
-            // 
-            // createUserDataGridView1
-            // 
-            this.createUserDataGridView1.AllowUserToAddRows = false;
-            this.createUserDataGridView1.AllowUserToDeleteRows = false;
-            this.createUserDataGridView1.AllowUserToResizeColumns = false;
-            this.createUserDataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.createUserDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.createUserDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.createUserDataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.createUserDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.createUserDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.createUserDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.createUserDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.createUserDataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
-            this.createUserDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.createUserDataGridView1.DoubleBuffered = true;
-            this.createUserDataGridView1.EnableHeadersVisualStyles = false;
-            this.createUserDataGridView1.GridColor = System.Drawing.Color.White;
-            this.createUserDataGridView1.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.createUserDataGridView1.HeaderForeColor = System.Drawing.Color.White;
-            this.createUserDataGridView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.createUserDataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.createUserDataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.createUserDataGridView1.Name = "createUserDataGridView1";
-            this.createUserDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.createUserDataGridView1.RowHeadersWidth = 51;
-            this.createUserDataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.createUserDataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createUserDataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.createUserDataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.createUserDataGridView1.Size = new System.Drawing.Size(1831, 369);
-            this.createUserDataGridView1.TabIndex = 20;
-            this.createUserDataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.createUserDataGridView1_CellValueChanged);
             // 
             // panel5
             // 
@@ -275,8 +219,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.createUserDataGridView1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -295,7 +237,6 @@
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Panel panel6;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid createUserDataGridView1;
         private System.Windows.Forms.ComboBox cmbRolls;
     }
 }

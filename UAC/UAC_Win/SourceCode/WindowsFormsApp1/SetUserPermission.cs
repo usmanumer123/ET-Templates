@@ -1,15 +1,19 @@
-﻿using System;
+﻿using Bunifu.Framework.UI;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace WindowsFormsApp1
 {
     public partial class SetUserPermission : Form
     {
         Helper hp = new Helper();
+        private BunifuCustomDataGrid createUserDataGridView1;
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString);
         DataTable permissionsTable;
         private string activation_module = null;
@@ -20,6 +24,11 @@ namespace WindowsFormsApp1
         public SetUserPermission()
         {
             InitializeComponent();
+            createUserDataGridView1 = new BunifuCustomDataGrid();
+            Shared.InitializeBunifuDataGridView(createUserDataGridView1);
+            panel6.Controls.Add(createUserDataGridView1);
+            string[] columnsNames = new string[] { "Module", "Permission" };
+            Shared.AddColumnsToDataGridView(columnsNames, createUserDataGridView1);
         }
 
         private void SetUserPermission_Load(object sender, EventArgs e)
@@ -38,6 +47,7 @@ namespace WindowsFormsApp1
             panel5.Show();
             int selectedRollsId = Convert.ToInt32(cmbRolls.SelectedValue);
             LoadDataForRollsId(selectedRollsId);
+            createUserDataGridView1.Show();
         }
 
         private void LoadDataForRollsId(int rollsId)
@@ -108,12 +118,14 @@ namespace WindowsFormsApp1
 
                 // Setting the DataGridView's DataSource to the new DataTable
                 createUserDataGridView1.DataSource = newDt;
+                createUserDataGridView1.Show();
 
                 // Convert the IsEnable column to DataGridViewCheckBoxColumn
                 DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
                 checkBoxColumn.HeaderText = "Activation";
                 checkBoxColumn.Name = "Activation";
                 checkBoxColumn.DataPropertyName = "Activation";
+                checkBoxColumn.Width = 1000;
                 createUserDataGridView1.Columns.Remove("Activation");
                 createUserDataGridView1.Columns.Insert(2, checkBoxColumn);
             }

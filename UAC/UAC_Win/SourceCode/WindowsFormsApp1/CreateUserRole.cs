@@ -5,6 +5,7 @@ using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Configuration;
+using Bunifu.Framework.UI;
 
 namespace WindowsFormsApp1
 {
@@ -12,12 +13,20 @@ namespace WindowsFormsApp1
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString);
         public int RollsId;
+        private BunifuCustomDataGrid userRollsDataGridView1;
         Helper hp = new Helper();
         UACEntities context = new UACEntities();
 
         public CreateUserRole()
         {
             InitializeComponent();
+            userRollsDataGridView1 = new BunifuCustomDataGrid();
+            Shared.InitializeBunifuDataGridView(userRollsDataGridView1);
+            panel6.Controls.Add(userRollsDataGridView1);
+            string[] columnsNames = new string[] { "RollsId", "RollsDesc", "CreatedBy" };
+            Shared.AddColumnsToDataGridView(columnsNames, userRollsDataGridView1);
+            userRollsDataGridView1.Show();
+            userRollsDataGridView1.CellClick += userRollsDataGridView1_CellClick;
             //Permissions getting in the basis of roleid
             SetButtonState(btnDone, CheckUserPermission(Shared.RollsId, "Create User Role", "create"));
             SetButtonState(btnUpdate, CheckUserPermission(Shared.RollsId, "Create User Role", "edit"));
@@ -68,7 +77,7 @@ namespace WindowsFormsApp1
 
         private void GetUserRecord()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM UserRolls", con);
+            SqlCommand cmd = new SqlCommand("SELECT RollsId, RollsDesc, CreatedBy FROM UserRolls", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -145,7 +154,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void createUserDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void userRollsDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (userRollsDataGridView1.SelectedRows.Count > 0)
             {

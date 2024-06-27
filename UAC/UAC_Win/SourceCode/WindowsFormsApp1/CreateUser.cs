@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Configuration;
+using Bunifu.Framework.UI;
 
 namespace WindowsFormsApp1
 {
@@ -12,12 +13,21 @@ namespace WindowsFormsApp1
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString);
         public int UserId;
+        private BunifuCustomDataGrid createUserDataGridView1;
         Helper hp = new Helper();
         UACEntities context = new UACEntities();
 
         public CreateUser()
         {
             InitializeComponent();
+            createUserDataGridView1 = new BunifuCustomDataGrid();
+            Shared.InitializeBunifuDataGridView(createUserDataGridView1);
+            panel2.Controls.Add(createUserDataGridView1);
+            //string[] columnsNames = new string[] { "Module", "Permission" };
+            //Shared.AddColumnsToDataGridView(columnsNames, createUserDataGridView1);
+            createUserDataGridView1.Show();
+            createUserDataGridView1.CellClick += createUserDataGridView1_CellClick;
+
             SetButtonState(btnInsertUser, CheckUserPermission(Shared.RollsId, "Create User", "create"));
             SetButtonState(btnUpdateUser, CheckUserPermission(Shared.RollsId, "Create User", "edit"));
             SetButtonState(btnDeleteUser, CheckUserPermission(Shared.RollsId, "Create User", "delete"));
