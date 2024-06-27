@@ -61,6 +61,27 @@ namespace WindowsFormsApp1
 
             return ds;
         }
+        public bool PostDataset(String Query)
+        {
+            try
+            {
+                cn = new SqlConnection(connectionString);
+                cn.Open();
+                cmd = new SqlCommand(Query, cn);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
         public DataSet GetDataset2(String queryString, String ConnectionString, String TableName)
         {
             DataSet ds = new DataSet();

@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
                 //btnNext.Visible = false;
                 txtUserName.Text = Shared.Username.ToString();
                 txtUserId.Text = Shared.UserId.ToString();
-                txtNewPass.Text = Shared.Password.ToString();
+                txtNewPass.Text = Shared.DecryptPassword(Shared.Password);
             }
             catch (Exception ex)
             {

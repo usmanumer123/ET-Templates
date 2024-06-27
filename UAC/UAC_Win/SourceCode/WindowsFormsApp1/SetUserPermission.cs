@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -14,6 +15,7 @@ namespace WindowsFormsApp1
         private string activation_module = null;
         private string activation_permission = null;
         private bool activation_isEnable = false;
+        private int _rollsId = -1;
 
         public SetUserPermission()
         {
@@ -40,6 +42,7 @@ namespace WindowsFormsApp1
 
         private void LoadDataForRollsId(int rollsId)
         {
+            _rollsId = rollsId;
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT Module, Permission, IsEnable FROM UserRollsPermission WHERE RollsId = @rollsId", con);
@@ -142,35 +145,30 @@ namespace WindowsFormsApp1
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("IF EXISTS (SELECT * FROM UserRollsPermission WHERE Module = @module AND Permission = @permission AND RollsId = @rollsId) " +
-                    "UPDATE UserRollsPermission SET IsEnable = @isEnable WHERE Module = @module AND Permission = @permission AND RollsId = @rollsId " +
-                    "ELSE " +
-                    "INSERT INTO UserRollsPermission (Module, Permission, IsEnable, RollsId, CreatedBy) VALUES (@module, @permission, @isEnable, @rollsId, @createdBy)", con))
+                bool flag = false;
+                foreach (DataGridViewRow row in createUserDataGridView1.Rows)
                 {
-                    cmd.Parameters.AddWithValue("@isEnable", activation_isEnable);
-                    cmd.Parameters.AddWithValue("@module", activation_module);
-                    cmd.Parameters.AddWithValue("@permission", activation_permission);
-                    cmd.Parameters.AddWithValue("@rollsId", Convert.ToInt32(cmbRolls.SelectedValue));
-                    cmd.Parameters.AddWithValue("@createdBy", "admin"); // Replace 'admin' with the actual createdBy value
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-
-                    MessageBox.Show("Permissions updated successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (row != null)
+                    {
+                        activation_isEnable = (bool) row.Cells["Activation"].Value;
+                        activation_module = row.Cells["Module"].Value.ToString();
+                        activation_permission = row.Cells["Permission"].Value.ToString();
+                        string query = "UPDATE UserRollsPermission " +
+                           "SET IsEnable = '" + activation_isEnable + "' " +
+                           "WHERE Module = '" + activation_module + "' " +
+                           "AND Permission = '" + activation_permission + "' " +
+                           "AND RollsId = '" + _rollsId + "'";
+                        flag = hp.PostDataset(query);
+                    }
+                }
+                if (flag)
+                {
+                    hp.InfoMessage("Permissions updated successfully");
                 }
             }
             catch (Exception ex)
             {
-                // Handle the exception
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close(); // Ensure the connection is closed even if an exception occurs
-                }
+                hp.ErrorMessage("btnDone_Click: " + ex.Message.ToString());
             }
         }
 
