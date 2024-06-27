@@ -72,7 +72,7 @@ namespace WindowsFormsApp1
         }
 
         private void loginbtn_Click(object sender, EventArgs e)
-        {
+        {         
             if (string.IsNullOrWhiteSpace(txtUserName.Text))
             {
                 usererror.Visible = true;
@@ -143,7 +143,6 @@ namespace WindowsFormsApp1
             txtUserName.Select();
             usererror.Visible = true;
             passerror.Visible = true;
-            txtPassword.Text = Shared.DecryptPassword(Shared.Password);
         }
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
