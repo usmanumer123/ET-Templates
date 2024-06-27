@@ -327,7 +327,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(245, 31);
             this.comboBox1.TabIndex = 4;
-            this.comboBox1.Text = "Select Rolls";
+            this.comboBox1.Text = "Select User Rolls";
             // 
             // btnShowPass
             // 

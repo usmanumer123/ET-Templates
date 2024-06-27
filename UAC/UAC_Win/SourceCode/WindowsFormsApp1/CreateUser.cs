@@ -23,9 +23,8 @@ namespace WindowsFormsApp1
             createUserDataGridView1 = new BunifuCustomDataGrid();
             Shared.InitializeBunifuDataGridView(createUserDataGridView1);
             panel2.Controls.Add(createUserDataGridView1);
-            //string[] columnsNames = new string[] { "Module", "Permission" };
-            //Shared.AddColumnsToDataGridView(columnsNames, createUserDataGridView1);
-            createUserDataGridView1.Show();
+            string[] columnsNames = new string[] { "UserId", "UserName", "CreatedBy", "RollsId", "Rolls", "Password"};
+            Shared.AddColumnsToDataGridView(columnsNames, createUserDataGridView1);
             createUserDataGridView1.CellClick += createUserDataGridView1_CellClick;
 
             Shared.SetButtonState(btnInsertUser, CheckUserPermission(Shared.RollsId, "Create User", "create"));
@@ -66,6 +65,7 @@ namespace WindowsFormsApp1
 
             SqlCommand cmd = new SqlCommand(query, con);
             DataTable dt = new DataTable();
+            dt.Columns.Add("Activation", typeof(bool));
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
@@ -78,6 +78,7 @@ namespace WindowsFormsApp1
             }
 
             createUserDataGridView1.DataSource = dt;
+            createUserDataGridView1.Show();
         }
       
         private void btnInsertUser_Click(object sender, EventArgs e)
@@ -153,6 +154,7 @@ namespace WindowsFormsApp1
         private void btnResetUser_Click(object sender, EventArgs e)
         {
             ResetUserControls();
+            createUserDataGridView1.ClearSelection();
         }
 
         private void ResetUserControls()
@@ -164,6 +166,7 @@ namespace WindowsFormsApp1
             txtPassword.Text = "";
             enableCheckbox.Checked = false;
             txtUserName.Focus();
+            comboBox1.Text = "Select User Rolls";
         }
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
