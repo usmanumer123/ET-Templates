@@ -61,7 +61,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1856, 123);
             this.panel1.TabIndex = 0;
@@ -72,7 +72,7 @@
             this.panel4.Controls.Add(this.label3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(435, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1421, 123);
             this.panel4.TabIndex = 2;
@@ -95,7 +95,7 @@
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(435, 123);
             this.panel3.TabIndex = 1;
@@ -104,7 +104,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 4);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(160, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -122,7 +122,7 @@
             this.panel2.Controls.Add(this.enableCheckbox);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Location = new System.Drawing.Point(0, 130);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1856, 862);
             this.panel2.TabIndex = 1;
@@ -130,7 +130,7 @@
             // panel6
             // 
             this.panel6.Location = new System.Drawing.Point(0, 255);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1852, 425);
             this.panel6.TabIndex = 48;
@@ -143,7 +143,7 @@
             this.txtCreated.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCreated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.txtCreated.Location = new System.Drawing.Point(1327, 30);
-            this.txtCreated.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCreated.Margin = new System.Windows.Forms.Padding(4);
             this.txtCreated.Name = "txtCreated";
             this.txtCreated.Size = new System.Drawing.Size(27, 37);
             this.txtCreated.TabIndex = 47;
@@ -157,7 +157,7 @@
             this.txtRolesDesc.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRolesDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.txtRolesDesc.Location = new System.Drawing.Point(749, 105);
-            this.txtRolesDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRolesDesc.Margin = new System.Windows.Forms.Padding(4);
             this.txtRolesDesc.Name = "txtRolesDesc";
             this.txtRolesDesc.Size = new System.Drawing.Size(378, 37);
             this.txtRolesDesc.TabIndex = 46;
@@ -183,7 +183,7 @@
             this.panel5.Controls.Add(this.btnCancel);
             this.panel5.Controls.Add(this.btnDone);
             this.panel5.Location = new System.Drawing.Point(476, 704);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(927, 123);
             this.panel5.TabIndex = 44;
@@ -196,7 +196,7 @@
             this.btnDeleteUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteUser.ForeColor = System.Drawing.Color.Red;
             this.btnDeleteUser.Location = new System.Drawing.Point(496, 47);
-            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(169, 57);
             this.btnDeleteUser.TabIndex = 33;
@@ -212,7 +212,7 @@
             this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnUpdate.Location = new System.Drawing.Point(259, 47);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(169, 57);
             this.btnUpdate.TabIndex = 32;
@@ -228,22 +228,23 @@
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.LimeGreen;
             this.btnCancel.Location = new System.Drawing.Point(728, 47);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(169, 57);
             this.btnCancel.TabIndex = 30;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Reset";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDone
             // 
+            this.btnDone.BackColor = System.Drawing.Color.White;
             this.btnDone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDone.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnDone.Location = new System.Drawing.Point(28, 47);
-            this.btnDone.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnDone.Margin = new System.Windows.Forms.Padding(5);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(169, 57);
             this.btnDone.TabIndex = 31;
@@ -262,7 +263,7 @@
             this.enableCheckbox.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enableCheckbox.ForeColor = System.Drawing.Color.White;
             this.enableCheckbox.Location = new System.Drawing.Point(1005, 191);
-            this.enableCheckbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.enableCheckbox.Margin = new System.Windows.Forms.Padding(5);
             this.enableCheckbox.Name = "enableCheckbox";
             this.enableCheckbox.Size = new System.Drawing.Size(20, 20);
             this.enableCheckbox.TabIndex = 43;
@@ -290,7 +291,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CreateUserRole";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CreateUserRole";

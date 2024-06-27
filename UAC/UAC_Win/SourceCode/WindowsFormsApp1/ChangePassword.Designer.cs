@@ -89,7 +89,7 @@
             this.labelUserId.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUserId.Location = new System.Drawing.Point(97, 91);
             this.labelUserId.Name = "labelUserId";
-            this.labelUserId.Size = new System.Drawing.Size(89, 23);
+            this.labelUserId.Size = new System.Drawing.Size(112, 29);
             this.labelUserId.TabIndex = 38;
             this.labelUserId.Text = "User Id:";
             // 
@@ -117,7 +117,7 @@
             this.userLabel.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userLabel.Location = new System.Drawing.Point(452, 91);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(123, 23);
+            this.userLabel.Size = new System.Drawing.Size(156, 29);
             this.userLabel.TabIndex = 32;
             this.userLabel.Text = "User Name:";
             // 
@@ -130,7 +130,7 @@
             this.txtUserId.Location = new System.Drawing.Point(101, 131);
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.ReadOnly = true;
-            this.txtUserId.Size = new System.Drawing.Size(222, 31);
+            this.txtUserId.Size = new System.Drawing.Size(222, 37);
             this.txtUserId.TabIndex = 39;
             // 
             // label2
@@ -139,7 +139,7 @@
             this.label2.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(97, 203);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 23);
+            this.label2.Size = new System.Drawing.Size(205, 29);
             this.label2.TabIndex = 33;
             this.label2.Text = "New Password :";
             // 
@@ -151,7 +151,7 @@
             this.txtNewPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.txtNewPass.Location = new System.Drawing.Point(100, 237);
             this.txtNewPass.Name = "txtNewPass";
-            this.txtNewPass.Size = new System.Drawing.Size(222, 31);
+            this.txtNewPass.Size = new System.Drawing.Size(222, 37);
             this.txtNewPass.TabIndex = 35;
             this.txtNewPass.UseSystemPasswordChar = true;
             // 
@@ -166,7 +166,7 @@
             this.txtUserName.Location = new System.Drawing.Point(455, 131);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ReadOnly = true;
-            this.txtUserName.Size = new System.Drawing.Size(222, 31);
+            this.txtUserName.Size = new System.Drawing.Size(222, 37);
             this.txtUserName.TabIndex = 34;
             // 
             // panel5
@@ -185,13 +185,13 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCancel.ForeColor = System.Drawing.Color.LimeGreen;
             this.btnCancel.Location = new System.Drawing.Point(309, 38);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 46);
             this.btnCancel.TabIndex = 30;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Reset";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
@@ -239,7 +239,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(278, 38);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(251, 32);
+            this.label3.Size = new System.Drawing.Size(313, 40);
             this.label3.TabIndex = 0;
             this.label3.Text = "Change Password";
             // 
@@ -265,7 +265,7 @@
             // 
             // ChangePassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1392, 820);

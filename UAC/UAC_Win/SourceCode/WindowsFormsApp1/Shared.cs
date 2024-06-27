@@ -102,5 +102,17 @@ namespace WindowsFormsApp1
                 dataGridView.Columns.Add(Column);
             }
         }
+
+        public static void SetButtonState(Button button, bool isEnabled)
+        {
+            button.Enabled = isEnabled;
+            //button.BackColor = isEnabled ? Color.White : Color.LightGray;
+            //button.ForeColor = isEnabled ? SystemColors.ControlText : Color.Gray;
+            if (isEnabled == false)
+            {
+                button.BackColor = Color.LightGray;
+                button.ForeColor = Color.Gray;
+            }
+        }
     }
 }

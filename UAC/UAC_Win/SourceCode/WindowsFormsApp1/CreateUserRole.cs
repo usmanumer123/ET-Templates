@@ -28,22 +28,15 @@ namespace WindowsFormsApp1
             userRollsDataGridView1.Show();
             userRollsDataGridView1.CellClick += userRollsDataGridView1_CellClick;
             //Permissions getting in the basis of roleid
-            SetButtonState(btnDone, CheckUserPermission(Shared.RollsId, "Create User Role", "create"));
-            SetButtonState(btnUpdate, CheckUserPermission(Shared.RollsId, "Create User Role", "edit"));
-            SetButtonState(btnDeleteUser, CheckUserPermission(Shared.RollsId, "Create User Role", "delete"));
+            Shared.SetButtonState(btnDone, CheckUserPermission(Shared.RollsId, "Create User Role", "create"));
+            Shared.SetButtonState(btnUpdate, CheckUserPermission(Shared.RollsId, "Create User Role", "edit"));
+            Shared.SetButtonState(btnDeleteUser, CheckUserPermission(Shared.RollsId, "Create User Role", "delete"));
         }
 
         private bool CheckUserPermission(int roleId, string module, string permission)
         {
             var permissionRecord = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module && p.Permission == permission);
             return permissionRecord != null && permissionRecord.IsEnable;
-        }
-
-        private void SetButtonState(Button button, bool isEnabled)
-        {
-            button.Enabled = isEnabled;
-            button.BackColor = isEnabled ? SystemColors.Control : Color.LightGray;
-            button.ForeColor = isEnabled ? SystemColors.ControlText : Color.LightGray;
         }
 
         private void CreateUserRole_Load(object sender, EventArgs e)

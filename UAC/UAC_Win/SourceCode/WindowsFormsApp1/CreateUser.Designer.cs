@@ -65,7 +65,7 @@
             this.btnInsertUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsertUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnInsertUser.Location = new System.Drawing.Point(403, 958);
-            this.btnInsertUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInsertUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertUser.Name = "btnInsertUser";
             this.btnInsertUser.Size = new System.Drawing.Size(169, 57);
             this.btnInsertUser.TabIndex = 5;
@@ -81,7 +81,7 @@
             this.btnUpdateUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnUpdateUser.Location = new System.Drawing.Point(648, 958);
-            this.btnUpdateUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateUser.Name = "btnUpdateUser";
             this.btnUpdateUser.Size = new System.Drawing.Size(169, 57);
             this.btnUpdateUser.TabIndex = 6;
@@ -97,7 +97,7 @@
             this.btnDeleteUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteUser.ForeColor = System.Drawing.Color.Red;
             this.btnDeleteUser.Location = new System.Drawing.Point(893, 958);
-            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(169, 57);
             this.btnDeleteUser.TabIndex = 7;
@@ -113,7 +113,7 @@
             this.btnResetUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResetUser.ForeColor = System.Drawing.Color.LimeGreen;
             this.btnResetUser.Location = new System.Drawing.Point(1139, 958);
-            this.btnResetUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResetUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnResetUser.Name = "btnResetUser";
             this.btnResetUser.Size = new System.Drawing.Size(169, 57);
             this.btnResetUser.TabIndex = 8;
@@ -124,7 +124,7 @@
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(0, 469);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1729, 423);
             this.panel2.TabIndex = 21;
@@ -192,7 +192,7 @@
             this.txtRollsId.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRollsId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.txtRollsId.Location = new System.Drawing.Point(1419, 247);
-            this.txtRollsId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRollsId.Margin = new System.Windows.Forms.Padding(4);
             this.txtRollsId.Name = "txtRollsId";
             this.txtRollsId.Size = new System.Drawing.Size(258, 32);
             this.txtRollsId.TabIndex = 19;
@@ -205,7 +205,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.txtPassword.Location = new System.Drawing.Point(1085, 214);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(258, 32);
             this.txtPassword.TabIndex = 2;
@@ -218,7 +218,7 @@
             this.txtCreatedBy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCreatedBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.txtCreatedBy.Location = new System.Drawing.Point(1419, 303);
-            this.txtCreatedBy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCreatedBy.Margin = new System.Windows.Forms.Padding(4);
             this.txtCreatedBy.Name = "txtCreatedBy";
             this.txtCreatedBy.Size = new System.Drawing.Size(258, 32);
             this.txtCreatedBy.TabIndex = 16;
@@ -231,7 +231,7 @@
             this.txtUserName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.txtUserName.Location = new System.Drawing.Point(456, 214);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(258, 32);
             this.txtUserName.TabIndex = 1;
@@ -242,9 +242,9 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1620, 123);
+            this.panel1.Size = new System.Drawing.Size(1618, 123);
             this.panel1.TabIndex = 23;
             // 
             // panel4
@@ -253,9 +253,9 @@
             this.panel4.Controls.Add(this.label5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(435, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1185, 123);
+            this.panel4.Size = new System.Drawing.Size(1183, 123);
             this.panel4.TabIndex = 2;
             // 
             // label5
@@ -276,7 +276,7 @@
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(435, 123);
             this.panel3.TabIndex = 1;
@@ -285,7 +285,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 4);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(160, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -302,7 +302,7 @@
             this.enableCheckbox.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enableCheckbox.ForeColor = System.Drawing.Color.White;
             this.enableCheckbox.Location = new System.Drawing.Point(773, 340);
-            this.enableCheckbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.enableCheckbox.Margin = new System.Windows.Forms.Padding(5);
             this.enableCheckbox.Name = "enableCheckbox";
             this.enableCheckbox.Size = new System.Drawing.Size(20, 20);
             this.enableCheckbox.TabIndex = 3;
@@ -311,7 +311,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel5.Location = new System.Drawing.Point(373, 921);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(965, 123);
             this.panel5.TabIndex = 25;
@@ -323,7 +323,7 @@
             this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(1085, 345);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(245, 31);
             this.comboBox1.TabIndex = 4;
@@ -338,7 +338,7 @@
             this.btnShowPass.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnShowPass.IconSize = 25;
             this.btnShowPass.Location = new System.Drawing.Point(1301, 220);
-            this.btnShowPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowPass.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowPass.Name = "btnShowPass";
             this.btnShowPass.Size = new System.Drawing.Size(40, 22);
             this.btnShowPass.TabIndex = 42;
@@ -351,7 +351,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1620, 921);
+            this.ClientSize = new System.Drawing.Size(1618, 1075);
             this.Controls.Add(this.btnShowPass);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnResetUser);
@@ -372,7 +372,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CreateUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "School";

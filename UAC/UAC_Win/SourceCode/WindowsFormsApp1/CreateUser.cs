@@ -28,9 +28,9 @@ namespace WindowsFormsApp1
             createUserDataGridView1.Show();
             createUserDataGridView1.CellClick += createUserDataGridView1_CellClick;
 
-            SetButtonState(btnInsertUser, CheckUserPermission(Shared.RollsId, "Create User", "create"));
-            SetButtonState(btnUpdateUser, CheckUserPermission(Shared.RollsId, "Create User", "edit"));
-            SetButtonState(btnDeleteUser, CheckUserPermission(Shared.RollsId, "Create User", "delete"));
+            Shared.SetButtonState(btnInsertUser, CheckUserPermission(Shared.RollsId, "Create User", "create"));
+            Shared.SetButtonState(btnUpdateUser, CheckUserPermission(Shared.RollsId, "Create User", "edit"));
+            Shared.SetButtonState(btnDeleteUser, CheckUserPermission(Shared.RollsId, "Create User", "delete"));
             // SetButtonState(createUserDataGridView1, isAdmin && CheckUserPermission(rol, "CreateUser", "view"));
             // btnUserPermission.Enabled = isAdmin && CheckUserPermission(Shared.RollsId, "CreateUser", "view");
         }
@@ -39,13 +39,6 @@ namespace WindowsFormsApp1
         {
             var permissionRecord = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module && p.Permission == permission);
             return permissionRecord != null && permissionRecord.IsEnable;
-        }
-
-        private void SetButtonState(Button button, bool isEnabled)
-        {
-            button.Enabled = isEnabled;
-            button.BackColor = isEnabled ? SystemColors.Control : Color.LightGray;
-            button.ForeColor = isEnabled ? SystemColors.ControlText : Color.LightGray;
         }
 
         private void CreateUser_Load(object sender, EventArgs e)
