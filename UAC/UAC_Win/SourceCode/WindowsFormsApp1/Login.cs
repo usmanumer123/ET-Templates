@@ -143,6 +143,7 @@ namespace WindowsFormsApp1
             txtUserName.Select();
             usererror.Visible = true;
             passerror.Visible = true;
+            txtPassword.Text = Shared.DecryptPassword(Shared.Password);
         }
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
@@ -152,6 +153,18 @@ namespace WindowsFormsApp1
                 // Simulate button click
                 loginbtn_Click(sender, e);
             }
+        }
+
+     
+
+        private void btnShowPass_MouseLeave(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void btnShowPass_MouseHover(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
         }
     }
 }
