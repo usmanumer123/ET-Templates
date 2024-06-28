@@ -113,9 +113,9 @@ namespace WindowsFormsApp1
             if (elapsedSeconds >= splashDuration)
             {
                 timer1.Stop();
+                this.Hide();
                 Login form = new Login();
                 form.Show();
-                this.Hide();
             }
 
 

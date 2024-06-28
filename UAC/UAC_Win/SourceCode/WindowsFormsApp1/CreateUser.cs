@@ -85,7 +85,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                if (IsValid())
+                if (IsValid() && comboBox1.Text != "")
                 {
                     int selectedRollsId = Convert.ToInt32(comboBox1.SelectedValue);
                     if (UserId == 0) // Ensure UserId is 0, which means it's a new user
@@ -112,6 +112,10 @@ namespace WindowsFormsApp1
                     {
                         MessageBox.Show("Please use the Update button to modify existing users.", "Operation not allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                }
+                else if(comboBox1.Text == "")
+                {
+                    hp.InfoMessage("Select user role.");
                 }
             }
             catch(Exception ex) 
@@ -166,7 +170,7 @@ namespace WindowsFormsApp1
             txtPassword.Text = "";
             enableCheckbox.Checked = false;
             txtUserName.Focus();
-            comboBox1.Text = "Select User Rolls";
+            comboBox1.Text = "";
         }
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
@@ -298,6 +302,7 @@ namespace WindowsFormsApp1
             comboBox1.DataSource = dataTable; // Bind the DataTable to the ComboBox
             reader.Close();
             con.Close();
+            comboBox1.Text = "";
         }
 
         private void btnShowPass_MouseHover(object sender, EventArgs e)

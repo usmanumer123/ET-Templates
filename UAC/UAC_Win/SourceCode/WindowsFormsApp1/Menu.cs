@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             customizeDesign();
             //CollapseMenu();
+            panelMenu.Width = 350;
             this.Padding = new Padding(borderSize);//Border size
             this.BackColor = Color.FromArgb(98, 102, 244);//Border color
         }
@@ -28,6 +29,8 @@ namespace WindowsFormsApp1
         public Menu(int roleId)
         {
             InitializeComponent();
+
+            panelMenu.Width = 350;
             btnCreateUser.Enabled = CheckUserPermission(roleId, "Create User");
             btnChangePassword.Enabled = CheckUserPermission(roleId, "Change Password");
             btnCreateUserRoles.Enabled = CheckUserPermission(roleId, "Create User Role");
@@ -148,7 +151,7 @@ namespace WindowsFormsApp1
             }
             else
             {   //Expand menu
-                panelMenu.Width = 230;
+                panelMenu.Width = 350;
                 pictureBox1.Visible = true;
                 btnMenu.Dock = DockStyle.None;
                 foreach (Button menuButton in panelMenu.Controls.OfType<Button>())

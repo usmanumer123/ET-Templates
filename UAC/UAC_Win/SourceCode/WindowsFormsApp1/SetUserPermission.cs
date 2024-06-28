@@ -24,11 +24,13 @@ namespace WindowsFormsApp1
         public SetUserPermission()
         {
             InitializeComponent();
+            panel5.Show();
             createUserDataGridView1 = new BunifuCustomDataGrid();
             Shared.InitializeBunifuDataGridView(createUserDataGridView1);
             panel6.Controls.Add(createUserDataGridView1);
             string[] columnsNames = new string[] { "Module", "Permission" };
             Shared.AddColumnsToDataGridView(columnsNames, createUserDataGridView1);
+            LoadDataForRollsId(-1);
         }
 
         private void SetUserPermission_Load(object sender, EventArgs e)
@@ -37,14 +39,13 @@ namespace WindowsFormsApp1
             this.cmbRolls.SelectedIndexChanged -= new System.EventHandler(this.cmbRolls_SelectedIndexChanged);
             hp.PopulateCombo(cmbRolls, query, "RollsDesc", "RollsId");
             this.cmbRolls.SelectedIndexChanged += new System.EventHandler(this.cmbRolls_SelectedIndexChanged);
-            panel5.Hide();
+            //panel5.Hide();
             // Load data with unchecked permissions initially
             //LoadDataWithUncheckedPermissions();
         }
 
         private void cmbRolls_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panel5.Show();
             int selectedRollsId = Convert.ToInt32(cmbRolls.SelectedValue);
             LoadDataForRollsId(selectedRollsId);
             createUserDataGridView1.Show();
@@ -55,6 +56,8 @@ namespace WindowsFormsApp1
             _rollsId = rollsId;
             try
             {
+                if(rollsId == -1)
+                    rollsId = 1;
                 SqlCommand cmd = new SqlCommand("SELECT Module, Permission, IsEnable FROM UserRollsPermission WHERE RollsId = @rollsId", con);
                 cmd.Parameters.AddWithValue("@rollsId", rollsId);
                 permissionsTable = new DataTable();
@@ -64,7 +67,7 @@ namespace WindowsFormsApp1
                 con.Close();
 
                 // Check if there are no rows for the given RollsId
-                if (permissionsTable.Rows.Count == 0)
+                if (permissionsTable.Rows.Count == 0 && _rollsId != -1)
                 {
                     // Fetch default data (for example, for RollsId = 1) but with unchecked values
                     cmd = new SqlCommand("SELECT Module, Permission, IsEnable FROM UserRollsPermission WHERE RollsId = 1", con);
@@ -103,7 +106,6 @@ namespace WindowsFormsApp1
                     permissionsTable.Load(sdr);
                     con.Close();
                 }
-
                 // Creating a new DataTable with only the required columns
                 DataTable newDt = new DataTable();
                 newDt.Columns.Add("Module");
@@ -115,7 +117,14 @@ namespace WindowsFormsApp1
                 {
                     newDt.Rows.Add(row["Module"], row["Permission"], row["IsEnable"]);
                 }
-
+                if (_rollsId == -1)
+                {
+                    // Set IsEnable to false for all rows
+                    foreach (DataRow row in newDt.Rows)
+                    {
+                        row["Activation"] = false;
+                    }
+                }
                 // Setting the DataGridView's DataSource to the new DataTable
                 createUserDataGridView1.DataSource = newDt;
                 createUserDataGridView1.Show();
@@ -157,25 +166,32 @@ namespace WindowsFormsApp1
         {
             try
             {
-                bool flag = false;
-                foreach (DataGridViewRow row in createUserDataGridView1.Rows)
+                if (cmbRolls.Text != "")
                 {
-                    if (row != null)
+                    bool flag = false;
+                    foreach (DataGridViewRow row in createUserDataGridView1.Rows)
                     {
-                        activation_isEnable = (bool) row.Cells["Activation"].Value;
-                        activation_module = row.Cells["Module"].Value.ToString();
-                        activation_permission = row.Cells["Permission"].Value.ToString();
-                        string query = "UPDATE UserRollsPermission " +
-                           "SET IsEnable = '" + activation_isEnable + "' " +
-                           "WHERE Module = '" + activation_module + "' " +
-                           "AND Permission = '" + activation_permission + "' " +
-                           "AND RollsId = '" + _rollsId + "'";
-                        flag = hp.PostDataset(query);
+                        if (row != null)
+                        {
+                            activation_isEnable = (bool)row.Cells["Activation"].Value;
+                            activation_module = row.Cells["Module"].Value.ToString();
+                            activation_permission = row.Cells["Permission"].Value.ToString();
+                            string query = "UPDATE UserRollsPermission " +
+                               "SET IsEnable = '" + activation_isEnable + "' " +
+                               "WHERE Module = '" + activation_module + "' " +
+                               "AND Permission = '" + activation_permission + "' " +
+                               "AND RollsId = '" + _rollsId + "'";
+                            flag = hp.PostDataset(query);
+                        }
+                    }
+                    if (flag)
+                    {
+                        hp.InfoMessage("Permissions updated successfully");
                     }
                 }
-                if (flag)
+                else
                 {
-                    hp.InfoMessage("Permissions updated successfully");
+                    hp.InfoMessage("Select user roll.");
                 }
             }
             catch (Exception ex)
@@ -186,18 +202,22 @@ namespace WindowsFormsApp1
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            cmbRolls.Text = "Select User Roll";//string.Empty;
+            cmbRolls.Text = "";//string.Empty;
             //cmbRolls.DropDownStyle = ComboBoxStyle.DropDownList;
             //cmbRolls.Enabled = true;
             if (createUserDataGridView1.DataSource is DataTable dt)
             {
-                dt.Rows.Clear();
+                //dt.Rows.Clear();
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["Activation"] = false;
+                }
             }
-            else
-            {
-                createUserDataGridView1.Rows.Clear();
-            }
-            panel5.Hide();
+            //else
+            //{
+            //    createUserDataGridView1.Rows.Clear();
+            //}
+            //panel5.Hide();
         }
     }
 }

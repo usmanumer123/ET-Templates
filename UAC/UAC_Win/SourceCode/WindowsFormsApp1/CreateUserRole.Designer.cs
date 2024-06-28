@@ -34,24 +34,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.txtCreated = new System.Windows.Forms.TextBox();
-            this.txtRolesDesc = new System.Windows.Forms.TextBox();
-            this.labelRoleDesc = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnDone = new System.Windows.Forms.Button();
-            this.enableCheckbox = new Bunifu.Framework.UI.BunifuCheckbox();
             this.label6 = new System.Windows.Forms.Label();
+            this.enableCheckbox = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnDone = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.labelRoleDesc = new System.Windows.Forms.Label();
+            this.txtRolesDesc = new System.Windows.Forms.TextBox();
+            this.txtCreated = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -111,146 +111,18 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // panel2
+            // label6
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.txtCreated);
-            this.panel2.Controls.Add(this.txtRolesDesc);
-            this.panel2.Controls.Add(this.labelRoleDesc);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.enableCheckbox);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(0, 130);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1856, 862);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel6
-            // 
-            this.panel6.Location = new System.Drawing.Point(0, 255);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1852, 425);
-            this.panel6.TabIndex = 48;
-            // 
-            // txtCreated
-            // 
-            this.txtCreated.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtCreated.BackColor = System.Drawing.Color.White;
-            this.txtCreated.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCreated.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.txtCreated.Location = new System.Drawing.Point(1327, 30);
-            this.txtCreated.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCreated.Name = "txtCreated";
-            this.txtCreated.Size = new System.Drawing.Size(27, 37);
-            this.txtCreated.TabIndex = 47;
-            this.txtCreated.Visible = false;
-            // 
-            // txtRolesDesc
-            // 
-            this.txtRolesDesc.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtRolesDesc.BackColor = System.Drawing.Color.White;
-            this.txtRolesDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRolesDesc.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRolesDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.txtRolesDesc.Location = new System.Drawing.Point(749, 105);
-            this.txtRolesDesc.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRolesDesc.Name = "txtRolesDesc";
-            this.txtRolesDesc.Size = new System.Drawing.Size(378, 37);
-            this.txtRolesDesc.TabIndex = 46;
-            // 
-            // labelRoleDesc
-            // 
-            this.labelRoleDesc.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelRoleDesc.AutoSize = true;
-            this.labelRoleDesc.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRoleDesc.Location = new System.Drawing.Point(744, 57);
-            this.labelRoleDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelRoleDesc.Name = "labelRoleDesc";
-            this.labelRoleDesc.Size = new System.Drawing.Size(231, 29);
-            this.labelRoleDesc.TabIndex = 45;
-            this.labelRoleDesc.Text = "Roles Description:";
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel5.Controls.Add(this.btnDeleteUser);
-            this.panel5.Controls.Add(this.btnUpdate);
-            this.panel5.Controls.Add(this.btnCancel);
-            this.panel5.Controls.Add(this.btnDone);
-            this.panel5.Location = new System.Drawing.Point(476, 704);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(927, 123);
-            this.panel5.TabIndex = 44;
-            // 
-            // btnDeleteUser
-            // 
-            this.btnDeleteUser.BackColor = System.Drawing.Color.White;
-            this.btnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteUser.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteUser.Location = new System.Drawing.Point(496, 47);
-            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(169, 57);
-            this.btnDeleteUser.TabIndex = 33;
-            this.btnDeleteUser.Text = "Delete";
-            this.btnDeleteUser.UseVisualStyleBackColor = false;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.White;
-            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnUpdate.Location = new System.Drawing.Point(259, 47);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(169, 57);
-            this.btnUpdate.TabIndex = 32;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.White;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnCancel.Location = new System.Drawing.Point(728, 47);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(169, 57);
-            this.btnCancel.TabIndex = 30;
-            this.btnCancel.Text = "Reset";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnDone
-            // 
-            this.btnDone.BackColor = System.Drawing.Color.White;
-            this.btnDone.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDone.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnDone.Location = new System.Drawing.Point(28, 47);
-            this.btnDone.Margin = new System.Windows.Forms.Padding(5);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(169, 57);
-            this.btnDone.TabIndex = 31;
-            this.btnDone.Text = "Save";
-            this.btnDone.UseVisualStyleBackColor = false;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(44, 43);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(234, 29);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "Active / Deactive :";
+            this.label6.Visible = false;
             // 
             // enableCheckbox
             // 
@@ -262,25 +134,157 @@
             this.enableCheckbox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.enableCheckbox.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enableCheckbox.ForeColor = System.Drawing.Color.White;
-            this.enableCheckbox.Location = new System.Drawing.Point(1005, 191);
+            this.enableCheckbox.Location = new System.Drawing.Point(309, 52);
             this.enableCheckbox.Margin = new System.Windows.Forms.Padding(5);
             this.enableCheckbox.Name = "enableCheckbox";
             this.enableCheckbox.Size = new System.Drawing.Size(20, 20);
             this.enableCheckbox.TabIndex = 43;
             this.enableCheckbox.Visible = false;
             // 
-            // label6
+            // panel5
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(744, 187);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(234, 29);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "Active / Deactive :";
-            this.label6.Visible = false;
+            this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel5.Controls.Add(this.btnDeleteUser);
+            this.panel5.Controls.Add(this.btnUpdate);
+            this.panel5.Controls.Add(this.btnCancel);
+            this.panel5.Controls.Add(this.btnDone);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(0, 800);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1856, 123);
+            this.panel5.TabIndex = 44;
+            // 
+            // btnDone
+            // 
+            this.btnDone.BackColor = System.Drawing.Color.White;
+            this.btnDone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDone.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnDone.Location = new System.Drawing.Point(522, 33);
+            this.btnDone.Margin = new System.Windows.Forms.Padding(5);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(169, 57);
+            this.btnDone.TabIndex = 31;
+            this.btnDone.Text = "Save";
+            this.btnDone.UseVisualStyleBackColor = false;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.White;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btnCancel.Location = new System.Drawing.Point(1222, 33);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(169, 57);
+            this.btnCancel.TabIndex = 30;
+            this.btnCancel.Text = "Reset";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.White;
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnUpdate.Location = new System.Drawing.Point(753, 33);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(169, 57);
+            this.btnUpdate.TabIndex = 32;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.BackColor = System.Drawing.Color.White;
+            this.btnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteUser.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteUser.Location = new System.Drawing.Point(990, 33);
+            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(169, 57);
+            this.btnDeleteUser.TabIndex = 33;
+            this.btnDeleteUser.Text = "Delete";
+            this.btnDeleteUser.UseVisualStyleBackColor = false;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
+            // labelRoleDesc
+            // 
+            this.labelRoleDesc.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelRoleDesc.AutoSize = true;
+            this.labelRoleDesc.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRoleDesc.Location = new System.Drawing.Point(517, 43);
+            this.labelRoleDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRoleDesc.Name = "labelRoleDesc";
+            this.labelRoleDesc.Size = new System.Drawing.Size(218, 29);
+            this.labelRoleDesc.TabIndex = 45;
+            this.labelRoleDesc.Text = "Role Description:";
+            // 
+            // txtRolesDesc
+            // 
+            this.txtRolesDesc.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtRolesDesc.BackColor = System.Drawing.Color.White;
+            this.txtRolesDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRolesDesc.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRolesDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.txtRolesDesc.Location = new System.Drawing.Point(875, 43);
+            this.txtRolesDesc.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRolesDesc.Name = "txtRolesDesc";
+            this.txtRolesDesc.Size = new System.Drawing.Size(378, 37);
+            this.txtRolesDesc.TabIndex = 46;
+            // 
+            // txtCreated
+            // 
+            this.txtCreated.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtCreated.BackColor = System.Drawing.Color.White;
+            this.txtCreated.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCreated.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCreated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.txtCreated.Location = new System.Drawing.Point(363, 35);
+            this.txtCreated.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCreated.Name = "txtCreated";
+            this.txtCreated.Size = new System.Drawing.Size(27, 37);
+            this.txtCreated.TabIndex = 47;
+            this.txtCreated.Visible = false;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Location = new System.Drawing.Point(0, 128);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1852, 674);
+            this.panel6.TabIndex = 48;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.txtCreated);
+            this.panel2.Controls.Add(this.txtRolesDesc);
+            this.panel2.Controls.Add(this.labelRoleDesc);
+            this.panel2.Controls.Add(this.panel6);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.enableCheckbox);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 123);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1856, 923);
+            this.panel2.TabIndex = 1;
             // 
             // CreateUserRole
             // 
@@ -301,9 +305,9 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -311,21 +315,21 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
-        private Bunifu.Framework.UI.BunifuCheckbox enableCheckbox;
         private System.Windows.Forms.Label label6;
+        private Bunifu.Framework.UI.BunifuCheckbox enableCheckbox;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDone;
-        private System.Windows.Forms.TextBox txtRolesDesc;
         private System.Windows.Forms.Label labelRoleDesc;
+        private System.Windows.Forms.TextBox txtRolesDesc;
         private System.Windows.Forms.TextBox txtCreated;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.Panel panel2;
     }
 }

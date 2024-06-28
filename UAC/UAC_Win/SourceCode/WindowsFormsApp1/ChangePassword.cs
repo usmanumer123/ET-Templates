@@ -33,7 +33,10 @@ namespace WindowsFormsApp1
         {
             try
             {
-                changePassword();
+                if (txtNewPass.Text != "")
+                    changePassword();
+                else
+                    hp.InfoMessage("Enter valid password.");
             }
             catch (Exception ex)
             {
