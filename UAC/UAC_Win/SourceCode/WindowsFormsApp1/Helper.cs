@@ -81,7 +81,6 @@ namespace WindowsFormsApp1
                 cn.Close();
             }
         }
-
         public DataSet GetDataset2(String queryString, String ConnectionString, String TableName)
         {
             DataSet ds = new DataSet();
@@ -160,7 +159,6 @@ namespace WindowsFormsApp1
                 objConn.Dispose();
             }
         }
-
         public string ExecuteNonQuery(String strQuery)
         {
             SqlConnection objConn = new SqlConnection();
@@ -194,7 +192,5 @@ namespace WindowsFormsApp1
                 objConn.Dispose();
             }
         }
-
-
     }
 }

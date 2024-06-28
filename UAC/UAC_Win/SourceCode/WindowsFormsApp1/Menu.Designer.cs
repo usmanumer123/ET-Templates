@@ -71,6 +71,7 @@
             // 
             // iconBtnAbout
             // 
+            this.iconBtnAbout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconBtnAbout.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconBtnAbout.FlatAppearance.BorderSize = 0;
             this.iconBtnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -113,6 +114,7 @@
             // btnUserPermission
             // 
             this.btnUserPermission.BackColor = System.Drawing.Color.White;
+            this.btnUserPermission.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUserPermission.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUserPermission.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnUserPermission.FlatAppearance.BorderSize = 0;
@@ -133,6 +135,7 @@
             // btnCreateUserRoles
             // 
             this.btnCreateUserRoles.BackColor = System.Drawing.Color.White;
+            this.btnCreateUserRoles.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreateUserRoles.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCreateUserRoles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnCreateUserRoles.FlatAppearance.BorderSize = 0;
@@ -153,6 +156,7 @@
             // btnChangePassword
             // 
             this.btnChangePassword.BackColor = System.Drawing.Color.White;
+            this.btnChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChangePassword.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnChangePassword.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnChangePassword.FlatAppearance.BorderSize = 0;
@@ -173,6 +177,7 @@
             // btnCreateUser
             // 
             this.btnCreateUser.BackColor = System.Drawing.Color.White;
+            this.btnCreateUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreateUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCreateUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnCreateUser.FlatAppearance.BorderSize = 0;
@@ -193,6 +198,7 @@
             // btnexit
             // 
             this.btnexit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnexit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnexit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnexit.FlatAppearance.BorderSize = 0;
             this.btnexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -218,6 +224,7 @@
             // 
             // iconBtnUAC
             // 
+            this.iconBtnUAC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconBtnUAC.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconBtnUAC.FlatAppearance.BorderSize = 0;
             this.iconBtnUAC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -245,6 +252,7 @@
             // 
             // iconBtnHome
             // 
+            this.iconBtnHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconBtnHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconBtnHome.FlatAppearance.BorderSize = 0;
             this.iconBtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -285,6 +293,7 @@
             // 
             // btnMenu
             // 
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMenu.FlatAppearance.BorderSize = 0;
             this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenu.IconChar = FontAwesome.Sharp.IconChar.Navicon;

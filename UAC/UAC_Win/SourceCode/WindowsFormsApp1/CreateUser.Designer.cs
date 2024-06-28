@@ -280,6 +280,7 @@
             // btnResetUser
             // 
             this.btnResetUser.BackColor = System.Drawing.Color.White;
+            this.btnResetUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResetUser.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.btnResetUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -296,6 +297,7 @@
             // btnDeleteUser
             // 
             this.btnDeleteUser.BackColor = System.Drawing.Color.White;
+            this.btnDeleteUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,6 +314,7 @@
             // btnUpdateUser
             // 
             this.btnUpdateUser.BackColor = System.Drawing.Color.White;
+            this.btnUpdateUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdateUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnUpdateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -327,6 +330,8 @@
             // 
             // btnInsertUser
             // 
+            this.btnInsertUser.BackColor = System.Drawing.Color.White;
+            this.btnInsertUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInsertUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnInsertUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInsertUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

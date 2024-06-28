@@ -37,10 +37,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.enableCheckbox = new Bunifu.Framework.UI.BunifuCheckbox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnDone = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
             this.labelRoleDesc = new System.Windows.Forms.Label();
             this.txtRolesDesc = new System.Windows.Forms.TextBox();
             this.txtCreated = new System.Windows.Forms.TextBox();
@@ -155,37 +155,22 @@
             this.panel5.Size = new System.Drawing.Size(1856, 123);
             this.panel5.TabIndex = 44;
             // 
-            // btnDone
+            // btnDeleteUser
             // 
-            this.btnDone.BackColor = System.Drawing.Color.White;
-            this.btnDone.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDone.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnDone.Location = new System.Drawing.Point(522, 33);
-            this.btnDone.Margin = new System.Windows.Forms.Padding(5);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(169, 57);
-            this.btnDone.TabIndex = 31;
-            this.btnDone.Text = "Save";
-            this.btnDone.UseVisualStyleBackColor = false;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.White;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnCancel.Location = new System.Drawing.Point(1222, 33);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(169, 57);
-            this.btnCancel.TabIndex = 30;
-            this.btnCancel.Text = "Reset";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnDeleteUser.BackColor = System.Drawing.Color.White;
+            this.btnDeleteUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteUser.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteUser.Location = new System.Drawing.Point(990, 33);
+            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(169, 57);
+            this.btnDeleteUser.TabIndex = 33;
+            this.btnDeleteUser.Text = "Delete";
+            this.btnDeleteUser.UseVisualStyleBackColor = false;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
             // 
             // btnUpdate
             // 
@@ -203,21 +188,37 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnDeleteUser
+            // btnCancel
             // 
-            this.btnDeleteUser.BackColor = System.Drawing.Color.White;
-            this.btnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteUser.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteUser.Location = new System.Drawing.Point(990, 33);
-            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(169, 57);
-            this.btnDeleteUser.TabIndex = 33;
-            this.btnDeleteUser.Text = "Delete";
-            this.btnDeleteUser.UseVisualStyleBackColor = false;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            this.btnCancel.BackColor = System.Drawing.Color.White;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btnCancel.Location = new System.Drawing.Point(1222, 33);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(169, 57);
+            this.btnCancel.TabIndex = 30;
+            this.btnCancel.Text = "Reset";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnDone
+            // 
+            this.btnDone.BackColor = System.Drawing.Color.White;
+            this.btnDone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDone.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnDone.Location = new System.Drawing.Point(522, 33);
+            this.btnDone.Margin = new System.Windows.Forms.Padding(5);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(169, 57);
+            this.btnDone.TabIndex = 31;
+            this.btnDone.Text = "Save";
+            this.btnDone.UseVisualStyleBackColor = false;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // labelRoleDesc
             // 
