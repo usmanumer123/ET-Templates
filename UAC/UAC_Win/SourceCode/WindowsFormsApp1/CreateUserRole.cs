@@ -41,7 +41,6 @@ namespace WindowsFormsApp1
 
         private void CreateUserRole_Load(object sender, EventArgs e)
         {
-            txtCreated.Text = Shared.RoleDesc.ToString();
             GetUserRecord();
         }
         
@@ -108,7 +107,6 @@ namespace WindowsFormsApp1
         private void btnCancel_Click(object sender, EventArgs e)
         {
             txtRolesDesc.Text = "";
-            enableCheckbox.Checked = false;
             txtRolesDesc.Focus();
         }
 
@@ -121,15 +119,10 @@ namespace WindowsFormsApp1
                     con.Open();
                     foreach (DataGridViewRow row in userRollsDataGridView1.Rows)
                     {
-                        if (row.Cells["RollsId"].Value != null)/*&& row.Cells["IsEnabled"].Value != null*/
+                        if (row.Cells["RollsId"].Value != null)
                         {
-                            int rollsId = Convert.ToInt32(row.Cells["RollsId"].Value);
-                            // bool isEnabled = Convert.ToBoolean(row.Cells["IsEnabled"].Value);
-
-                            SqlCommand cmd = new SqlCommand("UPDATE UserRolls SET RollsDesc=@rolldesc WHERE RollsId = @id", con);
-
+                            SqlCommand cmd = new SqlCommand("UPDATE UserRolls SET RollsDesc = @rolldesc WHERE RollsId = @id", con);
                             cmd.Parameters.AddWithValue("@rolldesc", txtRolesDesc.Text);
-                            //cmd.Parameters.AddWithValue("@isenable", enableCheckbox.Checked);
                             cmd.Parameters.AddWithValue("@id", this.RollsId);
 
                             cmd.ExecuteNonQuery();
@@ -153,8 +146,6 @@ namespace WindowsFormsApp1
             {
                 RollsId = Convert.ToInt32(userRollsDataGridView1.SelectedRows[0].Cells[0].Value);
                 txtRolesDesc.Text = userRollsDataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                txtCreated.Text = userRollsDataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-               // enableCheckbox.Checked = bool.Parse(userRollsDataGridView1.SelectedRows[0].Cells[2].Value.ToString());
             }
         }
 

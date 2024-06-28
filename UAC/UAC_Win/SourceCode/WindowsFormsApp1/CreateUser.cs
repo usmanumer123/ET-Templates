@@ -42,7 +42,6 @@ namespace WindowsFormsApp1
 
         private void CreateUser_Load(object sender, EventArgs e)
         {
-            txtCreatedBy.Text = Shared.RoleDesc.ToString();
             PopulateComboBox();
             GetUserRecord();
         }
@@ -165,8 +164,6 @@ namespace WindowsFormsApp1
         {
             UserId = 0;
             txtUserName.Text = "";
-            //txtCreatedBy.Text = "";
-            txtRollsId.Text = "";
             txtPassword.Text = "";
             enableCheckbox.Checked = false;
             txtUserName.Focus();
@@ -182,11 +179,11 @@ namespace WindowsFormsApp1
                     int selectedRollsId = Convert.ToInt32(comboBox1.SelectedValue);
                     if (UserId > 0)
                     {
-                        SqlCommand cmd = new SqlCommand("UPDATE UserProfile SET UserName=@name, CreatedBy=@created, RollsID=@rolls, Password=@password, IsEnabled=@isenable WHERE UserId=@Id", con);
+                        SqlCommand cmd = new SqlCommand("UPDATE UserProfile SET UserName=@name, RollsID=@rolls, Password=@password, IsEnabled=@isenable WHERE UserId=@Id", con);
 
                         cmd.CommandType = CommandType.Text;
                         cmd.Parameters.AddWithValue("@name", txtUserName.Text);
-                        cmd.Parameters.AddWithValue("@created", txtCreatedBy.Text);
+                        //cmd.Parameters.AddWithValue("@created", Shared.CreatedBy);
                         cmd.Parameters.AddWithValue("@rolls", selectedRollsId);
                         cmd.Parameters.AddWithValue("@password", Shared.EncryptPassword(txtPassword.Text));
                         cmd.Parameters.AddWithValue("@isenable", enableCheckbox.Checked);
@@ -252,7 +249,6 @@ namespace WindowsFormsApp1
                 {
                     UserId = Convert.ToInt32(createUserDataGridView1.SelectedRows[0].Cells["UserId"].Value);
                     txtUserName.Text = createUserDataGridView1.SelectedRows[0].Cells["UserName"].Value.ToString();
-                    txtCreatedBy.Text = createUserDataGridView1.SelectedRows[0].Cells["CreatedBy"].Value.ToString();
                     
                     // Retrieve and validate RollsDesc
                     string rollsDesc = createUserDataGridView1.SelectedRows[0].Cells["Rolls"].Value.ToString();

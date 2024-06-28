@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
             Shared.Password = user.Password;
             Shared.UserId = user.UserId;
             Shared.RollsId = user.RollsID;
-            Shared.RoleDesc = user.CreatedBy;
+            Shared.CreatedBy = user.CreatedBy;
             form.Show();
         }
 

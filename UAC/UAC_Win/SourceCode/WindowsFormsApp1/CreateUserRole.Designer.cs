@@ -34,8 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.enableCheckbox = new Bunifu.Framework.UI.BunifuCheckbox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -43,7 +41,6 @@
             this.btnDone = new System.Windows.Forms.Button();
             this.labelRoleDesc = new System.Windows.Forms.Label();
             this.txtRolesDesc = new System.Windows.Forms.TextBox();
-            this.txtCreated = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -110,36 +107,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(44, 43);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(234, 29);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "Active / Deactive :";
-            this.label6.Visible = false;
-            // 
-            // enableCheckbox
-            // 
-            this.enableCheckbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.enableCheckbox.BackColor = System.Drawing.Color.White;
-            this.enableCheckbox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.enableCheckbox.ChechedOffColor = System.Drawing.Color.White;
-            this.enableCheckbox.Checked = false;
-            this.enableCheckbox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.enableCheckbox.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.enableCheckbox.ForeColor = System.Drawing.Color.White;
-            this.enableCheckbox.Location = new System.Drawing.Point(309, 52);
-            this.enableCheckbox.Margin = new System.Windows.Forms.Padding(5);
-            this.enableCheckbox.Name = "enableCheckbox";
-            this.enableCheckbox.Size = new System.Drawing.Size(20, 20);
-            this.enableCheckbox.TabIndex = 43;
-            this.enableCheckbox.Visible = false;
             // 
             // panel5
             // 
@@ -245,20 +212,6 @@
             this.txtRolesDesc.Size = new System.Drawing.Size(378, 37);
             this.txtRolesDesc.TabIndex = 46;
             // 
-            // txtCreated
-            // 
-            this.txtCreated.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtCreated.BackColor = System.Drawing.Color.White;
-            this.txtCreated.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCreated.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.txtCreated.Location = new System.Drawing.Point(363, 35);
-            this.txtCreated.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCreated.Name = "txtCreated";
-            this.txtCreated.Size = new System.Drawing.Size(27, 37);
-            this.txtCreated.TabIndex = 47;
-            this.txtCreated.Visible = false;
-            // 
             // panel6
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -273,13 +226,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.txtCreated);
             this.panel2.Controls.Add(this.txtRolesDesc);
             this.panel2.Controls.Add(this.labelRoleDesc);
             this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.enableCheckbox);
-            this.panel2.Controls.Add(this.label6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 123);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -320,8 +270,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private Bunifu.Framework.UI.BunifuCheckbox enableCheckbox;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnDeleteUser;
         private System.Windows.Forms.Button btnUpdate;
@@ -329,7 +277,6 @@
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.Label labelRoleDesc;
         private System.Windows.Forms.TextBox txtRolesDesc;
-        private System.Windows.Forms.TextBox txtCreated;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel2;
     }

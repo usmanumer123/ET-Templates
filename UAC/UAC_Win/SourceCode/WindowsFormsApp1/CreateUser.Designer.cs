@@ -33,11 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtRollsId = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtCreatedBy = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.enableCheckbox = new Bunifu.Framework.UI.BunifuCheckbox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -103,18 +100,6 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Rolls:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1413, 198);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 29);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Rolls Id :";
-            this.label3.Visible = false;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -125,19 +110,6 @@
             this.label6.Size = new System.Drawing.Size(226, 29);
             this.label6.TabIndex = 14;
             this.label6.Text = "Active / Deactive:";
-            // 
-            // txtRollsId
-            // 
-            this.txtRollsId.BackColor = System.Drawing.Color.White;
-            this.txtRollsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRollsId.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRollsId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.txtRollsId.Location = new System.Drawing.Point(1419, 247);
-            this.txtRollsId.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRollsId.Name = "txtRollsId";
-            this.txtRollsId.Size = new System.Drawing.Size(258, 32);
-            this.txtRollsId.TabIndex = 19;
-            this.txtRollsId.Visible = false;
             // 
             // txtPassword
             // 
@@ -151,19 +123,6 @@
             this.txtPassword.Size = new System.Drawing.Size(258, 32);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
-            // 
-            // txtCreatedBy
-            // 
-            this.txtCreatedBy.BackColor = System.Drawing.Color.White;
-            this.txtCreatedBy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCreatedBy.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreatedBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.txtCreatedBy.Location = new System.Drawing.Point(1419, 303);
-            this.txtCreatedBy.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCreatedBy.Name = "txtCreatedBy";
-            this.txtCreatedBy.Size = new System.Drawing.Size(258, 32);
-            this.txtCreatedBy.TabIndex = 16;
-            this.txtCreatedBy.Visible = false;
             // 
             // txtUserName
             // 
@@ -371,11 +330,8 @@
             this.Controls.Add(this.enableCheckbox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.txtCreatedBy);
             this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtRollsId);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -402,11 +358,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtRollsId;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtCreatedBy;
         private System.Windows.Forms.TextBox txtUserName;
         private Bunifu.Framework.UI.BunifuCheckbox enableCheckbox;
         private System.Windows.Forms.ComboBox comboBox1;
