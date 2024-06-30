@@ -36,7 +36,7 @@
             this.btnCreateUserRoles = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.btnCreateUser = new System.Windows.Forms.Button();
-            this.btnexit = new FontAwesome.Sharp.IconButton();
+            this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.iconBtnUAC = new FontAwesome.Sharp.IconButton();
             this.iconBtnHome = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -58,7 +58,7 @@
             this.panelMenu.BackColor = System.Drawing.Color.White;
             this.panelMenu.Controls.Add(this.iconBtnAbout);
             this.panelMenu.Controls.Add(this.panelUACSubMenu);
-            this.panelMenu.Controls.Add(this.btnexit);
+            this.panelMenu.Controls.Add(this.btnLogout);
             this.panelMenu.Controls.Add(this.iconBtnUAC);
             this.panelMenu.Controls.Add(this.iconBtnHome);
             this.panelMenu.Controls.Add(this.panel1);
@@ -195,32 +195,32 @@
             this.btnCreateUser.UseVisualStyleBackColor = false;
             this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
             // 
-            // btnexit
+            // btnLogout
             // 
-            this.btnexit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnexit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnexit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnexit.FlatAppearance.BorderSize = 0;
-            this.btnexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnexit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexit.ForeColor = System.Drawing.Color.White;
-            this.btnexit.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
-            this.btnexit.IconColor = System.Drawing.Color.White;
-            this.btnexit.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnexit.IconSize = 30;
-            this.btnexit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnexit.Location = new System.Drawing.Point(0, 561);
-            this.btnexit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
-            this.btnexit.Name = "btnexit";
-            this.btnexit.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnexit.Size = new System.Drawing.Size(427, 123);
-            this.btnexit.TabIndex = 6;
-            this.btnexit.Tag = "Logout";
-            this.btnexit.Text = "   Logout";
-            this.btnexit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnexit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnexit.UseVisualStyleBackColor = false;
-            this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.btnLogout.IconColor = System.Drawing.Color.White;
+            this.btnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLogout.IconSize = 30;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(0, 561);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnLogout.Size = new System.Drawing.Size(427, 123);
+            this.btnLogout.TabIndex = 6;
+            this.btnLogout.Tag = "Logout";
+            this.btnLogout.Text = "   Logout";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // iconBtnUAC
             // 
@@ -277,7 +277,6 @@
             this.iconBtnHome.Click += new System.EventHandler(this.iconBtnHome_Click);
             this.iconBtnHome.MouseEnter += new System.EventHandler(this.iconBtnHome_MouseEnter);
             this.iconBtnHome.MouseLeave += new System.EventHandler(this.iconBtnHome_MouseLeave);
-            this.iconBtnHome.MouseHover += new System.EventHandler(this.iconBtnHome_MouseHover);
             // 
             // panel1
             // 
@@ -384,7 +383,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton iconBtnHome;
-        private FontAwesome.Sharp.IconButton btnexit;
+        private FontAwesome.Sharp.IconButton btnLogout;
         private FontAwesome.Sharp.IconButton iconBtnUAC;
         private FontAwesome.Sharp.IconButton btnMenu;
         private System.Windows.Forms.Panel panelUACSubMenu;

@@ -1,5 +1,7 @@
 ﻿using Bunifu.Framework.UI;
 using System;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,6 +17,8 @@ namespace WindowsFormsApp1
         public static int RoleDesc;
         public static int RollsId;
         public static int CreatedBy;
+        public static UACEntities context = new UACEntities();
+        public static Helper hp = new Helper();
 
         public static string EncryptPassword(string plainText)
         {

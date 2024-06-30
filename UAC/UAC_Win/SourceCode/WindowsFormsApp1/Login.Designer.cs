@@ -37,7 +37,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.labelUserId = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.resetBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -50,7 +50,7 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.closebtn = new System.Windows.Forms.Button();
+            this.closeBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -126,13 +126,13 @@
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.labelUserId);
-            this.panel2.Controls.Add(this.btnCancel);
+            this.panel2.Controls.Add(this.resetBtn);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.btnLogin);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.closebtn);
+            this.panel2.Controls.Add(this.closeBtn);
             this.panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(465, 0);
@@ -165,21 +165,21 @@
             this.labelUserId.TabIndex = 39;
             this.labelUserId.Text = "User Id:";
             // 
-            // btnCancel
+            // resetBtn
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.White;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btnCancel.Location = new System.Drawing.Point(395, 432);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(124, 46);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Reset";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.button1_Click);
+            this.resetBtn.BackColor = System.Drawing.Color.White;
+            this.resetBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.resetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resetBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetBtn.ForeColor = System.Drawing.Color.LimeGreen;
+            this.resetBtn.Location = new System.Drawing.Point(395, 432);
+            this.resetBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(124, 46);
+            this.resetBtn.TabIndex = 3;
+            this.resetBtn.Text = "Reset";
+            this.resetBtn.UseVisualStyleBackColor = false;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // label7
             // 
@@ -208,7 +208,7 @@
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.loginbtn_Click);
+            this.btnLogin.Click += new System.EventHandler(this.loginBtn_Click);
             // 
             // panel4
             // 
@@ -315,7 +315,6 @@
             this.txtUserName.Size = new System.Drawing.Size(317, 25);
             this.txtUserName.TabIndex = 0;
             this.txtUserName.TextChanged += new System.EventHandler(this.usernameText_TextChanged);
-            this.txtUserName.Enter += new System.EventHandler(this.usernameText_Enter);
             // 
             // pictureBox2
             // 
@@ -341,22 +340,22 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Login To Your Account";
             // 
-            // closebtn
+            // closeBtn
             // 
-            this.closebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.closebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closebtn.FlatAppearance.BorderSize = 0;
-            this.closebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closebtn.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closebtn.ForeColor = System.Drawing.Color.White;
-            this.closebtn.Location = new System.Drawing.Point(646, 1);
-            this.closebtn.Margin = new System.Windows.Forms.Padding(4);
-            this.closebtn.Name = "closebtn";
-            this.closebtn.Size = new System.Drawing.Size(40, 37);
-            this.closebtn.TabIndex = 0;
-            this.closebtn.Text = "X";
-            this.closebtn.UseVisualStyleBackColor = false;
-            this.closebtn.Click += new System.EventHandler(this.closebtn_Click);
+            this.closeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.closeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeBtn.FlatAppearance.BorderSize = 0;
+            this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeBtn.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeBtn.ForeColor = System.Drawing.Color.White;
+            this.closeBtn.Location = new System.Drawing.Point(646, 1);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(40, 37);
+            this.closeBtn.TabIndex = 0;
+            this.closeBtn.Text = "X";
+            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // Login
             // 
@@ -395,7 +394,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button closebtn;
+        private System.Windows.Forms.Button closeBtn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
@@ -405,7 +404,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Label usererror;
         private System.Windows.Forms.Label passerror;
         private System.Windows.Forms.Label label8;

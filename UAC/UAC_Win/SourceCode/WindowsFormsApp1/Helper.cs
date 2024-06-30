@@ -15,13 +15,12 @@ namespace WindowsFormsApp1
     public class Helper
     {
         public string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString.ToString();
-
         SqlConnection cn;
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
-
         UACEntities context = new UACEntities();
+
         public void ErrorMessage(String Message)
         {
             MessageBox.Show(Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button3);

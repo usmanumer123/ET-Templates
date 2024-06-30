@@ -8,28 +8,22 @@ namespace WindowsFormsApp1
 {
     public partial class Menu : Form
     {
-        private Form activeForm = null;
-        private int borderSize = 2; //Since the form is resized because it takes into account the
-        private Size formSize; //size of the title bar and borders.
+        private int borderSize = 2; 
         private Color defaultTabColor = Color.FromArgb(41, 128, 185);
         private Color TabColorOnClick = Color.FromArgb(73, 180, 230);
-        
-        UACEntities context = new UACEntities();
 
         public Menu()
         {
             InitializeComponent();
             customizeDesign();
-            //CollapseMenu();
             panelMenu.Width = 350;
-            this.Padding = new Padding(borderSize);//Border size
-            this.BackColor = Color.FromArgb(98, 102, 244);//Border color
+            this.Padding = new Padding(borderSize);
+            this.BackColor = Color.FromArgb(98, 102, 244);
         }
 
         public Menu(int roleId)
         {
             InitializeComponent();
-
             panelMenu.Width = 350;
             btnCreateUser.Enabled = CheckUserPermission(roleId, "Create User");
             btnChangePassword.Enabled = CheckUserPermission(roleId, "Change Password");
@@ -44,15 +38,6 @@ namespace WindowsFormsApp1
 
         private void ResetTabColors()
         {
-            //// Reset the background color of all tab buttons to default
-            //foreach (Control control in panelMenu.Controls)
-            //{
-            //    if (control is Button tabButton)
-            //    {
-            //        tabButton.BackColor = defaultTabColor;
-            //    }
-            //}
-            // Reset the background color and foreground color of all icon buttons to default
             iconBtnHome.BackColor = Color.White;
             iconBtnHome.ForeColor = defaultTabColor;
             iconBtnHome.IconColor = defaultTabColor;
@@ -79,9 +64,7 @@ namespace WindowsFormsApp1
 
         private bool CheckUserPermission(int roleId, string module)
         {
-            //var permissions = context.UserRollsPermissions.FirstOrDefault(p => p.RollsId == roleId && p.Module == module );
-            //return permissions != null && permissions.IsEnable;
-            var permissions = context.UserRollsPermissions
+            var permissions = Shared.context.UserRollsPermissions
                 .Where(p => p.RollsId == roleId && p.Module == module)
                 .ToList();
             bool anyPermissionEnabled = permissions.Any(p => p.IsEnable);
@@ -122,8 +105,6 @@ namespace WindowsFormsApp1
                     this.Padding = new Padding(8, 8, 8, 0); 
                     break;
                 case FormWindowState.Normal:
-                    //if (this.Padding.Top != borderSize)
-                    //    this.Padding = new Padding(borderSize);
                     this.Padding = new Padding(borderSize); 
                     break;
             }
@@ -136,7 +117,7 @@ namespace WindowsFormsApp1
 
         private void CollapseMenu()
         {
-            if (this.panelMenu.Width > 200) //Collapse menu
+            if (this.panelMenu.Width > 200)
             {
                 panelMenu.Width = 75;
                 pictureBox1.Visible = false;
@@ -165,17 +146,16 @@ namespace WindowsFormsApp1
 
         private void  openChildForm (Form childForm)
         {
-            if (activeForm != null)
-                activeForm.Close();
-
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            panelDesktop.Controls.Add(childForm);
-            panelDesktop.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();   
+            if (childForm != null)
+            {
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                panelDesktop.Controls.Add(childForm);
+                panelDesktop.Tag = childForm;
+                childForm.BringToFront();
+                childForm.Show();
+            }
         }
 
         private void iconBtnUAC_Click(object sender, EventArgs e)
@@ -191,17 +171,13 @@ namespace WindowsFormsApp1
                 panelUACSubMenu.Visible = false;
                 
             }
-            //CollapseMenu();
-            //SubmenuCollapse();
-            //openChildForm(new About());
         }
 
-        private void btnexit_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            //Application.Exit();
             Login form = new Login();
-            form.Show();
             this.Hide();
+            form.Show();
         }
 
         private void btnCreateUser_Click(object sender, EventArgs e)
@@ -232,7 +208,6 @@ namespace WindowsFormsApp1
         private void Menu_Load(object sender, EventArgs e)
         {
             panelUACSubMenu.Visible = false;
-            //iconBtnHome.BackColor = Color.SkyBlue;
         }
 
         private void btnCreateUserRoles_Click(object sender, EventArgs e)
@@ -299,14 +274,6 @@ namespace WindowsFormsApp1
                 iconBtnUAC.BackColor = Color.White;
                 iconBtnUAC.IconColor = defaultTabColor;
             }
-        }
-
-        private void iconBtnHome_MouseHover(object sender, EventArgs e)
-        {
-
-            //iconBtnHome.BackColor = Color.DarkBlue;
-            //iconBtnHome.ForeColor = Color.White;
-            
         }
 
         private void iconBtnAbout_MouseLeave(object sender, EventArgs e)
@@ -409,7 +376,7 @@ namespace WindowsFormsApp1
                 /// the value of wParam, an application must combine the value 0xFFF0 with the 
                 /// wParam value by using the bitwise AND operator.
                 int wParam = (m.WParam.ToInt32() & 0xFFF0);
-
+                Size formSize = this.ClientSize;
                 if (wParam == SC_MINIMIZE)  //Before
                     formSize = this.ClientSize;
                 if (wParam == SC_RESTORE)// Restored form(Before)
