@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using Bunifu.Framework.UI;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -7,6 +9,7 @@ namespace WindowsFormsApp1
         public About()
         {
             InitializeComponent();
+            bunifuCustomLabel4.Font = new Font("Century Gothic", 12F);
         }
     }
 }

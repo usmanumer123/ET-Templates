@@ -148,6 +148,7 @@ namespace WindowsFormsApp1
         {
             if (childForm != null)
             {
+                panelDesktop.Controls.Clear();
                 childForm.TopLevel = false;
                 childForm.FormBorderStyle = FormBorderStyle.None;
                 childForm.Dock = DockStyle.Fill;
