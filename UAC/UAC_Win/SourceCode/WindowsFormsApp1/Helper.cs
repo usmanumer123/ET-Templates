@@ -12,8 +12,7 @@ namespace WindowsFormsApp1
         SqlCommand cmd;
         SqlDataAdapter sda;
         DataTable dt;
-        UACEntities context = new UACEntities();
-
+        
         public void ErrorMessage(String Message)
         {
             MessageBox.Show(Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button3);

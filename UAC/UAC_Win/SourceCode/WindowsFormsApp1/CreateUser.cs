@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 using System.Linq;
-using System.Configuration;
 using Bunifu.Framework.UI;
 
 namespace WindowsFormsApp1
