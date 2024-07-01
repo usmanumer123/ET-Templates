@@ -1,14 +1,11 @@
 ﻿ using System;
-using System.Data.SqlClient;
+using System.Data;
 using System.Windows.Forms;
-using System.Configuration;
 
 namespace WindowsFormsApp1
 {
     public partial class ChangePassword : Form
     {
-        Helper hp = new Helper();
-
         public ChangePassword()
         {
             InitializeComponent();
@@ -18,14 +15,19 @@ namespace WindowsFormsApp1
         {
             try
             {
-                //btnNext.Visible = false;
                 txtUserName.Text = Shared.Username.ToString();
                 txtUserId.Text = Shared.UserId.ToString();
-                txtNewPass.Text = Shared.DecryptPassword(Shared.Password);
+
+                string query = $@"Select Password from UserProfile u where u.UserName = '{Shared.Username.ToString()}' and u.UserId = {Shared.UserId}";
+                DataSet ds = Shared.hp.GetDataset(query);
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    txtNewPass.Text = Shared.DecryptPassword(ds.Tables[0].Rows[0][0].ToString());
+                }
             }
             catch (Exception ex)
             {
-                hp.ErrorMessage(ex.Message.ToString());
+                Shared.hp.ErrorMessage(ex.Message.ToString());
             }
         }
 
@@ -36,54 +38,44 @@ namespace WindowsFormsApp1
                 if (txtNewPass.Text != "")
                     changePassword();
                 else
-                    hp.InfoMessage("Enter valid password.");
+                    Shared.hp.InfoMessage("Enter valid password.");
             }
             catch (Exception ex)
             {
-                hp.ErrorMessage(ex.Message.ToString());
+                Shared.hp.ErrorMessage(ex.Message.ToString());
             }
         }
 
         private void changePassword()
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString))
+            string query = $@"UPDATE UserProfile SET Password = '{Shared.EncryptPassword(txtNewPass.Text)}' WHERE UserName = '{txtUserName.Text}'";
+            bool flag = Shared.hp.PostDataset(query);
+            if (flag)
             {
-                string query = "UPDATE UserProfile SET Password = @NewPassword WHERE UserName = @UserName";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@NewPassword", Shared.EncryptPassword(txtNewPass.Text));
-                cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
-
-                try
-                {
-                    con.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Successfully Changed Password", "Changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        resetForm();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Password change failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    hp.ErrorMessage(ex.Message.ToString());
-                }
+                Shared.hp.InfoMessage("Successfully Changed Password");
+                resetForm();
+            }
+            else
+            {
+                Shared.hp.ErrorMessage("Password change failed");
             }
         }
 
         private void resetForm()
         {
-            txtNewPass.Text = "";
-            txtNewPass.Focus();
+            string query = $@"Select Password from UserProfile u where u.UserName = '{Shared.Username.ToString()}' and u.UserId = {Shared.UserId}";
+            DataSet ds = Shared.hp.GetDataset(query);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                txtNewPass.Text = Shared.DecryptPassword(ds.Tables[0].Rows[0][0].ToString());
+            }
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
             resetForm();
         }
+
         private void btnShowPass_MouseHover(object sender, EventArgs e)
         {
             txtNewPass.UseSystemPasswordChar = false;

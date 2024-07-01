@@ -136,11 +136,13 @@ namespace WindowsFormsApp1
                     WHERE UserName = '{txtUserName.Text}' 
                     AND UserId = {UserId}";
                 ds = Shared.hp.GetDataset(query);
-                if (ds.Tables != null && (int)ds.Tables[0].Rows[0][0] == 0)
+                if (ds.Tables != null && (int)ds.Tables[0].Rows[0][0] > 0)
                 {
                     Shared.hp.WarningMessage("User already exists. Please insert a new user.");
                     return false;
                 }
+                else
+                    return true;
             }
             else if (str == "Update")
             {
@@ -157,10 +159,11 @@ namespace WindowsFormsApp1
                 else
                 {
                     Shared.hp.WarningMessage("User doesn't exists. Please insert a new user.");
+                    return false;
                 }
             }
 
-            return true;
+            return false;
         }
 
         private void btnResetUser_Click(object sender, EventArgs e)

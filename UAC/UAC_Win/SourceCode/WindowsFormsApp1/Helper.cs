@@ -1,17 +1,10 @@
-﻿using WindowsFormsApp1;
-using System;
+﻿using System;
 using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.IO;
 
 namespace WindowsFormsApp1
 {
-
     public class Helper
     {
         public string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString.ToString();
@@ -25,15 +18,18 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show(Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button3);
         }
+
         public void InfoMessage(String Message)
         {
             MessageBox.Show(Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button3);
         }
+        
         public void WarningMessage(String Message)
         {
             MessageBox.Show(Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3);
             
         }
+        
         public DataSet GetDataset(String Query)
         {
             DataSet ds = new DataSet();
@@ -60,6 +56,7 @@ namespace WindowsFormsApp1
 
             return ds;
         }
+        
         public bool PostDataset(String Query)
         {
             try
@@ -80,38 +77,17 @@ namespace WindowsFormsApp1
                 cn.Close();
             }
         }
-        public DataSet GetDataset2(String queryString, String ConnectionString, String TableName)
-        {
-            DataSet ds = new DataSet();
-            cn = new SqlConnection(connectionString);
-            SqlDataAdapter da = new SqlDataAdapter();
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(queryString, connection);
-                    da = new SqlDataAdapter(command);
-                    da.Fill(ds, TableName);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Critical Error");
-                }
-            }
-            return ds;
-        }
+        
         public void PopulateCombo(ComboBox comboBox, String StrSql, String displayMember, String valueMember)
         {
             DataSet ds = new DataSet();
-            cn = new SqlConnection(connectionString);
             try
             {
-                ds = GetDataset2(StrSql, cn.ConnectionString.ToString(), "dataTable");
-
-                if (ds.Tables["dataTable"].Rows.Count > 0)
+                string query = StrSql;
+                ds = Shared.hp.GetDataset(query);
+                if (ds != null && ds.Tables.Count > 0)
                 {
-                    comboBox.DataSource = ds.Tables["dataTable"];
+                    comboBox.DataSource = ds.Tables[0];
                     comboBox.DisplayMember = displayMember;
                     comboBox.ValueMember = valueMember;
                     comboBox.SelectedIndex = -1;
@@ -121,74 +97,9 @@ namespace WindowsFormsApp1
                     comboBox.DataSource = null;
                 }
             }
-            catch
-            {
-            }
-        }
-        public string ExecuteScalar(String strQuery)
-        {
-            SqlConnection objConn = new SqlConnection();
-            SqlCommand objCmd = new SqlCommand();
-            SqlTransaction objTrans = null;
-
-            try
-            {
-                objConn.ConnectionString = connectionString;
-                objConn.Open();
-
-                objTrans = objConn.BeginTransaction();
-                objCmd.Connection = objConn;
-                objCmd.Transaction = objTrans;
-                objCmd.CommandText = strQuery;
-                objCmd.ExecuteScalar();
-
-                objTrans.Commit();
-
-                return Convert.ToString(objCmd.ExecuteScalar());
-            }
             catch (Exception ex)
             {
-                objTrans.Rollback();
-                throw new Exception("In ExecuteScalar: ", ex);
-            }
-            finally
-            {
-                objConn.Close();
-                objCmd.Dispose();
-                objConn.Dispose();
-            }
-        }
-        public string ExecuteNonQuery(String strQuery)
-        {
-            SqlConnection objConn = new SqlConnection();
-            SqlCommand objCmd = new SqlCommand();
-            SqlTransaction objTrans = null;
-
-            try
-            {
-                objConn.ConnectionString = connectionString;
-                objConn.Open();
-
-                objTrans = objConn.BeginTransaction();
-                objCmd.Connection = objConn;
-                objCmd.Transaction = objTrans;
-                objCmd.CommandText = strQuery;
-                objCmd.ExecuteNonQuery();
-
-                objTrans.Commit();
-
-                return Convert.ToString(objCmd.ExecuteScalar());
-            }
-            catch (Exception ex)
-            {
-                objTrans.Rollback();
-                throw new Exception("In ExecuteScalar: ", ex);
-            }
-            finally
-            {
-                objConn.Close();
-                objCmd.Dispose();
-                objConn.Dispose();
+                ErrorMessage(ex.Message + "Critical Error");
             }
         }
     }

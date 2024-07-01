@@ -117,13 +117,6 @@ namespace WindowsFormsApp1
                 Login form = new Login();
                 form.Show();
             }
-
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

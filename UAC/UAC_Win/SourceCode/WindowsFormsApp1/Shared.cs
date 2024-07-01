@@ -1,7 +1,5 @@
 ﻿using Bunifu.Framework.UI;
 using System;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
@@ -110,8 +108,6 @@ namespace WindowsFormsApp1
         public static void SetButtonState(Button button, bool isEnabled)
         {
             button.Enabled = isEnabled;
-            //button.BackColor = isEnabled ? Color.White : Color.LightGray;
-            //button.ForeColor = isEnabled ? SystemColors.ControlText : Color.Gray;
             if (isEnabled == false)
             {
                 button.BackColor = Color.LightGray;

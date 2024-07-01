@@ -69,8 +69,9 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            //var user = context.UserProfiles.Where(a => a.UserName == txtUserName.Text).FirstOrDefault();
-            var user = Shared.context.UserProfiles.FirstOrDefault(a => a.UserName == txtUserName.Text);
+            var user = Shared.context.UserProfiles
+                .AsNoTracking()
+                .Where(a => a.UserName == txtUserName.Text).FirstOrDefault();
 
             if (user == null)
             {
